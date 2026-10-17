@@ -10,6 +10,9 @@ from dotenv import load_dotenv
 
 # src/graphtrace/config.py -> parents[2] is the project root.
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
+DOCS_DIR = PROJECT_ROOT / "data" / "docs"
+ARTIFACTS_DIR = PROJECT_ROOT / "data" / "artifacts"
+
 
 DEFAULT_MODEL = "gemini-2.5-flash"
 
