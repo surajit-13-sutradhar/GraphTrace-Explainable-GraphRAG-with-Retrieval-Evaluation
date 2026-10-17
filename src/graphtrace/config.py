@@ -12,15 +12,17 @@ from dotenv import load_dotenv
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
 DOCS_DIR = PROJECT_ROOT / "data" / "docs"
 ARTIFACTS_DIR = PROJECT_ROOT / "data" / "artifacts"
-
+EXTRACTION_CACHE_DIR = ARTIFACTS_DIR / "extraction_cache"
 
 DEFAULT_MODEL = "gemini-2.5-flash"
+DEFAULT_RPM = 10
 
 
 @dataclass(frozen=True)
 class Settings:
     gemini_api_key: str | None
     gemini_model: str
+    gemini_rpm: int = DEFAULT_RPM
 
     def require_api_key(self) -> str:
         """Return the API key or fail with an actionable message."""
@@ -37,4 +39,5 @@ def load_settings() -> Settings:
     return Settings(
         gemini_api_key=os.getenv("GEMINI_API_KEY") or None,
         gemini_model=os.getenv("GEMINI_MODEL", DEFAULT_MODEL),
+        gemini_rpm=int(os.getenv("GEMINI_RPM", DEFAULT_RPM)),
     )
