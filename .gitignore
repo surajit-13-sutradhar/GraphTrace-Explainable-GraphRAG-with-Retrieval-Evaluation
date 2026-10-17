@@ -1,0 +1,18 @@
+# Secrets
+.env
+
+# Environments and caches
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+*.egg-info/
+
+# Generated artifacts (rebuilt by scripts/build_index.py)
+data/artifacts/*
+!data/artifacts/.gitkeep
+
+# Editors / OS
+.vscode/
+.idea/
+.DS_Store
