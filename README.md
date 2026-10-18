@@ -192,7 +192,7 @@ reports/                       Generated graph image (evaluation reports will go
 - [x] Knowledge graph, traversal, integrity checks, visualization
 - [x] Local embeddings and FAISS retrieval
 - [x] Baseline RAG and GraphRAG with grounded, cited answers (run on a small number of questions so far)
-- [ ] **Evaluation:** about 20 labeled questions (direct, relationship, multi-hop, cross-document, insufficient-evidence, misleading); Recall@k, citation validity, unsupported-claim rate, answer correctness (LLM judge on a separate model, reported separately from deterministic metrics), and latency; baseline at k=5 and k=8 plus GraphRAG; a reproducible report with measured numbers, including where GraphRAG loses
+- [x] **Evaluation:** about 20 labeled questions (direct, relationship, multi-hop, cross-document, insufficient-evidence, misleading); Recall@k, citation validity, unsupported-claim rate, answer correctness (LLM judge on a separate model, reported separately from deterministic metrics), and latency; baseline at k=5 and k=8 plus GraphRAG; a reproducible report with measured numbers, including where GraphRAG loses
 - [ ] Streamlit interface: answers, evidence, highlighted graph paths, method comparison, metrics dashboard
 - [ ] Tests for normalization, traversal, linking, retrieval and citation validation; malformed-input and failure-path tests
 - [ ] Clean-clone verification, pinned dependencies, demo workflow and screenshots
