@@ -1,0 +1,32 @@
+{
+  "aliases": {
+    "API Gateway": ["the gateway", "gateway"],
+    "Authentication Service": ["Auth Service", "AuthService"],
+    "Payment Service": ["Payments"],
+    "User Database": ["User DB", "Users Database"],
+    "Billing Database": ["Billing DB", "outbox", "outbox table"],
+    "Reporting Replica": ["Reporting Database", "Reporting Read Replica"],
+    "Event Queue": ["RabbitMQ", "RabbitMQ cluster", "message queue", "message broker"],
+    "Session Cache": ["Redis", "session store"],
+    "Invoice Storage": ["invoice store", "object store"],
+    "PayFlow": ["Payment Provider", "PayFlow Payment Provider"],
+    "MailBridge": ["Email Provider"],
+    "Sign-in and Sign-up": ["sign-in", "sign-up", "Sign in and Sign up"]
+  },
+  "ignore": [
+    "backend services", "backend service", "services", "client", "clients",
+    "browser", "user", "users", "token validation", "it", "database", "cache", "queue",
+    "replica", "dead-letter queue", "payment reconciliation", "invoice rendering",
+    "user.registered", "payment.completed", "payment.failed"
+  ],
+  "drop_edges": [
+    {
+      "source": "Payment Service", "relation": "CALLS", "target": "Checkout Service",
+      "reason": "Doc says Payment Service returns a status to Checkout; that is a response, not a call."
+    },
+    {
+      "source": "API Gateway", "relation": "FALLS_BACK_TO", "target": "Session Cache",
+      "reason": "Reversed: the Session Cache is the primary; the in-memory limit is the fallback."
+    }
+  ]
+}

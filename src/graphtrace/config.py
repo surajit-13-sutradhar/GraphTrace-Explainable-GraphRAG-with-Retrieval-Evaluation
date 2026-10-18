@@ -13,6 +13,9 @@ PROJECT_ROOT = Path(__file__).resolve().parents[2]
 DOCS_DIR = PROJECT_ROOT / "data" / "docs"
 ARTIFACTS_DIR = PROJECT_ROOT / "data" / "artifacts"
 EXTRACTION_CACHE_DIR = ARTIFACTS_DIR / "extraction_cache"
+ALIASES_PATH = PROJECT_ROOT / "data" / "entity_aliases.json"
+GRAPH_PATH = ARTIFACTS_DIR / "graph.json"
+VECTOR_DIR = ARTIFACTS_DIR / "vector_index"
 
 DEFAULT_MODEL = "gemini-2.5-flash"
 DEFAULT_RPM = 10

@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import logging
 import random
+import re
 import time
 
 from google import genai
@@ -13,6 +14,20 @@ from pydantic import BaseModel
 logger = logging.getLogger(__name__)
 
 RETRYABLE_CODES = {429, 500, 502, 503, 504}
+MAX_AUTO_WAIT_SECONDS = 90.0
+
+_RETRY_IN = re.compile(r"retry in (?:(\d+)h)?(?:(\d+)m)?(?:([\d.]+)s)?", re.IGNORECASE)
+
+
+def parse_retry_delay(message: str | None) -> float | None:
+    """Parse a server hint like 'Please retry in 3h46m7.8s' into seconds; None if absent."""
+    if not message:
+        return None
+    match = _RETRY_IN.search(message)
+    if not match or not any(match.groups()):
+        return None
+    hours, minutes, seconds = match.groups()
+    return int(hours or 0) * 3600 + int(minutes or 0) * 60 + float(seconds or 0)
 
 
 class LLMError(RuntimeError):
@@ -62,6 +77,11 @@ class GeminiClient:
                     model=self.model, contents=prompt, config=config
                 )
             except errors.APIError as exc:
+                hint = parse_retry_delay(exc.message) if exc.code == 429 else None
+                if hint is not None and hint > MAX_AUTO_WAIT_SECONDS:
+                    raise LLMRateLimitError(
+                        f"Quota exhausted; server says retry in ~{hint / 60:.0f} min. {exc.message}"
+                    ) from exc
                 if exc.code in RETRYABLE_CODES and attempt < self._max_retries:
                     delay = min(60.0, 2.0 * 2**attempt) + random.uniform(0, 1)
                     logger.warning(

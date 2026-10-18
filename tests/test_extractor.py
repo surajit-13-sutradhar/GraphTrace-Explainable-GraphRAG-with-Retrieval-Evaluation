@@ -2,7 +2,7 @@ import json
 
 import pytest
 
-from graphtrace.extraction.extractor import extract_chunk
+from graphtrace.extraction.extractor import extract_chunk, load_cached_extraction
 from graphtrace.extraction.prompts import build_extraction_prompt
 from graphtrace.generation.llm_client import LLMEmptyResponseError, LLMRateLimitError
 from graphtrace.models import Chunk
@@ -108,3 +108,13 @@ def test_prompt_wraps_chunk_in_data_delimiters_with_context():
     assert "<chunk>" in prompt and "</chunk>" in prompt
     assert CHUNK.text in prompt
     assert "Authentication enforcement" in prompt
+
+def test_load_cached_extraction_reads_cache_without_calling_the_api(tmp_path):
+    client = FakeClient(GOOD_RESPONSE)
+    assert load_cached_extraction(CHUNK, client.model, tmp_path) is None  # miss
+
+    extract_chunk(CHUNK, client, tmp_path)
+    loaded = load_cached_extraction(CHUNK, client.model, tmp_path)
+
+    assert loaded is not None and len(loaded.relationships) == 1
+    assert client.calls == 1  # the read-only lookup made no extra call

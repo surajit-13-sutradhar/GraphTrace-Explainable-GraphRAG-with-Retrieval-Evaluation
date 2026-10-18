@@ -91,3 +91,8 @@ def extract_chunk(
         }
         path.write_text(json.dumps(payload, indent=2), encoding="utf-8")
     return validate_extraction(raw, chunk), False
+
+def load_cached_extraction(chunk: Chunk, model: str, cache_dir: Path) -> ChunkExtraction | None:
+    """Read-only cache lookup; returns None on a miss. Never calls the API."""
+    cached = _read_cache(_cache_path(cache_dir, chunk), _cache_key(model, chunk))
+    return validate_extraction(cached, chunk) if cached is not None else None

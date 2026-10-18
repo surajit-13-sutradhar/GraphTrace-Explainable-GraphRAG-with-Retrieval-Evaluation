@@ -114,3 +114,54 @@ class ChunkExtraction(BaseModel):
     entities: list[ExtractedEntity] = Field(default_factory=list)
     relationships: list[ExtractedRelationship] = Field(default_factory=list)
     rejected: list[str] = Field(default_factory=list)
+
+
+# ------------------------------------------------------------- knowledge graph data
+class EdgeEvidence(BaseModel):
+    model_config = ConfigDict(frozen=True)
+
+    chunk_id: str
+    quote: str
+    verified: bool
+
+
+class CanonicalEntity(BaseModel):
+    model_config = ConfigDict(frozen=True)
+
+    name: str
+    type: EntityType
+    aliases: list[str] = Field(default_factory=list)
+    chunk_ids: list[str] = Field(default_factory=list)
+
+
+class CanonicalEdge(BaseModel):
+    """source --relation--> target, merged across chunks, with all supporting evidence."""
+
+    model_config = ConfigDict(frozen=True)
+
+    source: str
+    relation: RelationType
+    target: str
+    evidence: list[EdgeEvidence]
+
+    @property
+    def chunk_ids(self) -> list[str]:
+        return sorted({e.chunk_id for e in self.evidence})
+
+
+class DroppedItem(BaseModel):
+    description: str
+    reason: str
+
+
+class GraphData(BaseModel):
+    entities: list[CanonicalEntity]
+    edges: list[CanonicalEdge]
+    dropped: list[DroppedItem] = Field(default_factory=list)
+
+
+# ------------------------------------------------------------------ retrieval
+class RetrievedChunk(BaseModel):
+    chunk: Chunk
+    score: float
+    origin: str = "vector"  # "vector" or "graph"; used by GraphRAG later

@@ -2,4 +2,9 @@ google-genai
 python-dotenv
 pydantic
 pytest
+networkx
+matplotlib
+numpy
+faiss-cpu
+sentence-transformers
 -e .
