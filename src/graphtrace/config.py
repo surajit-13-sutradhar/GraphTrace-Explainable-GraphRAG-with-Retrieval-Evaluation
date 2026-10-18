@@ -19,6 +19,7 @@ VECTOR_DIR = ARTIFACTS_DIR / "vector_index"
 
 DEFAULT_MODEL = "gemini-2.5-flash"
 DEFAULT_RPM = 10
+DEFAULT_JUDGE_RPM = 5
 
 
 @dataclass(frozen=True)
@@ -26,6 +27,8 @@ class Settings:
     gemini_api_key: str | None
     gemini_model: str
     gemini_rpm: int = DEFAULT_RPM
+    judge_model: str | None = None  # falls back to gemini_model
+    judge_rpm: int = DEFAULT_JUDGE_RPM
 
     def require_api_key(self) -> str:
         """Return the API key or fail with an actionable message."""
@@ -35,6 +38,10 @@ class Settings:
             )
         return self.gemini_api_key
 
+    @property
+    def effective_judge_model(self) -> str:
+        return self.judge_model or self.gemini_model
+
 
 def load_settings() -> Settings:
     """Load settings from .env (if present) and the process environment."""
@@ -42,5 +49,7 @@ def load_settings() -> Settings:
     return Settings(
         gemini_api_key=os.getenv("GEMINI_API_KEY") or None,
         gemini_model=os.getenv("GEMINI_MODEL", DEFAULT_MODEL),
-        gemini_rpm=int(os.getenv("GEMINI_RPM", DEFAULT_RPM)),
+        gemini_rpm=int(os.getenv("GEMINI_RPM") or DEFAULT_RPM),
+        judge_model=os.getenv("GEMINI_JUDGE_MODEL") or None,
+        judge_rpm=int(os.getenv("GEMINI_JUDGE_RPM") or DEFAULT_JUDGE_RPM),
     )

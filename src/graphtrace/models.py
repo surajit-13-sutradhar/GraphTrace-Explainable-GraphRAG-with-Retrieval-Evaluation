@@ -165,3 +165,86 @@ class RetrievedChunk(BaseModel):
     chunk: Chunk
     score: float
     origin: str = "vector"  # "vector" or "graph"; used by GraphRAG later
+
+# ------------------------------------------------------------- answer generation
+class SupportType(str, Enum):
+    DIRECT = "DIRECT"        # explicitly stated in a cited chunk
+    INFERENCE = "INFERENCE"  # follows from combining cited chunks or graph paths
+
+
+class LLMClaim(BaseModel):
+    text: str
+    support: SupportType
+    citations: list[str]
+    path_ids: list[str]
+
+
+class LLMAnswer(BaseModel):
+    """What the model must return (no defaults, to keep the response schema simple)."""
+
+    answer: str
+    claims: list[LLMClaim]
+    sufficient_evidence: bool
+    missing_information: str
+
+
+class Claim(BaseModel):
+    """A claim after deterministic citation checking."""
+
+    text: str
+    support: SupportType
+    citations: list[str]  # only IDs that really were in the supplied evidence
+    path_ids: list[str] = Field(default_factory=list)
+    invalid_citations: list[str] = Field(default_factory=list)  # IDs the model invented
+    invalid_path_ids: list[str] = Field(default_factory=list)
+
+    @property
+    def has_valid_citation(self) -> bool:
+        return bool(self.citations)
+
+
+class GroundedAnswer(BaseModel):
+    answer: str
+    claims: list[Claim]
+    sufficient_evidence: bool
+    missing_information: str = ""
+
+
+# ------------------------------------------------------------ retrieval results
+class PathStepView(BaseModel):
+    source: str
+    relation: str
+    target: str
+    chunk_ids: list[str]
+
+
+class GraphPathView(BaseModel):
+    path_id: str  # P1, P2, ...
+    kind: str  # "impact" | "connection" | "neighbor"
+    description: str
+    steps: list[PathStepView]
+
+    @property
+    def chunk_ids(self) -> list[str]:
+        return sorted({c for s in self.steps for c in s.chunk_ids})
+
+
+class RetrievalResult(BaseModel):
+    question: str
+    method: str  # "baseline" | "graphrag"
+    chunks: list[RetrievedChunk]
+    seed_entities: list[str] = Field(default_factory=list)
+    graph_nodes: list[str] = Field(default_factory=list)
+    graph_paths: list[GraphPathView] = Field(default_factory=list)
+    retrieval_ms: float = 0.0
+    notes: list[str] = Field(default_factory=list)
+
+
+class PipelineResult(BaseModel):
+    method: str
+    question: str
+    retrieval: RetrievalResult
+    answer: GroundedAnswer | None = None
+    generation_ms: float = 0.0
+    total_ms: float = 0.0
+    error: str | None = None

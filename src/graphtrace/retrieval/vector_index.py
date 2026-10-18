@@ -19,6 +19,7 @@ class VectorIndex:
         self._index = index
         self.chunks = chunks
         self.model_name = model_name
+        self._pos = {c.chunk_id: i for i, c in enumerate(chunks)}
 
     @classmethod
     def build(cls, chunks: list[Chunk], embedder: Embedder) -> "VectorIndex":
@@ -28,6 +29,10 @@ class VectorIndex:
         index = faiss.IndexFlatIP(vectors.shape[1])  # exact inner-product search
         index.add(vectors)
         return cls(index, list(chunks), embedder.model_name)
+
+    def get_chunk(self, chunk_id: str) -> Chunk | None:
+        pos = self._pos.get(chunk_id)
+        return self.chunks[pos] if pos is not None else None
 
     def search(self, query_vector: np.ndarray, k: int) -> list[RetrievedChunk]:
         """Top-k chunks by cosine similarity, best first."""
@@ -41,6 +46,16 @@ class VectorIndex:
             for score, i in zip(scores[0], ids[0])
             if i >= 0
         ]
+
+    def similarity_to(self, query_vector: np.ndarray, chunk_ids: list[str]) -> dict[str, float]:
+        """Cosine similarity between the query and specific chunks (unknown IDs are skipped)."""
+        query = np.asarray(query_vector, dtype=np.float32).reshape(-1)
+        scores: dict[str, float] = {}
+        for chunk_id in chunk_ids:
+            pos = self._pos.get(chunk_id)
+            if pos is not None:
+                scores[chunk_id] = float(np.dot(self._index.reconstruct(pos), query))
+        return scores
 
     def save(self, directory: Path) -> None:
         directory.mkdir(parents=True, exist_ok=True)

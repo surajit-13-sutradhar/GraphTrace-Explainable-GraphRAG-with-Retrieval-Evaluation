@@ -162,34 +162,54 @@ def impact_chains(
     A chain's nodes run from the dependent down to the failed node. Whether a
     dependent really fails depends on timeouts, retries, caches, and fallbacks,
     none of which the graph encodes.
+
+    ROUTES_TO means "client traffic reaches X through the gateway". Once a chain has
+    crossed such a step, it may only continue to user-facing features (SERVES);
+    continuing through CALLS edges would claim dependencies that are not on the
+    user-request path.
     """
     if failed not in graph:
         return []
     dep = dependency_graph(graph, include_conditional)
-    depth_of = {failed: 0}
-    parent: dict[str, str] = {}
+
+    State = tuple[str, bool]  # (node, chain has crossed a ROUTES_TO step)
+    start: State = (failed, False)
+    depth_of: dict[State, int] = {start: 0}
+    parent: dict[State, State] = {}
+    first_state: dict[str, State] = {}
     order: list[str] = []
-    queue: deque[str] = deque([failed])
+    queue: deque[State] = deque([start])
+
     while queue:
-        node = queue.popleft()
-        if depth_of[node] >= max_depth:
+        state = queue.popleft()
+        node, routed = state
+        if depth_of[state] >= max_depth:
             continue
         for dependent in sorted(dep.predecessors(node)):
-            if dependent in depth_of:
+            if dependent == failed:
                 continue
-            depth_of[dependent] = depth_of[node] + 1
-            parent[dependent] = node
-            order.append(dependent)
-            queue.append(dependent)
+            steps = dep[dependent][node]["steps"]
+            if routed and not all(s.relation == "SERVES" for s in steps):
+                continue
+            new_state: State = (dependent, routed or any(s.relation == "ROUTES_TO" for s in steps))
+            if new_state in depth_of:
+                continue
+            depth_of[new_state] = depth_of[state] + 1
+            parent[new_state] = state
+            queue.append(new_state)
+            if dependent not in first_state:
+                first_state[dependent] = new_state
+                order.append(dependent)
 
     chains: list[GraphPath] = []
     for dependent in order[:max_chains]:
-        nodes, steps = [dependent], []
-        current = dependent
-        while current in parent:
-            nxt = parent[current]
-            steps.append(sorted(dep[current][nxt]["steps"], key=lambda s: s.relation)[0])
-            nodes.append(nxt)
-            current = nxt
-        chains.append(GraphPath(tuple(nodes), tuple(steps)))
+        state = first_state[dependent]
+        nodes, steps_out = [dependent], []
+        while state in parent:
+            prev = parent[state]
+            best = sorted(dep[state[0]][prev[0]]["steps"], key=lambda s: s.relation)[0]
+            steps_out.append(best)
+            nodes.append(prev[0])
+            state = prev
+        chains.append(GraphPath(tuple(nodes), tuple(steps_out)))
     return chains
