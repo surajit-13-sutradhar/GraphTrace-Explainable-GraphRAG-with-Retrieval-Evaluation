@@ -66,10 +66,12 @@ class Answerer:
         start = time.perf_counter()
         grounded: GroundedAnswer | None = None
         error: str | None = None
+        reported_ms: float | None = None
         try:
             raw = self._client.generate_json(
                 system_instruction=ANSWER_SYSTEM_PROMPT, prompt=prompt, schema=LLMAnswer
             )
+            reported_ms = getattr(self._client, "last_latency_ms", None)
             grounded = validate_answer(LLMAnswer.model_validate_json(raw), retrieval)
         except LLMRateLimitError:
             raise
@@ -77,7 +79,8 @@ class Answerer:
             error = str(exc)
         except ValidationError as exc:
             error = f"model returned an invalid answer structure ({exc.error_count()} problems)"
-        generation_ms = (time.perf_counter() - start) * 1000
+        # Prefer the client's API-only latency (no throttle sleeps; replayed from cache if cached).
+        generation_ms = reported_ms if reported_ms is not None else (time.perf_counter() - start) * 1000
         return PipelineResult(
             method=retrieval.method,
             question=retrieval.question,

@@ -1,0 +1,483 @@
+{
+  "schema_version": 1,
+  "description": "GraphTrace evaluation questions. 'evidence' is a list of groups; each group is a list of alternative chunk IDs and any one satisfies it. 'must_mention' entries may offer alternatives separated by '|'. 'dev' marks questions used while developing the system.",
+  "questions": [
+    {
+      "id": "q01",
+      "type": "direct_fact",
+      "answerable": true,
+      "dev": false,
+      "question": "How long is a JSON Web Token issued by the Authentication Service valid?",
+      "reference_answer": "JWTs issued by the Authentication Service are valid for 15 minutes (refresh tokens are valid for 30 days).",
+      "evidence": [
+        [
+          "authentication_service#01"
+        ]
+      ],
+      "must_mention": [
+        "15 minutes"
+      ],
+      "forbidden_claims": [],
+      "notes": "Single-chunk lookup; baseline should do well."
+    },
+    {
+      "id": "q02",
+      "type": "direct_fact",
+      "answerable": true,
+      "dev": false,
+      "question": "What database engine does the User Database use, and how many replicas does it have?",
+      "reference_answer": "The User Database is a PostgreSQL 15 cluster with one primary and two replicas.",
+      "evidence": [
+        [
+          "user_service#03"
+        ]
+      ],
+      "must_mention": [
+        "PostgreSQL",
+        "two replicas|2 replicas"
+      ],
+      "forbidden_claims": [],
+      "notes": "platform_overview#05 mentions PostgreSQL but not the replica count, so it is not sufficient alone."
+    },
+    {
+      "id": "q03",
+      "type": "direct_fact",
+      "answerable": true,
+      "dev": false,
+      "question": "What timeout does the API Gateway use when calling the Authentication Service, and how many times does it retry?",
+      "reference_answer": "The API Gateway uses a 2-second timeout and retries once.",
+      "evidence": [
+        [
+          "api_gateway#05"
+        ]
+      ],
+      "must_mention": [
+        "2-second|2 second|two-second|2 seconds|two seconds",
+        "once|one retry|1 retry|one time"
+      ],
+      "forbidden_claims": [],
+      "notes": "Single-chunk lookup."
+    },
+    {
+      "id": "q04",
+      "type": "direct_fact",
+      "answerable": true,
+      "dev": false,
+      "question": "How often does the Payment Service's reconciliation job resolve pending payments?",
+      "reference_answer": "The reconciliation job in the Payment Service resolves pending payments every five minutes.",
+      "evidence": [
+        [
+          "checkout_and_payment#06"
+        ]
+      ],
+      "must_mention": [
+        "five minutes|5 minutes"
+      ],
+      "forbidden_claims": [],
+      "notes": "Single-chunk lookup."
+    },
+    {
+      "id": "q05",
+      "type": "relationship",
+      "answerable": true,
+      "dev": false,
+      "question": "Which services consume events from the Event Queue, and which event types does each consume?",
+      "reference_answer": "The Billing Service consumes payment.completed. The Notification Service consumes all three event types: user.registered, payment.completed and payment.failed.",
+      "evidence": [
+        [
+          "event_queue_and_notifications#02"
+        ]
+      ],
+      "must_mention": [
+        "Billing Service",
+        "Notification Service",
+        "payment.completed",
+        "payment.failed",
+        "user.registered"
+      ],
+      "forbidden_claims": [
+        "States that the Billing Service consumes payment.failed or user.registered"
+      ],
+      "notes": "Event types are not graph nodes, so only the source text carries the per-service event detail."
+    },
+    {
+      "id": "q06",
+      "type": "relationship",
+      "answerable": true,
+      "dev": false,
+      "question": "Which component is the only one that talks to the external Payment Provider, and what events does it publish afterwards?",
+      "reference_answer": "The Payment Service is the only component that talks to PayFlow. When PayFlow confirms a charge it publishes payment.completed to the Event Queue; if the charge is declined it publishes payment.failed.",
+      "evidence": [
+        [
+          "checkout_and_payment#03"
+        ],
+        [
+          "checkout_and_payment#04"
+        ]
+      ],
+      "must_mention": [
+        "Payment Service",
+        "PayFlow",
+        "payment.completed",
+        "payment.failed"
+      ],
+      "forbidden_claims": [],
+      "notes": ""
+    },
+    {
+      "id": "q07",
+      "type": "relationship",
+      "answerable": true,
+      "dev": false,
+      "question": "Where does the Reporting Service read its data from, and does it ever write to the Billing Database?",
+      "reference_answer": "The Reporting Service reads from the Reporting Replica, a read-only replica of the Billing Database. It never writes to the Billing Database.",
+      "evidence": [
+        [
+          "billing_and_reporting#04"
+        ]
+      ],
+      "must_mention": [
+        "Reporting Replica"
+      ],
+      "forbidden_claims": [
+        "States that the Reporting Service writes to the Billing Database"
+      ],
+      "notes": "Negation: 'never writes' must not become a write dependency."
+    },
+    {
+      "id": "q08",
+      "type": "relationship",
+      "answerable": true,
+      "dev": false,
+      "question": "Which services does the API Gateway route requests to, and under which path prefixes?",
+      "reference_answer": "/auth goes to the Authentication Service, /profile to the User Service, /checkout to the Checkout Service, /invoices to the Billing Service and /reports to the Reporting Service.",
+      "evidence": [
+        [
+          "api_gateway#03"
+        ]
+      ],
+      "must_mention": [
+        "/auth",
+        "/profile",
+        "/checkout",
+        "/invoices",
+        "/reports"
+      ],
+      "forbidden_claims": [],
+      "notes": "Graph has the ROUTES_TO edges but not the path prefixes; those live only in the chunk text."
+    },
+    {
+      "id": "q09",
+      "type": "multi_hop",
+      "answerable": true,
+      "dev": true,
+      "question": "If the authentication service fails, which user-facing features could be affected, and what is the dependency chain?",
+      "reference_answer": "The API Gateway cannot validate tokens, so it returns HTTP 503 for protected routes. Sign-in and Sign-up fail directly. Because the gateway validates tokens before routing, features reached through protected routes could also be affected: Profile Settings (User Service), Subscription Checkout (Checkout Service), Invoice Download (Billing Service) and Usage Reports (Reporting Service). Chain: feature -> serving service -> routed by the API Gateway -> API Gateway calls the Authentication Service. The public Pricing Page and background work such as payment reconciliation and invoice rendering are documented as continuing. The documents do not say that Email Notifications are affected on the request path.",
+      "evidence": [
+        [
+          "failure_scenarios_and_data_flows#03"
+        ],
+        [
+          "api_gateway#02",
+          "platform_overview#03"
+        ],
+        [
+          "api_gateway#03"
+        ],
+        [
+          "platform_overview#04"
+        ]
+      ],
+      "must_mention": [
+        "sign-in|sign in",
+        "Profile Settings",
+        "Subscription Checkout",
+        "Invoice Download",
+        "Usage Reports",
+        "API Gateway"
+      ],
+      "forbidden_claims": [
+        "States that the Pricing Page is unavailable or fails during an Authentication Service outage",
+        "States that every feature will definitely fail without any hedging"
+      ],
+      "notes": "Used while developing the retriever, so it is flagged dev. The graph's impact paths also list the Pricing Page, which is the over-approximation the answer must correct from the text."
+    },
+    {
+      "id": "q10",
+      "type": "multi_hop",
+      "answerable": true,
+      "dev": false,
+      "question": "If the Billing Database primary goes down, which user-facing features could be affected, and which are documented to keep working?",
+      "reference_answer": "Usage Reports are documented to keep working from the Reporting Replica, but with stale data. Subscription Checkout (Checkout Service writes order records) and Invoice Download (Billing Service reads invoice records) depend on the Billing Database, so they could be affected, but the documents do not state their actual behavior during a Billing Database outage.",
+      "evidence": [
+        [
+          "billing_and_reporting#05"
+        ],
+        [
+          "billing_and_reporting#03"
+        ],
+        [
+          "checkout_and_payment#01"
+        ],
+        [
+          "billing_and_reporting#02"
+        ]
+      ],
+      "must_mention": [
+        "Usage Reports",
+        "Subscription Checkout",
+        "Invoice Download",
+        "stale"
+      ],
+      "forbidden_claims": [
+        "States as documented fact that Subscription Checkout or Invoice Download fail during a Billing Database outage (the documents do not state this)"
+      ],
+      "notes": "Tests hedging: a dependency path is not documented failure behavior."
+    },
+    {
+      "id": "q11",
+      "type": "multi_hop",
+      "answerable": true,
+      "dev": false,
+      "question": "If the Event Queue becomes unavailable, which features could be affected and what happens to payment events and sign-up events?",
+      "reference_answer": "Payments still succeed. Payment events are written to an outbox table in the Billing Database and relayed when the queue returns, so invoices (Invoice Download) and receipt emails (Email Notifications) are delayed rather than lost. The Authentication Service has no outbox, so user.registered events from sign-ups during the outage are lost and welcome emails may not be sent.",
+      "evidence": [
+        [
+          "failure_scenarios_and_data_flows#06",
+          "event_queue_and_notifications#05"
+        ],
+        [
+          "billing_and_reporting#01",
+          "checkout_and_payment#04",
+          "event_queue_and_notifications#02"
+        ],
+        [
+          "event_queue_and_notifications#03",
+          "platform_overview#04"
+        ]
+      ],
+      "must_mention": [
+        "outbox",
+        "welcome",
+        "email",
+        "invoice"
+      ],
+      "forbidden_claims": [
+        "States that payments fail during an Event Queue outage"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "q12",
+      "type": "multi_hop",
+      "answerable": true,
+      "dev": false,
+      "question": "Trace the path from a new account sign-up to the welcome email: which components are involved, in order?",
+      "reference_answer": "The browser's sign-up request goes to the API Gateway, which forwards it to the Authentication Service without token validation. The Authentication Service creates the account in the User Database, stores the session in the Session Cache and publishes user.registered to the Event Queue. The Notification Service consumes the event, looks up preferences from the User Service, and sends the welcome email through MailBridge.",
+      "evidence": [
+        [
+          "failure_scenarios_and_data_flows#02"
+        ]
+      ],
+      "must_mention": [
+        "API Gateway",
+        "Authentication Service",
+        "User Database",
+        "Session Cache",
+        "Event Queue",
+        "Notification Service",
+        "User Service",
+        "MailBridge"
+      ],
+      "forbidden_claims": [],
+      "notes": "The whole chain sits in one chunk, so baseline should do well; a control for whether GraphRAG hurts here."
+    },
+    {
+      "id": "q13",
+      "type": "cross_document",
+      "answerable": true,
+      "dev": false,
+      "question": "Which services read from or write to the User Database, and what does each one store there?",
+      "reference_answer": "The Authentication Service writes accounts, password hashes and token revocation records (and reads revocation records, including as a fallback when the Session Cache is unavailable). The User Service reads and writes profile data.",
+      "evidence": [
+        [
+          "authentication_service#02",
+          "user_service#03"
+        ],
+        [
+          "user_service#02",
+          "user_service#03"
+        ]
+      ],
+      "must_mention": [
+        "Authentication Service",
+        "User Service",
+        "profile",
+        "revocation"
+      ],
+      "forbidden_claims": [
+        "States that the Notification Service or the API Gateway accesses the User Database directly"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "q14",
+      "type": "cross_document",
+      "answerable": true,
+      "dev": false,
+      "question": "Which components write to the Billing Database, and what does each write?",
+      "reference_answer": "The Checkout Service writes order records, the Payment Service records payment attempts, and the Billing Service writes invoice records.",
+      "evidence": [
+        [
+          "billing_and_reporting#03"
+        ],
+        [
+          "checkout_and_payment#01"
+        ],
+        [
+          "checkout_and_payment#03"
+        ],
+        [
+          "billing_and_reporting#01"
+        ]
+      ],
+      "must_mention": [
+        "Checkout Service",
+        "Payment Service",
+        "Billing Service",
+        "order",
+        "attempt",
+        "invoice"
+      ],
+      "forbidden_claims": [
+        "States that the Reporting Service writes to the Billing Database"
+      ],
+      "notes": "During an Event Queue outage the Payment Service also writes events to an outbox table (event_queue_and_notifications#05); that detail is optional."
+    },
+    {
+      "id": "q15",
+      "type": "cross_document",
+      "answerable": true,
+      "dev": false,
+      "question": "Does the Checkout Service call the Authentication Service to identify the user, and how does it learn who the caller is?",
+      "reference_answer": "No. The Checkout Service trusts the identity headers added by the API Gateway and never calls the Authentication Service directly. The API Gateway is the component that validates tokens with the Authentication Service.",
+      "evidence": [
+        [
+          "checkout_and_payment#02"
+        ],
+        [
+          "api_gateway#02",
+          "platform_overview#03"
+        ]
+      ],
+      "must_mention": [
+        "API Gateway",
+        "header"
+      ],
+      "forbidden_claims": [
+        "States that the Checkout Service calls the Authentication Service"
+      ],
+      "notes": "Negation trap: 'never calls' must not become a CALLS edge."
+    },
+    {
+      "id": "q16",
+      "type": "cross_document",
+      "answerable": true,
+      "dev": false,
+      "question": "What does the Notification Service need in order to send an email, and what happens if the User Service is unavailable?",
+      "reference_answer": "It consumes events from the Event Queue, asks the User Service for the recipient's address and preferences, renders a template and calls MailBridge. If the User Service is unavailable, the Notification Service retries the message later and does not drop it.",
+      "evidence": [
+        [
+          "event_queue_and_notifications#03"
+        ],
+        [
+          "user_service#05"
+        ]
+      ],
+      "must_mention": [
+        "User Service",
+        "MailBridge",
+        "retr"
+      ],
+      "forbidden_claims": [],
+      "notes": "Behavior when MailBridge is unavailable is not specifically documented."
+    },
+    {
+      "id": "q17",
+      "type": "insufficient_evidence",
+      "answerable": false,
+      "dev": true,
+      "question": "What programming language is the Billing Service written in?",
+      "reference_answer": "The documents do not say.",
+      "evidence": [],
+      "must_mention": [],
+      "forbidden_claims": [
+        "Names any programming language"
+      ],
+      "notes": "Used while developing, so flagged dev. A correct system says the evidence is insufficient."
+    },
+    {
+      "id": "q18",
+      "type": "insufficient_evidence",
+      "answerable": false,
+      "dev": false,
+      "question": "What uptime SLA does the Authentication Service guarantee?",
+      "reference_answer": "The documents do not state any SLA. They only say the service runs as three stateless instances behind an internal load balancer.",
+      "evidence": [],
+      "must_mention": [],
+      "forbidden_claims": [
+        "States a specific uptime percentage or SLA"
+      ],
+      "notes": "Related information exists (three instances), which tempts a model to invent an SLA."
+    },
+    {
+      "id": "q19",
+      "type": "misleading",
+      "answerable": true,
+      "dev": false,
+      "question": "Will the Pricing Page stop working if the Authentication Service fails?",
+      "reference_answer": "No. The Pricing Page is a public route: public routes skip token validation and it is served by the API Gateway from static content. The Authentication Service outage scenario states that public routes such as the Pricing Page keep working.",
+      "evidence": [
+        [
+          "failure_scenarios_and_data_flows#03"
+        ],
+        [
+          "api_gateway#02",
+          "platform_overview#02",
+          "platform_overview#04"
+        ]
+      ],
+      "must_mention": [
+        "public"
+      ],
+      "forbidden_claims": [
+        "States that the Pricing Page will stop working or fail during an Authentication Service outage"
+      ],
+      "notes": "Misleading graph path: API Gateway CALLS Authentication Service and API Gateway SERVES Pricing Page, so a naive traversal marks it as dependent."
+    },
+    {
+      "id": "q20",
+      "type": "misleading",
+      "answerable": true,
+      "dev": true,
+      "question": "Will users be unable to sign in if the Session Cache goes down?",
+      "reference_answer": "No. If the Session Cache is unavailable, the Authentication Service falls back to checking revocation records in the User Database. Validation keeps working, but p95 latency rises from about 5 ms to about 40 ms and the User Database receives more read traffic. No feature becomes unavailable; the gateway also switches to in-memory rate limits.",
+      "evidence": [
+        [
+          "authentication_service#04"
+        ],
+        [
+          "failure_scenarios_and_data_flows#04"
+        ]
+      ],
+      "must_mention": [
+        "User Database",
+        "latency"
+      ],
+      "forbidden_claims": [
+        "States that sign-in or token validation fails when the Session Cache is down"
+      ],
+      "notes": "Flagged dev because a similar Session Cache query was used to test vector retrieval. The Authentication Service READS_FROM Session Cache edge suggests a dependency that the text says has a fallback."
+    }
+  ]
+}

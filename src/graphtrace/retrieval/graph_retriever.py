@@ -28,6 +28,9 @@ IMPACT_INTENT = re.compile(
     re.IGNORECASE,
 )
 
+# Path kinds whose steps must each be backed by at least one chunk in the evidence.
+COVERED_KINDS = {"impact", "connection"}
+
 
 @dataclass(frozen=True)
 class GraphRetrievalConfig:
@@ -56,6 +59,38 @@ def _view(path_id: str, kind: str, path: GraphPath) -> GraphPathView:
         for s in path.steps
     ]
     return GraphPathView(path_id=path_id, kind=kind, description=description, steps=steps)
+
+
+def cover_path_steps(
+    typed_paths: list[tuple[str, GraphPath]],
+    scored: dict[str, float],
+    already: list[str],
+    budget: int,
+) -> tuple[list[str], int]:
+    """Greedy set cover over path steps.
+
+    Picks chunks until every impact/connection step has at least one backing chunk in the
+    evidence, or the budget runs out. Returns (chunks to add, number of steps left uncovered).
+    """
+    uncovered: dict[tuple[str, str, str], set[str]] = {}
+    for kind, path in typed_paths:
+        if kind not in COVERED_KINDS:
+            continue
+        for step in path.steps:
+            key = (step.source, step.relation, step.target)
+            uncovered.setdefault(key, {c for c in step.chunk_ids if c in scored})
+
+    chosen = set(already)
+    # Steps with no known source chunk cannot be covered; steps already covered need nothing.
+    uncovered = {k: v for k, v in uncovered.items() if v and not (v & chosen)}
+
+    added: list[str] = []
+    while uncovered and len(added) < budget:
+        counts = Counter(c for chunk_ids in uncovered.values() for c in chunk_ids)
+        best = max(counts, key=lambda c: (counts[c], scored[c], c))  # deterministic tie-break
+        added.append(best)
+        uncovered = {k: v for k, v in uncovered.items() if best not in v}
+    return added, len(uncovered)
 
 
 class GraphRetriever:
@@ -143,7 +178,7 @@ class GraphRetriever:
             nodes += list(path.nodes)
         nodes = list(dict.fromkeys(nodes))
 
-        # Rank: cosine similarity + bonus for being cited by a graph path.
+        # Score: cosine similarity + bonus for being cited by a graph path.
         bonus: dict[str, float] = {}
         for kind, path in typed_paths:
             value = cfg.neighbor_bonus if kind == "neighbor" else cfg.chain_bonus
@@ -155,7 +190,13 @@ class GraphRetriever:
         similarity.update(self._index.similarity_to(query_vector, missing))
         scored = {cid: sim + bonus.get(cid, 0.0) for cid, sim in similarity.items()}
 
+        # Select: (1) top vector hits as anchors, (2) chunks needed so every impact/connection
+        # step has source text in the evidence, (3) fill remaining slots by score.
         chosen = [h.chunk.chunk_id for h in vector_hits[: cfg.anchor_chunks]]
+        covering, uncovered = cover_path_steps(typed_paths, scored, chosen, cfg.max_chunks - len(chosen))
+        chosen += covering
+        if uncovered:
+            notes.append(f"{uncovered} path step(s) have no backing chunk in the evidence (budget reached).")
         for chunk_id in sorted(scored, key=lambda c: scored[c], reverse=True):
             if len(chosen) >= cfg.max_chunks:
                 break

@@ -51,6 +51,8 @@ class GeminiClient:
         self._min_interval = 60.0 / rpm
         self._max_retries = max_retries
         self._last_call_started: float | None = None
+        # Duration of the last SUCCESSFUL request only: excludes our own throttle sleeps and retry waits.
+        self.last_latency_ms: float | None = None
 
     def _throttle(self) -> None:
         """Sleep just long enough to stay under the configured requests-per-minute."""
@@ -72,6 +74,7 @@ class GeminiClient:
         )
         for attempt in range(self._max_retries + 1):
             self._throttle()
+            started = time.perf_counter()
             try:
                 response = self._client.models.generate_content(
                     model=self.model, contents=prompt, config=config
@@ -97,5 +100,6 @@ class GeminiClient:
                 raise LLMError(f"Gemini API error {exc.code}: {exc.message}") from exc
             if not response.text:
                 raise LLMEmptyResponseError("Gemini returned no text")
+            self.last_latency_ms = (time.perf_counter() - started) * 1000
             return response.text
         raise AssertionError("unreachable")  # the loop always returns or raises

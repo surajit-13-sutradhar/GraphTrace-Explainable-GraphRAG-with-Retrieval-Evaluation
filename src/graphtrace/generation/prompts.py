@@ -6,7 +6,7 @@ import re
 
 from graphtrace.models import GraphPathView, RetrievalResult
 
-ANSWER_PROMPT_VERSION = "answer-v1"
+ANSWER_PROMPT_VERSION = "answer-v2"
 
 ANSWER_SYSTEM_PROMPT = """\
 You answer questions about a software platform using ONLY the evidence supplied in the user message.
@@ -29,14 +29,23 @@ prove an outage will propagate. Use "may be affected" unless the evidence states
 (timeouts, retries, caches, fallbacks, error responses). Before listing a component as affected, check \
 the chunks for statements that the dependency is bypassed, optional, or has a fallback; if you find one, \
 say so instead of listing the component as affected.
-6. A statement such as "X does not call Y" means there is NO such relationship. Never turn a negation \
+6. IMPACT PATHS. If the question asks what could be affected by a failure and GRAPH PATHS of type \
+"impact" are supplied, go through EVERY impact path. For each path whose steps are all backed by chunks \
+you were given (each step lists its chunks), write an INFERENCE claim such as "<component> may be \
+affected because <the chain in plain words>", citing the chunks listed for its steps and putting the \
+path ID in path_ids. Group paths that share the same chain into one claim. Then apply the exception \
+check from rule 5: if a chunk says the component is exempt, bypassed, or has a fallback (for example \
+public routes skip token validation), do not list it as affected; state the exemption in a DIRECT claim \
+instead. Skip a path if one of its steps has no supplied chunk. Do not list a component as affected \
+unless an impact path or a chunk supports it.
+7. A statement such as "X does not call Y" means there is NO such relationship. Never turn a negation \
 into a dependency.
-7. If the evidence does not contain what is needed, set sufficient_evidence to false and describe what \
+8. If the evidence does not contain what is needed, set sufficient_evidence to false and describe what \
 is missing in missing_information. Answer only the parts the evidence supports. Never invent details \
 such as programming languages, SLAs, owners, or numbers.
-8. "answer" is a 2-5 sentence summary containing only facts that appear in your claims. If \
+9. "answer" is a 2-5 sentence summary containing only facts that appear in your claims. If \
 sufficient_evidence is false, say so in the answer.
-9. missing_information is an empty string when nothing is missing.
+10. missing_information is an empty string when nothing is missing.
 """
 
 _TAG = re.compile(r"</?\s*(evidence|question)", re.IGNORECASE)

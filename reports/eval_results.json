@@ -1,0 +1,5060 @@
+{
+  "started_at": "2026-10-18T18:33:39+00:00",
+  "answer_model": "gemini-3.1-flash-lite",
+  "judge_model": "gemini-3.5-flash-lite",
+  "answer_prompt_version": "answer-v2",
+  "judge_prompt_version": "judge-v1",
+  "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
+  "records": [
+    {
+      "question_id": "q01",
+      "question": "How long is a JSON Web Token issued by the Authentication Service valid?",
+      "type": "direct_fact",
+      "dev": false,
+      "answerable": true,
+      "n_forbidden_claims": 0,
+      "method": "baseline_k5",
+      "retrieved_chunk_ids": [
+        "authentication_service#01",
+        "api_gateway#05",
+        "authentication_service#04",
+        "authentication_service#03",
+        "authentication_service#06"
+      ],
+      "n_graph_paths": 0,
+      "answer": {
+        "answer": "JSON Web Tokens issued by the Authentication Service are valid for 15 minutes. Refresh tokens issued alongside them are valid for 30 days.",
+        "claims": [
+          {
+            "text": "The Authentication Service issues JSON Web Tokens that are valid for 15 minutes.",
+            "support": "DIRECT",
+            "citations": [
+              "authentication_service#01"
+            ],
+            "path_ids": [],
+            "invalid_citations": [],
+            "invalid_path_ids": []
+          },
+          {
+            "text": "The Authentication Service issues refresh tokens that are valid for 30 days.",
+            "support": "DIRECT",
+            "citations": [
+              "authentication_service#01"
+            ],
+            "path_ids": [],
+            "invalid_citations": [],
+            "invalid_path_ids": []
+          }
+        ],
+        "sufficient_evidence": true,
+        "missing_information": ""
+      },
+      "error": null,
+      "metrics": {
+        "context_chunks": 5,
+        "recall": 1.0,
+        "mention_recall": 1.0,
+        "missing_mentions": [],
+        "n_claims": 2,
+        "n_inference": 0,
+        "n_claims_cited": 2,
+        "n_invalid_ids": 0,
+        "abstained": false,
+        "abstention_correct": true,
+        "retrieval_ms": 6.475200003478676,
+        "generation_ms": 3949.547900003381,
+        "total_ms": 3956.0231000068597
+      },
+      "judge": {
+        "correctness": "CORRECT",
+        "correctness_score": 1.0,
+        "correctness_reason": "The system answer accurately states the validity period of the JSON Web Tokens and refresh tokens as found in the evidence.",
+        "n_claims_judged": 2,
+        "n_supported": 2,
+        "n_unsupported": 0,
+        "n_contradicted": 0,
+        "n_unjudged": 0,
+        "forbidden_violated": [],
+        "error": null
+      }
+    },
+    {
+      "question_id": "q01",
+      "question": "How long is a JSON Web Token issued by the Authentication Service valid?",
+      "type": "direct_fact",
+      "dev": false,
+      "answerable": true,
+      "n_forbidden_claims": 0,
+      "method": "baseline_k8",
+      "retrieved_chunk_ids": [
+        "authentication_service#01",
+        "api_gateway#05",
+        "authentication_service#04",
+        "authentication_service#03",
+        "authentication_service#06",
+        "authentication_service#02",
+        "api_gateway#02",
+        "failure_scenarios_and_data_flows#02"
+      ],
+      "n_graph_paths": 0,
+      "answer": {
+        "answer": "JSON Web Tokens issued by the Authentication Service are valid for 15 minutes. Refresh tokens issued by the same service are valid for 30 days.",
+        "claims": [
+          {
+            "text": "The Authentication Service issues signed JSON Web Tokens (JWTs) that are valid for 15 minutes.",
+            "support": "DIRECT",
+            "citations": [
+              "authentication_service#01"
+            ],
+            "path_ids": [],
+            "invalid_citations": [],
+            "invalid_path_ids": []
+          },
+          {
+            "text": "The Authentication Service issues refresh tokens that are valid for 30 days.",
+            "support": "DIRECT",
+            "citations": [
+              "authentication_service#01"
+            ],
+            "path_ids": [],
+            "invalid_citations": [],
+            "invalid_path_ids": []
+          }
+        ],
+        "sufficient_evidence": true,
+        "missing_information": ""
+      },
+      "error": null,
+      "metrics": {
+        "context_chunks": 8,
+        "recall": 1.0,
+        "mention_recall": 1.0,
+        "missing_mentions": [],
+        "n_claims": 2,
+        "n_inference": 0,
+        "n_claims_cited": 2,
+        "n_invalid_ids": 0,
+        "abstained": false,
+        "abstention_correct": true,
+        "retrieval_ms": 6.510699982754886,
+        "generation_ms": 2444.0945999813266,
+        "total_ms": 2450.6052999640815
+      },
+      "judge": {
+        "correctness": "CORRECT",
+        "correctness_score": 1.0,
+        "correctness_reason": "The system correctly answers that JSON Web Tokens are valid for 15 minutes, matching the reference answer.",
+        "n_claims_judged": 2,
+        "n_supported": 2,
+        "n_unsupported": 0,
+        "n_contradicted": 0,
+        "n_unjudged": 0,
+        "forbidden_violated": [],
+        "error": null
+      }
+    },
+    {
+      "question_id": "q01",
+      "question": "How long is a JSON Web Token issued by the Authentication Service valid?",
+      "type": "direct_fact",
+      "dev": false,
+      "answerable": true,
+      "n_forbidden_claims": 0,
+      "method": "graphrag",
+      "retrieved_chunk_ids": [
+        "authentication_service#01",
+        "api_gateway#05",
+        "authentication_service#04",
+        "authentication_service#03",
+        "authentication_service#06",
+        "authentication_service#02",
+        "api_gateway#02",
+        "failure_scenarios_and_data_flows#02"
+      ],
+      "n_graph_paths": 9,
+      "answer": {
+        "answer": "JSON Web Tokens issued by the Authentication Service are valid for 15 minutes. Refresh tokens issued alongside them are valid for 30 days.",
+        "claims": [
+          {
+            "text": "The Authentication Service issues signed JSON Web Tokens (JWTs) that are valid for 15 minutes.",
+            "support": "DIRECT",
+            "citations": [
+              "authentication_service#01"
+            ],
+            "path_ids": [],
+            "invalid_citations": [],
+            "invalid_path_ids": []
+          },
+          {
+            "text": "The Authentication Service issues refresh tokens that are valid for 30 days.",
+            "support": "DIRECT",
+            "citations": [
+              "authentication_service#01"
+            ],
+            "path_ids": [],
+            "invalid_citations": [],
+            "invalid_path_ids": []
+          }
+        ],
+        "sufficient_evidence": true,
+        "missing_information": ""
+      },
+      "error": null,
+      "metrics": {
+        "context_chunks": 8,
+        "recall": 1.0,
+        "mention_recall": 1.0,
+        "missing_mentions": [],
+        "n_claims": 2,
+        "n_inference": 0,
+        "n_claims_cited": 2,
+        "n_invalid_ids": 0,
+        "abstained": false,
+        "abstention_correct": true,
+        "retrieval_ms": 7.0389999891631305,
+        "generation_ms": 1894.5757999899797,
+        "total_ms": 1901.6147999791428
+      },
+      "judge": {
+        "correctness": "CORRECT",
+        "correctness_score": 1.0,
+        "correctness_reason": "The system correctly answers that JWTs issued by the Authentication Service are valid for 15 minutes and mentions refresh token validity matching the reference.",
+        "n_claims_judged": 2,
+        "n_supported": 2,
+        "n_unsupported": 0,
+        "n_contradicted": 0,
+        "n_unjudged": 0,
+        "forbidden_violated": [],
+        "error": null
+      }
+    },
+    {
+      "question_id": "q02",
+      "question": "What database engine does the User Database use, and how many replicas does it have?",
+      "type": "direct_fact",
+      "dev": false,
+      "answerable": true,
+      "n_forbidden_claims": 0,
+      "method": "baseline_k5",
+      "retrieved_chunk_ids": [
+        "user_service#03",
+        "user_service#04",
+        "user_service#01",
+        "user_service#02",
+        "platform_overview#05"
+      ],
+      "n_graph_paths": 0,
+      "answer": {
+        "answer": "The User Database uses the PostgreSQL 15 database engine. It is configured as a cluster consisting of one primary instance and two replicas.",
+        "claims": [
+          {
+            "text": "The User Database is a PostgreSQL 15 cluster.",
+            "support": "DIRECT",
+            "citations": [
+              "user_service#03"
+            ],
+            "path_ids": [],
+            "invalid_citations": [],
+            "invalid_path_ids": []
+          },
+          {
+            "text": "The User Database has one primary and two replicas.",
+            "support": "DIRECT",
+            "citations": [
+              "user_service#03"
+            ],
+            "path_ids": [],
+            "invalid_citations": [],
+            "invalid_path_ids": []
+          }
+        ],
+        "sufficient_evidence": true,
+        "missing_information": ""
+      },
+      "error": null,
+      "metrics": {
+        "context_chunks": 5,
+        "recall": 1.0,
+        "mention_recall": 1.0,
+        "missing_mentions": [],
+        "n_claims": 2,
+        "n_inference": 0,
+        "n_claims_cited": 2,
+        "n_invalid_ids": 0,
+        "abstained": false,
+        "abstention_correct": true,
+        "retrieval_ms": 8.106900029815733,
+        "generation_ms": 1603.4207999473438,
+        "total_ms": 1611.5276999771595
+      },
+      "judge": {
+        "correctness": "CORRECT",
+        "correctness_score": 1.0,
+        "correctness_reason": "The system accurately states that the User Database uses PostgreSQL 15 and has one primary and two replicas, matching the reference answer.",
+        "n_claims_judged": 2,
+        "n_supported": 2,
+        "n_unsupported": 0,
+        "n_contradicted": 0,
+        "n_unjudged": 0,
+        "forbidden_violated": [],
+        "error": null
+      }
+    },
+    {
+      "question_id": "q02",
+      "question": "What database engine does the User Database use, and how many replicas does it have?",
+      "type": "direct_fact",
+      "dev": false,
+      "answerable": true,
+      "n_forbidden_claims": 0,
+      "method": "baseline_k8",
+      "retrieved_chunk_ids": [
+        "user_service#03",
+        "user_service#04",
+        "user_service#01",
+        "user_service#02",
+        "platform_overview#05",
+        "authentication_service#02",
+        "billing_and_reporting#03",
+        "authentication_service#06"
+      ],
+      "n_graph_paths": 0,
+      "answer": {
+        "answer": "The User Database uses the PostgreSQL 15 database engine. It is configured as a cluster consisting of one primary node and two replicas.",
+        "claims": [
+          {
+            "text": "The User Database is a PostgreSQL 15 cluster.",
+            "support": "DIRECT",
+            "citations": [
+              "user_service#03"
+            ],
+            "path_ids": [],
+            "invalid_citations": [],
+            "invalid_path_ids": []
+          },
+          {
+            "text": "The User Database has one primary node and two replicas.",
+            "support": "DIRECT",
+            "citations": [
+              "user_service#03"
+            ],
+            "path_ids": [],
+            "invalid_citations": [],
+            "invalid_path_ids": []
+          }
+        ],
+        "sufficient_evidence": true,
+        "missing_information": ""
+      },
+      "error": null,
+      "metrics": {
+        "context_chunks": 8,
+        "recall": 1.0,
+        "mention_recall": 1.0,
+        "missing_mentions": [],
+        "n_claims": 2,
+        "n_inference": 0,
+        "n_claims_cited": 2,
+        "n_invalid_ids": 0,
+        "abstained": false,
+        "abstention_correct": true,
+        "retrieval_ms": 7.141200010664761,
+        "generation_ms": 2768.4912999975495,
+        "total_ms": 2775.6325000082143
+      },
+      "judge": {
+        "correctness": "CORRECT",
+        "correctness_score": 1.0,
+        "correctness_reason": "The system accurately identifies the User Database as a PostgreSQL 15 cluster with one primary and two replicas based on the evidence.",
+        "n_claims_judged": 2,
+        "n_supported": 2,
+        "n_unsupported": 0,
+        "n_contradicted": 0,
+        "n_unjudged": 0,
+        "forbidden_violated": [],
+        "error": null
+      }
+    },
+    {
+      "question_id": "q02",
+      "question": "What database engine does the User Database use, and how many replicas does it have?",
+      "type": "direct_fact",
+      "dev": false,
+      "answerable": true,
+      "n_forbidden_claims": 0,
+      "method": "graphrag",
+      "retrieved_chunk_ids": [
+        "user_service#03",
+        "user_service#04",
+        "user_service#01",
+        "user_service#02",
+        "authentication_service#02",
+        "authentication_service#06",
+        "platform_overview#05",
+        "failure_scenarios_and_data_flows#02"
+      ],
+      "n_graph_paths": 5,
+      "answer": {
+        "answer": "The User Database uses the PostgreSQL 15 database engine. It is configured with one primary instance and two replicas.",
+        "claims": [
+          {
+            "text": "The User Database is a PostgreSQL 15 cluster.",
+            "support": "DIRECT",
+            "citations": [
+              "user_service#03"
+            ],
+            "path_ids": [],
+            "invalid_citations": [],
+            "invalid_path_ids": []
+          },
+          {
+            "text": "The User Database has one primary and two replicas.",
+            "support": "DIRECT",
+            "citations": [
+              "user_service#03"
+            ],
+            "path_ids": [],
+            "invalid_citations": [],
+            "invalid_path_ids": []
+          }
+        ],
+        "sufficient_evidence": true,
+        "missing_information": ""
+      },
+      "error": null,
+      "metrics": {
+        "context_chunks": 8,
+        "recall": 1.0,
+        "mention_recall": 1.0,
+        "missing_mentions": [],
+        "n_claims": 2,
+        "n_inference": 0,
+        "n_claims_cited": 2,
+        "n_invalid_ids": 0,
+        "abstained": false,
+        "abstention_correct": true,
+        "retrieval_ms": 6.845699972473085,
+        "generation_ms": 2650.496899965219,
+        "total_ms": 2657.3425999376923
+      },
+      "judge": {
+        "correctness": "CORRECT",
+        "correctness_score": 1.0,
+        "correctness_reason": "The system correctly identifies that the User Database uses the PostgreSQL 15 engine and has one primary and two replicas.",
+        "n_claims_judged": 2,
+        "n_supported": 2,
+        "n_unsupported": 0,
+        "n_contradicted": 0,
+        "n_unjudged": 0,
+        "forbidden_violated": [],
+        "error": null
+      }
+    },
+    {
+      "question_id": "q03",
+      "question": "What timeout does the API Gateway use when calling the Authentication Service, and how many times does it retry?",
+      "type": "direct_fact",
+      "dev": false,
+      "answerable": true,
+      "n_forbidden_claims": 0,
+      "method": "baseline_k5",
+      "retrieved_chunk_ids": [
+        "api_gateway#05",
+        "api_gateway#02",
+        "api_gateway#04",
+        "api_gateway#01",
+        "authentication_service#01"
+      ],
+      "n_graph_paths": 0,
+      "answer": {
+        "answer": "The API Gateway uses a 2-second timeout when calling the Authentication Service. It is configured to retry the call once.",
+        "claims": [
+          {
+            "text": "The API Gateway uses a 2-second timeout when calling the Authentication Service.",
+            "support": "DIRECT",
+            "citations": [
+              "api_gateway#05"
+            ],
+            "path_ids": [],
+            "invalid_citations": [],
+            "invalid_path_ids": []
+          },
+          {
+            "text": "The API Gateway retries the call to the Authentication Service once.",
+            "support": "DIRECT",
+            "citations": [
+              "api_gateway#05"
+            ],
+            "path_ids": [],
+            "invalid_citations": [],
+            "invalid_path_ids": []
+          }
+        ],
+        "sufficient_evidence": true,
+        "missing_information": ""
+      },
+      "error": null,
+      "metrics": {
+        "context_chunks": 5,
+        "recall": 1.0,
+        "mention_recall": 1.0,
+        "missing_mentions": [],
+        "n_claims": 2,
+        "n_inference": 0,
+        "n_claims_cited": 2,
+        "n_invalid_ids": 0,
+        "abstained": false,
+        "abstention_correct": true,
+        "retrieval_ms": 7.972500054165721,
+        "generation_ms": 2610.5832000030205,
+        "total_ms": 2618.555700057186
+      },
+      "judge": {
+        "correctness": "CORRECT",
+        "correctness_score": 1.0,
+        "correctness_reason": "The system accurately states that the API Gateway uses a 2-second timeout and retries once, matching the reference answer and evidence.",
+        "n_claims_judged": 2,
+        "n_supported": 2,
+        "n_unsupported": 0,
+        "n_contradicted": 0,
+        "n_unjudged": 0,
+        "forbidden_violated": [],
+        "error": null
+      }
+    },
+    {
+      "question_id": "q03",
+      "question": "What timeout does the API Gateway use when calling the Authentication Service, and how many times does it retry?",
+      "type": "direct_fact",
+      "dev": false,
+      "answerable": true,
+      "n_forbidden_claims": 0,
+      "method": "baseline_k8",
+      "retrieved_chunk_ids": [
+        "api_gateway#05",
+        "api_gateway#02",
+        "api_gateway#04",
+        "api_gateway#01",
+        "authentication_service#01",
+        "failure_scenarios_and_data_flows#03",
+        "checkout_and_payment#02",
+        "authentication_service#04"
+      ],
+      "n_graph_paths": 0,
+      "answer": {
+        "answer": "The API Gateway uses a 2-second timeout when calling the Authentication Service and performs one retry. These settings apply to token validation calls for protected routes.",
+        "claims": [
+          {
+            "text": "The API Gateway uses a 2-second timeout when calling the Authentication Service.",
+            "support": "DIRECT",
+            "citations": [
+              "api_gateway#05"
+            ],
+            "path_ids": [],
+            "invalid_citations": [],
+            "invalid_path_ids": []
+          },
+          {
+            "text": "The API Gateway retries once when calling the Authentication Service.",
+            "support": "DIRECT",
+            "citations": [
+              "api_gateway#05"
+            ],
+            "path_ids": [],
+            "invalid_citations": [],
+            "invalid_path_ids": []
+          }
+        ],
+        "sufficient_evidence": true,
+        "missing_information": ""
+      },
+      "error": null,
+      "metrics": {
+        "context_chunks": 8,
+        "recall": 1.0,
+        "mention_recall": 1.0,
+        "missing_mentions": [],
+        "n_claims": 2,
+        "n_inference": 0,
+        "n_claims_cited": 2,
+        "n_invalid_ids": 0,
+        "abstained": false,
+        "abstention_correct": true,
+        "retrieval_ms": 9.926499973516911,
+        "generation_ms": 1866.2877000169829,
+        "total_ms": 1876.2141999904998
+      },
+      "judge": {
+        "correctness": "CORRECT",
+        "correctness_score": 1.0,
+        "correctness_reason": "The system's answer accurately captures both the 2-second timeout and the single retry mentioned in the reference answer and evidence.",
+        "n_claims_judged": 2,
+        "n_supported": 2,
+        "n_unsupported": 0,
+        "n_contradicted": 0,
+        "n_unjudged": 0,
+        "forbidden_violated": [],
+        "error": null
+      }
+    },
+    {
+      "question_id": "q03",
+      "question": "What timeout does the API Gateway use when calling the Authentication Service, and how many times does it retry?",
+      "type": "direct_fact",
+      "dev": false,
+      "answerable": true,
+      "n_forbidden_claims": 0,
+      "method": "graphrag",
+      "retrieved_chunk_ids": [
+        "api_gateway#05",
+        "api_gateway#02",
+        "failure_scenarios_and_data_flows#03",
+        "api_gateway#04",
+        "api_gateway#01",
+        "authentication_service#01",
+        "authentication_service#04",
+        "failure_scenarios_and_data_flows#04"
+      ],
+      "n_graph_paths": 13,
+      "answer": {
+        "answer": "The API Gateway uses a 2-second timeout when calling the Authentication Service. It performs one retry when making these calls.",
+        "claims": [
+          {
+            "text": "The API Gateway uses a 2-second timeout when calling the Authentication Service.",
+            "support": "DIRECT",
+            "citations": [
+              "api_gateway#05"
+            ],
+            "path_ids": [],
+            "invalid_citations": [],
+            "invalid_path_ids": []
+          },
+          {
+            "text": "The API Gateway retries once when calling the Authentication Service.",
+            "support": "DIRECT",
+            "citations": [
+              "api_gateway#05"
+            ],
+            "path_ids": [],
+            "invalid_citations": [],
+            "invalid_path_ids": []
+          }
+        ],
+        "sufficient_evidence": true,
+        "missing_information": ""
+      },
+      "error": null,
+      "metrics": {
+        "context_chunks": 8,
+        "recall": 1.0,
+        "mention_recall": 1.0,
+        "missing_mentions": [],
+        "n_claims": 2,
+        "n_inference": 0,
+        "n_claims_cited": 2,
+        "n_invalid_ids": 0,
+        "abstained": false,
+        "abstention_correct": true,
+        "retrieval_ms": 9.544699976686388,
+        "generation_ms": 2110.689799999818,
+        "total_ms": 2120.2344999765046
+      },
+      "judge": {
+        "correctness": "CORRECT",
+        "correctness_score": 1.0,
+        "correctness_reason": "The system accurately states the timeout duration and the number of retries based on the evidence.",
+        "n_claims_judged": 2,
+        "n_supported": 2,
+        "n_unsupported": 0,
+        "n_contradicted": 0,
+        "n_unjudged": 0,
+        "forbidden_violated": [],
+        "error": null
+      }
+    },
+    {
+      "question_id": "q04",
+      "question": "How often does the Payment Service's reconciliation job resolve pending payments?",
+      "type": "direct_fact",
+      "dev": false,
+      "answerable": true,
+      "n_forbidden_claims": 0,
+      "method": "baseline_k5",
+      "retrieved_chunk_ids": [
+        "checkout_and_payment#06",
+        "checkout_and_payment#04",
+        "checkout_and_payment#03",
+        "failure_scenarios_and_data_flows#05",
+        "failure_scenarios_and_data_flows#01"
+      ],
+      "n_graph_paths": 0,
+      "answer": {
+        "answer": "The Payment Service's reconciliation job resolves pending payments every five minutes.",
+        "claims": [
+          {
+            "text": "A reconciliation job in the Payment Service resolves pending payments every five minutes.",
+            "support": "DIRECT",
+            "citations": [
+              "checkout_and_payment#06"
+            ],
+            "path_ids": [],
+            "invalid_citations": [],
+            "invalid_path_ids": []
+          }
+        ],
+        "sufficient_evidence": true,
+        "missing_information": ""
+      },
+      "error": null,
+      "metrics": {
+        "context_chunks": 5,
+        "recall": 1.0,
+        "mention_recall": 1.0,
+        "missing_mentions": [],
+        "n_claims": 1,
+        "n_inference": 0,
+        "n_claims_cited": 1,
+        "n_invalid_ids": 0,
+        "abstained": false,
+        "abstention_correct": true,
+        "retrieval_ms": 6.982300023082644,
+        "generation_ms": 2981.221700028982,
+        "total_ms": 2988.2040000520647
+      },
+      "judge": {
+        "correctness": "CORRECT",
+        "correctness_score": 1.0,
+        "correctness_reason": "The system's answer accurately captures that the reconciliation job resolves pending payments every five minutes, matching the reference answer.",
+        "n_claims_judged": 1,
+        "n_supported": 1,
+        "n_unsupported": 0,
+        "n_contradicted": 0,
+        "n_unjudged": 0,
+        "forbidden_violated": [],
+        "error": null
+      }
+    },
+    {
+      "question_id": "q04",
+      "question": "How often does the Payment Service's reconciliation job resolve pending payments?",
+      "type": "direct_fact",
+      "dev": false,
+      "answerable": true,
+      "n_forbidden_claims": 0,
+      "method": "baseline_k8",
+      "retrieved_chunk_ids": [
+        "checkout_and_payment#06",
+        "checkout_and_payment#04",
+        "checkout_and_payment#03",
+        "failure_scenarios_and_data_flows#05",
+        "failure_scenarios_and_data_flows#01",
+        "billing_and_reporting#05",
+        "failure_scenarios_and_data_flows#06",
+        "billing_and_reporting#01"
+      ],
+      "n_graph_paths": 0,
+      "answer": {
+        "answer": "The Payment Service's reconciliation job resolves pending payments every five minutes.",
+        "claims": [
+          {
+            "text": "A reconciliation job in the Payment Service resolves pending payments every five minutes.",
+            "support": "DIRECT",
+            "citations": [
+              "checkout_and_payment#06"
+            ],
+            "path_ids": [],
+            "invalid_citations": [],
+            "invalid_path_ids": []
+          }
+        ],
+        "sufficient_evidence": true,
+        "missing_information": ""
+      },
+      "error": null,
+      "metrics": {
+        "context_chunks": 8,
+        "recall": 1.0,
+        "mention_recall": 1.0,
+        "missing_mentions": [],
+        "n_claims": 1,
+        "n_inference": 0,
+        "n_claims_cited": 1,
+        "n_invalid_ids": 0,
+        "abstained": false,
+        "abstention_correct": true,
+        "retrieval_ms": 9.713799983728677,
+        "generation_ms": 3260.8099000062793,
+        "total_ms": 3270.523699990008
+      },
+      "judge": {
+        "correctness": "CORRECT",
+        "correctness_score": 1.0,
+        "correctness_reason": "The system's answer accurately states that the reconciliation job resolves pending payments every five minutes, matching the reference answer and evidence.",
+        "n_claims_judged": 1,
+        "n_supported": 1,
+        "n_unsupported": 0,
+        "n_contradicted": 0,
+        "n_unjudged": 0,
+        "forbidden_violated": [],
+        "error": null
+      }
+    },
+    {
+      "question_id": "q04",
+      "question": "How often does the Payment Service's reconciliation job resolve pending payments?",
+      "type": "direct_fact",
+      "dev": false,
+      "answerable": true,
+      "n_forbidden_claims": 0,
+      "method": "graphrag",
+      "retrieved_chunk_ids": [
+        "checkout_and_payment#06",
+        "checkout_and_payment#04",
+        "checkout_and_payment#03",
+        "failure_scenarios_and_data_flows#01",
+        "failure_scenarios_and_data_flows#06",
+        "failure_scenarios_and_data_flows#05",
+        "checkout_and_payment#01",
+        "checkout_and_payment#05"
+      ],
+      "n_graph_paths": 4,
+      "answer": {
+        "answer": "The Payment Service's reconciliation job resolves pending payments every five minutes.",
+        "claims": [
+          {
+            "text": "A reconciliation job in the Payment Service resolves pending payments every five minutes.",
+            "support": "DIRECT",
+            "citations": [
+              "checkout_and_payment#06"
+            ],
+            "path_ids": [],
+            "invalid_citations": [],
+            "invalid_path_ids": []
+          }
+        ],
+        "sufficient_evidence": true,
+        "missing_information": ""
+      },
+      "error": null,
+      "metrics": {
+        "context_chunks": 8,
+        "recall": 1.0,
+        "mention_recall": 1.0,
+        "missing_mentions": [],
+        "n_claims": 1,
+        "n_inference": 0,
+        "n_claims_cited": 1,
+        "n_invalid_ids": 0,
+        "abstained": false,
+        "abstention_correct": true,
+        "retrieval_ms": 8.90429998980835,
+        "generation_ms": 1634.2712999903597,
+        "total_ms": 1643.175599980168
+      },
+      "judge": {
+        "correctness": "CORRECT",
+        "correctness_score": 1.0,
+        "correctness_reason": "The system's answer accurately captures that the reconciliation job resolves pending payments every five minutes, matching the reference answer and evidence.",
+        "n_claims_judged": 1,
+        "n_supported": 1,
+        "n_unsupported": 0,
+        "n_contradicted": 0,
+        "n_unjudged": 0,
+        "forbidden_violated": [],
+        "error": null
+      }
+    },
+    {
+      "question_id": "q05",
+      "question": "Which services consume events from the Event Queue, and which event types does each consume?",
+      "type": "relationship",
+      "dev": false,
+      "answerable": true,
+      "n_forbidden_claims": 1,
+      "method": "baseline_k5",
+      "retrieved_chunk_ids": [
+        "event_queue_and_notifications#02",
+        "event_queue_and_notifications#01",
+        "checkout_and_payment#04",
+        "billing_and_reporting#01",
+        "event_queue_and_notifications#03"
+      ],
+      "n_graph_paths": 0,
+      "answer": {
+        "answer": "The Billing Service consumes payment.completed events from the Event Queue. The Notification Service consumes user.registered, payment.completed, and payment.failed events.",
+        "claims": [
+          {
+            "text": "The Billing Service consumes payment.completed events.",
+            "support": "DIRECT",
+            "citations": [
+              "event_queue_and_notifications#02",
+              "checkout_and_payment#04",
+              "billing_and_reporting#01"
+            ],
+            "path_ids": [],
+            "invalid_citations": [],
+            "invalid_path_ids": []
+          },
+          {
+            "text": "The Notification Service consumes user.registered, payment.completed, and payment.failed events.",
+            "support": "DIRECT",
+            "citations": [
+              "event_queue_and_notifications#02",
+              "checkout_and_payment#04"
+            ],
+            "path_ids": [],
+            "invalid_citations": [],
+            "invalid_path_ids": []
+          }
+        ],
+        "sufficient_evidence": true,
+        "missing_information": ""
+      },
+      "error": null,
+      "metrics": {
+        "context_chunks": 5,
+        "recall": 1.0,
+        "mention_recall": 1.0,
+        "missing_mentions": [],
+        "n_claims": 2,
+        "n_inference": 0,
+        "n_claims_cited": 2,
+        "n_invalid_ids": 0,
+        "abstained": false,
+        "abstention_correct": true,
+        "retrieval_ms": 13.378300005570054,
+        "generation_ms": 1461.8303999886848,
+        "total_ms": 1475.2086999942549
+      },
+      "judge": {
+        "correctness": "CORRECT",
+        "correctness_score": 1.0,
+        "correctness_reason": "The system answer accurately identifies both services and the specific event types each consumes according to the evidence.",
+        "n_claims_judged": 2,
+        "n_supported": 2,
+        "n_unsupported": 0,
+        "n_contradicted": 0,
+        "n_unjudged": 0,
+        "forbidden_violated": [],
+        "error": null
+      }
+    },
+    {
+      "question_id": "q05",
+      "question": "Which services consume events from the Event Queue, and which event types does each consume?",
+      "type": "relationship",
+      "dev": false,
+      "answerable": true,
+      "n_forbidden_claims": 1,
+      "method": "baseline_k8",
+      "retrieved_chunk_ids": [
+        "event_queue_and_notifications#02",
+        "event_queue_and_notifications#01",
+        "checkout_and_payment#04",
+        "billing_and_reporting#01",
+        "event_queue_and_notifications#03",
+        "event_queue_and_notifications#05",
+        "event_queue_and_notifications#04",
+        "failure_scenarios_and_data_flows#01"
+      ],
+      "n_graph_paths": 0,
+      "answer": {
+        "answer": "The Billing Service consumes payment.completed events from the Event Queue. The Notification Service consumes user.registered, payment.completed, and payment.failed events.",
+        "claims": [
+          {
+            "text": "The Billing Service consumes payment.completed events from the Event Queue.",
+            "support": "DIRECT",
+            "citations": [
+              "event_queue_and_notifications#02",
+              "checkout_and_payment#04",
+              "billing_and_reporting#01"
+            ],
+            "path_ids": [],
+            "invalid_citations": [],
+            "invalid_path_ids": []
+          },
+          {
+            "text": "The Notification Service consumes user.registered, payment.completed, and payment.failed events from the Event Queue.",
+            "support": "DIRECT",
+            "citations": [
+              "event_queue_and_notifications#02",
+              "checkout_and_payment#04"
+            ],
+            "path_ids": [],
+            "invalid_citations": [],
+            "invalid_path_ids": []
+          }
+        ],
+        "sufficient_evidence": true,
+        "missing_information": ""
+      },
+      "error": null,
+      "metrics": {
+        "context_chunks": 8,
+        "recall": 1.0,
+        "mention_recall": 1.0,
+        "missing_mentions": [],
+        "n_claims": 2,
+        "n_inference": 0,
+        "n_claims_cited": 2,
+        "n_invalid_ids": 0,
+        "abstained": false,
+        "abstention_correct": true,
+        "retrieval_ms": 10.824900004081428,
+        "generation_ms": 1657.2549999691546,
+        "total_ms": 1668.079899973236
+      },
+      "judge": {
+        "correctness": "CORRECT",
+        "correctness_score": 1.0,
+        "correctness_reason": "The system correctly identifies the services and the exact event types each consumes based on the evidence.",
+        "n_claims_judged": 2,
+        "n_supported": 2,
+        "n_unsupported": 0,
+        "n_contradicted": 0,
+        "n_unjudged": 0,
+        "forbidden_violated": [],
+        "error": null
+      }
+    },
+    {
+      "question_id": "q05",
+      "question": "Which services consume events from the Event Queue, and which event types does each consume?",
+      "type": "relationship",
+      "dev": false,
+      "answerable": true,
+      "n_forbidden_claims": 1,
+      "method": "graphrag",
+      "retrieved_chunk_ids": [
+        "event_queue_and_notifications#02",
+        "checkout_and_payment#04",
+        "event_queue_and_notifications#01",
+        "billing_and_reporting#01",
+        "event_queue_and_notifications#03",
+        "failure_scenarios_and_data_flows#01",
+        "authentication_service#05",
+        "failure_scenarios_and_data_flows#02"
+      ],
+      "n_graph_paths": 4,
+      "answer": {
+        "answer": "The Billing Service and the Notification Service are the two services that consume events from the Event Queue. The Billing Service consumes payment.completed events, while the Notification Service consumes user.registered, payment.completed, and payment.failed events.",
+        "claims": [
+          {
+            "text": "The Billing Service consumes payment.completed events from the Event Queue.",
+            "support": "DIRECT",
+            "citations": [
+              "event_queue_and_notifications#02",
+              "checkout_and_payment#04",
+              "billing_and_reporting#01"
+            ],
+            "path_ids": [
+              "P2"
+            ],
+            "invalid_citations": [],
+            "invalid_path_ids": []
+          },
+          {
+            "text": "The Notification Service consumes user.registered, payment.completed, and payment.failed events from the Event Queue.",
+            "support": "DIRECT",
+            "citations": [
+              "event_queue_and_notifications#02",
+              "checkout_and_payment#04",
+              "authentication_service#05"
+            ],
+            "path_ids": [
+              "P3"
+            ],
+            "invalid_citations": [],
+            "invalid_path_ids": []
+          }
+        ],
+        "sufficient_evidence": true,
+        "missing_information": ""
+      },
+      "error": null,
+      "metrics": {
+        "context_chunks": 8,
+        "recall": 1.0,
+        "mention_recall": 1.0,
+        "missing_mentions": [],
+        "n_claims": 2,
+        "n_inference": 0,
+        "n_claims_cited": 2,
+        "n_invalid_ids": 0,
+        "abstained": false,
+        "abstention_correct": true,
+        "retrieval_ms": 14.285199984442443,
+        "generation_ms": 1703.723100014031,
+        "total_ms": 1718.0082999984734
+      },
+      "judge": {
+        "correctness": "CORRECT",
+        "correctness_score": 1.0,
+        "correctness_reason": "The system answer accurately identifies both services and the specific event types each consumes, matching the reference answer.",
+        "n_claims_judged": 2,
+        "n_supported": 2,
+        "n_unsupported": 0,
+        "n_contradicted": 0,
+        "n_unjudged": 0,
+        "forbidden_violated": [],
+        "error": null
+      }
+    },
+    {
+      "question_id": "q06",
+      "question": "Which component is the only one that talks to the external Payment Provider, and what events does it publish afterwards?",
+      "type": "relationship",
+      "dev": false,
+      "answerable": true,
+      "n_forbidden_claims": 0,
+      "method": "baseline_k5",
+      "retrieved_chunk_ids": [
+        "checkout_and_payment#03",
+        "event_queue_and_notifications#02",
+        "checkout_and_payment#04",
+        "failure_scenarios_and_data_flows#01",
+        "failure_scenarios_and_data_flows#05"
+      ],
+      "n_graph_paths": 0,
+      "answer": {
+        "answer": "The Payment Service is the sole component that communicates with the external Payment Provider, PayFlow. Upon processing a charge, it publishes either a payment.completed event if the charge is confirmed or a payment.failed event if the charge is declined.",
+        "claims": [
+          {
+            "text": "The Payment Service is the only component that talks to the external Payment Provider, PayFlow.",
+            "support": "DIRECT",
+            "citations": [
+              "checkout_and_payment#03"
+            ],
+            "path_ids": [],
+            "invalid_citations": [],
+            "invalid_path_ids": []
+          },
+          {
+            "text": "The Payment Service publishes payment.completed when PayFlow confirms a charge.",
+            "support": "DIRECT",
+            "citations": [
+              "checkout_and_payment#04",
+              "event_queue_and_notifications#02"
+            ],
+            "path_ids": [],
+            "invalid_citations": [],
+            "invalid_path_ids": []
+          },
+          {
+            "text": "The Payment Service publishes payment.failed if the charge is declined by PayFlow.",
+            "support": "DIRECT",
+            "citations": [
+              "checkout_and_payment#04",
+              "event_queue_and_notifications#02"
+            ],
+            "path_ids": [],
+            "invalid_citations": [],
+            "invalid_path_ids": []
+          }
+        ],
+        "sufficient_evidence": true,
+        "missing_information": ""
+      },
+      "error": null,
+      "metrics": {
+        "context_chunks": 5,
+        "recall": 1.0,
+        "mention_recall": 1.0,
+        "missing_mentions": [],
+        "n_claims": 3,
+        "n_inference": 0,
+        "n_claims_cited": 3,
+        "n_invalid_ids": 0,
+        "abstained": false,
+        "abstention_correct": true,
+        "retrieval_ms": 13.192999991588295,
+        "generation_ms": 1568.3045000187121,
+        "total_ms": 1581.4975000103004
+      },
+      "judge": {
+        "correctness": "CORRECT",
+        "correctness_score": 1.0,
+        "correctness_reason": "The system correctly identifies the Payment Service as the sole component interacting with the Payment Provider and accurately details the two events it publishes.",
+        "n_claims_judged": 3,
+        "n_supported": 3,
+        "n_unsupported": 0,
+        "n_contradicted": 0,
+        "n_unjudged": 0,
+        "forbidden_violated": [],
+        "error": null
+      }
+    },
+    {
+      "question_id": "q06",
+      "question": "Which component is the only one that talks to the external Payment Provider, and what events does it publish afterwards?",
+      "type": "relationship",
+      "dev": false,
+      "answerable": true,
+      "n_forbidden_claims": 0,
+      "method": "baseline_k8",
+      "retrieved_chunk_ids": [
+        "checkout_and_payment#03",
+        "event_queue_and_notifications#02",
+        "checkout_and_payment#04",
+        "failure_scenarios_and_data_flows#01",
+        "failure_scenarios_and_data_flows#05",
+        "billing_and_reporting#01",
+        "failure_scenarios_and_data_flows#06",
+        "platform_overview#05"
+      ],
+      "n_graph_paths": 0,
+      "answer": {
+        "answer": "The Payment Service is the sole component that communicates with the external Payment Provider, PayFlow. Upon processing a charge, it publishes either a payment.completed or a payment.failed event to the Event Queue.",
+        "claims": [
+          {
+            "text": "The Payment Service is the only component that talks to the external Payment Provider, PayFlow.",
+            "support": "DIRECT",
+            "citations": [
+              "checkout_and_payment#03"
+            ],
+            "path_ids": [],
+            "invalid_citations": [],
+            "invalid_path_ids": []
+          },
+          {
+            "text": "The Payment Service publishes payment.completed and payment.failed events to the Event Queue.",
+            "support": "DIRECT",
+            "citations": [
+              "event_queue_and_notifications#02",
+              "checkout_and_payment#04"
+            ],
+            "path_ids": [],
+            "invalid_citations": [],
+            "invalid_path_ids": []
+          }
+        ],
+        "sufficient_evidence": true,
+        "missing_information": ""
+      },
+      "error": null,
+      "metrics": {
+        "context_chunks": 8,
+        "recall": 1.0,
+        "mention_recall": 1.0,
+        "missing_mentions": [],
+        "n_claims": 2,
+        "n_inference": 0,
+        "n_claims_cited": 2,
+        "n_invalid_ids": 0,
+        "abstained": false,
+        "abstention_correct": true,
+        "retrieval_ms": 13.699900009669363,
+        "generation_ms": 1396.7479999992065,
+        "total_ms": 1410.4479000088759
+      },
+      "judge": {
+        "correctness": "CORRECT",
+        "correctness_score": 1.0,
+        "correctness_reason": "The system correctly identifies the Payment Service as the sole component interacting with PayFlow and accurately lists the payment.completed and payment.failed events it publishes.",
+        "n_claims_judged": 2,
+        "n_supported": 2,
+        "n_unsupported": 0,
+        "n_contradicted": 0,
+        "n_unjudged": 0,
+        "forbidden_violated": [],
+        "error": null
+      }
+    },
+    {
+      "question_id": "q06",
+      "question": "Which component is the only one that talks to the external Payment Provider, and what events does it publish afterwards?",
+      "type": "relationship",
+      "dev": false,
+      "answerable": true,
+      "n_forbidden_claims": 0,
+      "method": "graphrag",
+      "retrieved_chunk_ids": [
+        "checkout_and_payment#03",
+        "failure_scenarios_and_data_flows#01",
+        "event_queue_and_notifications#02",
+        "checkout_and_payment#04",
+        "failure_scenarios_and_data_flows#05",
+        "checkout_and_payment#06"
+      ],
+      "n_graph_paths": 1,
+      "answer": {
+        "answer": "The Payment Service is the sole component that communicates with the external Payment Provider, PayFlow. Following its interactions with the provider, the Payment Service publishes either a payment.completed or a payment.failed event to the Event Queue.",
+        "claims": [
+          {
+            "text": "The Payment Service is the only component that talks to the external Payment Provider, PayFlow.",
+            "support": "DIRECT",
+            "citations": [
+              "checkout_and_payment#03"
+            ],
+            "path_ids": [],
+            "invalid_citations": [],
+            "invalid_path_ids": []
+          },
+          {
+            "text": "The Payment Service publishes payment.completed and payment.failed events to the Event Queue.",
+            "support": "DIRECT",
+            "citations": [
+              "event_queue_and_notifications#02",
+              "checkout_and_payment#04"
+            ],
+            "path_ids": [],
+            "invalid_citations": [],
+            "invalid_path_ids": []
+          }
+        ],
+        "sufficient_evidence": true,
+        "missing_information": ""
+      },
+      "error": null,
+      "metrics": {
+        "context_chunks": 6,
+        "recall": 1.0,
+        "mention_recall": 1.0,
+        "missing_mentions": [],
+        "n_claims": 2,
+        "n_inference": 0,
+        "n_claims_cited": 2,
+        "n_invalid_ids": 0,
+        "abstained": false,
+        "abstention_correct": true,
+        "retrieval_ms": 14.784200000576675,
+        "generation_ms": 2162.347699981183,
+        "total_ms": 2177.1318999817595
+      },
+      "judge": {
+        "correctness": "CORRECT",
+        "correctness_score": 1.0,
+        "correctness_reason": "The system correctly identifies the Payment Service as the only component talking to PayFlow and lists the two events it publishes.",
+        "n_claims_judged": 2,
+        "n_supported": 2,
+        "n_unsupported": 0,
+        "n_contradicted": 0,
+        "n_unjudged": 0,
+        "forbidden_violated": [],
+        "error": null
+      }
+    },
+    {
+      "question_id": "q07",
+      "question": "Where does the Reporting Service read its data from, and does it ever write to the Billing Database?",
+      "type": "relationship",
+      "dev": false,
+      "answerable": true,
+      "n_forbidden_claims": 1,
+      "method": "baseline_k5",
+      "retrieved_chunk_ids": [
+        "billing_and_reporting#04",
+        "billing_and_reporting#01",
+        "billing_and_reporting#05",
+        "billing_and_reporting#03",
+        "billing_and_reporting#02"
+      ],
+      "n_graph_paths": 0,
+      "answer": {
+        "answer": "The Reporting Service reads its data from the Reporting Replica, which is a read-only replica of the Billing Database. The Reporting Service does not write to the Billing Database.",
+        "claims": [
+          {
+            "text": "The Reporting Service reads from the Reporting Replica, which is a read-only replica of the Billing Database.",
+            "support": "DIRECT",
+            "citations": [
+              "billing_and_reporting#04"
+            ],
+            "path_ids": [],
+            "invalid_citations": [],
+            "invalid_path_ids": []
+          },
+          {
+            "text": "The Reporting Service never writes to the Billing Database.",
+            "support": "DIRECT",
+            "citations": [
+              "billing_and_reporting#04"
+            ],
+            "path_ids": [],
+            "invalid_citations": [],
+            "invalid_path_ids": []
+          }
+        ],
+        "sufficient_evidence": true,
+        "missing_information": ""
+      },
+      "error": null,
+      "metrics": {
+        "context_chunks": 5,
+        "recall": 1.0,
+        "mention_recall": 1.0,
+        "missing_mentions": [],
+        "n_claims": 2,
+        "n_inference": 0,
+        "n_claims_cited": 2,
+        "n_invalid_ids": 0,
+        "abstained": false,
+        "abstention_correct": true,
+        "retrieval_ms": 13.671400025486946,
+        "generation_ms": 5012.747499975376,
+        "total_ms": 5026.418900000863
+      },
+      "judge": {
+        "correctness": "CORRECT",
+        "correctness_score": 1.0,
+        "correctness_reason": "The system accurately states that the Reporting Service reads from the Reporting Replica and never writes to the Billing Database, matching the reference answer.",
+        "n_claims_judged": 2,
+        "n_supported": 2,
+        "n_unsupported": 0,
+        "n_contradicted": 0,
+        "n_unjudged": 0,
+        "forbidden_violated": [],
+        "error": null
+      }
+    },
+    {
+      "question_id": "q07",
+      "question": "Where does the Reporting Service read its data from, and does it ever write to the Billing Database?",
+      "type": "relationship",
+      "dev": false,
+      "answerable": true,
+      "n_forbidden_claims": 1,
+      "method": "baseline_k8",
+      "retrieved_chunk_ids": [
+        "billing_and_reporting#04",
+        "billing_and_reporting#01",
+        "billing_and_reporting#05",
+        "billing_and_reporting#03",
+        "billing_and_reporting#02",
+        "failure_scenarios_and_data_flows#01",
+        "checkout_and_payment#01",
+        "platform_overview#04"
+      ],
+      "n_graph_paths": 0,
+      "answer": {
+        "answer": "The Reporting Service reads its data from the Reporting Replica, which is a read-only replica of the Billing Database. The Reporting Service does not write to the Billing Database.",
+        "claims": [
+          {
+            "text": "The Reporting Service reads from the Reporting Replica, which is a read-only replica of the Billing Database.",
+            "support": "DIRECT",
+            "citations": [
+              "billing_and_reporting#04"
+            ],
+            "path_ids": [],
+            "invalid_citations": [],
+            "invalid_path_ids": []
+          },
+          {
+            "text": "The Reporting Service never writes to the Billing Database.",
+            "support": "DIRECT",
+            "citations": [
+              "billing_and_reporting#04"
+            ],
+            "path_ids": [],
+            "invalid_citations": [],
+            "invalid_path_ids": []
+          }
+        ],
+        "sufficient_evidence": true,
+        "missing_information": ""
+      },
+      "error": null,
+      "metrics": {
+        "context_chunks": 8,
+        "recall": 1.0,
+        "mention_recall": 1.0,
+        "missing_mentions": [],
+        "n_claims": 2,
+        "n_inference": 0,
+        "n_claims_cited": 2,
+        "n_invalid_ids": 0,
+        "abstained": false,
+        "abstention_correct": true,
+        "retrieval_ms": 13.67960002971813,
+        "generation_ms": 2901.3961000018753,
+        "total_ms": 2915.0757000315934
+      },
+      "judge": {
+        "correctness": "CORRECT",
+        "correctness_score": 1.0,
+        "correctness_reason": "The system accurately answers both parts of the question based on the evidence, stating it reads from the read-only Reporting Replica and never writes to the Billing Database.",
+        "n_claims_judged": 2,
+        "n_supported": 2,
+        "n_unsupported": 0,
+        "n_contradicted": 0,
+        "n_unjudged": 0,
+        "forbidden_violated": [],
+        "error": null
+      }
+    },
+    {
+      "question_id": "q07",
+      "question": "Where does the Reporting Service read its data from, and does it ever write to the Billing Database?",
+      "type": "relationship",
+      "dev": false,
+      "answerable": true,
+      "n_forbidden_claims": 1,
+      "method": "graphrag",
+      "retrieved_chunk_ids": [
+        "billing_and_reporting#04",
+        "billing_and_reporting#05",
+        "billing_and_reporting#01",
+        "billing_and_reporting#03",
+        "billing_and_reporting#02",
+        "failure_scenarios_and_data_flows#01",
+        "checkout_and_payment#01",
+        "platform_overview#04"
+      ],
+      "n_graph_paths": 9,
+      "answer": {
+        "answer": "The Reporting Service reads its data from the Reporting Replica, which is a read-only replica of the Billing Database. The Reporting Service never writes to the Billing Database.",
+        "claims": [
+          {
+            "text": "The Reporting Service reads from the Reporting Replica.",
+            "support": "DIRECT",
+            "citations": [
+              "billing_and_reporting#04"
+            ],
+            "path_ids": [],
+            "invalid_citations": [],
+            "invalid_path_ids": []
+          },
+          {
+            "text": "The Reporting Replica is a read-only replica of the Billing Database.",
+            "support": "DIRECT",
+            "citations": [
+              "billing_and_reporting#04"
+            ],
+            "path_ids": [],
+            "invalid_citations": [],
+            "invalid_path_ids": []
+          },
+          {
+            "text": "The Reporting Service never writes to the Billing Database.",
+            "support": "DIRECT",
+            "citations": [
+              "billing_and_reporting#04"
+            ],
+            "path_ids": [],
+            "invalid_citations": [],
+            "invalid_path_ids": []
+          }
+        ],
+        "sufficient_evidence": true,
+        "missing_information": ""
+      },
+      "error": null,
+      "metrics": {
+        "context_chunks": 8,
+        "recall": 1.0,
+        "mention_recall": 1.0,
+        "missing_mentions": [],
+        "n_claims": 3,
+        "n_inference": 0,
+        "n_claims_cited": 3,
+        "n_invalid_ids": 0,
+        "abstained": false,
+        "abstention_correct": true,
+        "retrieval_ms": 10.341899993363768,
+        "generation_ms": 2067.3659999738447,
+        "total_ms": 2077.7078999672085
+      },
+      "judge": {
+        "correctness": "CORRECT",
+        "correctness_score": 1.0,
+        "correctness_reason": "The system correctly identified that the Reporting Service reads from the Reporting Replica and never writes to the Billing Database.",
+        "n_claims_judged": 3,
+        "n_supported": 3,
+        "n_unsupported": 0,
+        "n_contradicted": 0,
+        "n_unjudged": 0,
+        "forbidden_violated": [],
+        "error": null
+      }
+    },
+    {
+      "question_id": "q08",
+      "question": "Which services does the API Gateway route requests to, and under which path prefixes?",
+      "type": "relationship",
+      "dev": false,
+      "answerable": true,
+      "n_forbidden_claims": 0,
+      "method": "baseline_k5",
+      "retrieved_chunk_ids": [
+        "api_gateway#03",
+        "api_gateway#01",
+        "api_gateway#02",
+        "platform_overview#03",
+        "api_gateway#04"
+      ],
+      "n_graph_paths": 0,
+      "answer": {
+        "answer": "The API Gateway routes requests to the Authentication Service, User Service, Checkout Service, Billing Service, and Reporting Service based on specific path prefixes. Each of these services corresponds to a unique path prefix starting with /auth, /profile, /checkout, /invoices, and /reports respectively.",
+        "claims": [
+          {
+            "text": "The API Gateway routes requests under the /auth path prefix to the Authentication Service.",
+            "support": "DIRECT",
+            "citations": [
+              "api_gateway#03"
+            ],
+            "path_ids": [],
+            "invalid_citations": [],
+            "invalid_path_ids": []
+          },
+          {
+            "text": "The API Gateway routes requests under the /profile path prefix to the User Service.",
+            "support": "DIRECT",
+            "citations": [
+              "api_gateway#03"
+            ],
+            "path_ids": [],
+            "invalid_citations": [],
+            "invalid_path_ids": []
+          },
+          {
+            "text": "The API Gateway routes requests under the /checkout path prefix to the Checkout Service.",
+            "support": "DIRECT",
+            "citations": [
+              "api_gateway#03"
+            ],
+            "path_ids": [],
+            "invalid_citations": [],
+            "invalid_path_ids": []
+          },
+          {
+            "text": "The API Gateway routes requests under the /invoices path prefix to the Billing Service.",
+            "support": "DIRECT",
+            "citations": [
+              "api_gateway#03"
+            ],
+            "path_ids": [],
+            "invalid_citations": [],
+            "invalid_path_ids": []
+          },
+          {
+            "text": "The API Gateway routes requests under the /reports path prefix to the Reporting Service.",
+            "support": "DIRECT",
+            "citations": [
+              "api_gateway#03"
+            ],
+            "path_ids": [],
+            "invalid_citations": [],
+            "invalid_path_ids": []
+          }
+        ],
+        "sufficient_evidence": true,
+        "missing_information": ""
+      },
+      "error": null,
+      "metrics": {
+        "context_chunks": 5,
+        "recall": 1.0,
+        "mention_recall": 1.0,
+        "missing_mentions": [],
+        "n_claims": 5,
+        "n_inference": 0,
+        "n_claims_cited": 5,
+        "n_invalid_ids": 0,
+        "abstained": false,
+        "abstention_correct": true,
+        "retrieval_ms": 12.73300003958866,
+        "generation_ms": 2382.395400025416,
+        "total_ms": 2395.128400065005
+      },
+      "judge": {
+        "correctness": "CORRECT",
+        "correctness_score": 1.0,
+        "correctness_reason": "The system correctly identifies all the services and their corresponding path prefixes as stated in the reference answer and evidence.",
+        "n_claims_judged": 5,
+        "n_supported": 5,
+        "n_unsupported": 0,
+        "n_contradicted": 0,
+        "n_unjudged": 0,
+        "forbidden_violated": [],
+        "error": null
+      }
+    },
+    {
+      "question_id": "q08",
+      "question": "Which services does the API Gateway route requests to, and under which path prefixes?",
+      "type": "relationship",
+      "dev": false,
+      "answerable": true,
+      "n_forbidden_claims": 0,
+      "method": "baseline_k8",
+      "retrieved_chunk_ids": [
+        "api_gateway#03",
+        "api_gateway#01",
+        "api_gateway#02",
+        "platform_overview#03",
+        "api_gateway#04",
+        "checkout_and_payment#02",
+        "api_gateway#05",
+        "failure_scenarios_and_data_flows#01"
+      ],
+      "n_graph_paths": 0,
+      "answer": {
+        "answer": "The API Gateway routes requests to five specific backend services based on their path prefixes. These services include the Authentication Service, User Service, Checkout Service, Billing Service, and Reporting Service.",
+        "claims": [
+          {
+            "text": "The API Gateway routes requests under the /auth prefix to the Authentication Service.",
+            "support": "DIRECT",
+            "citations": [
+              "api_gateway#03"
+            ],
+            "path_ids": [],
+            "invalid_citations": [],
+            "invalid_path_ids": []
+          },
+          {
+            "text": "The API Gateway routes requests under the /profile prefix to the User Service.",
+            "support": "DIRECT",
+            "citations": [
+              "api_gateway#03"
+            ],
+            "path_ids": [],
+            "invalid_citations": [],
+            "invalid_path_ids": []
+          },
+          {
+            "text": "The API Gateway routes requests under the /checkout prefix to the Checkout Service.",
+            "support": "DIRECT",
+            "citations": [
+              "api_gateway#03"
+            ],
+            "path_ids": [],
+            "invalid_citations": [],
+            "invalid_path_ids": []
+          },
+          {
+            "text": "The API Gateway routes requests under the /invoices prefix to the Billing Service.",
+            "support": "DIRECT",
+            "citations": [
+              "api_gateway#03"
+            ],
+            "path_ids": [],
+            "invalid_citations": [],
+            "invalid_path_ids": []
+          },
+          {
+            "text": "The API Gateway routes requests under the /reports prefix to the Reporting Service.",
+            "support": "DIRECT",
+            "citations": [
+              "api_gateway#03"
+            ],
+            "path_ids": [],
+            "invalid_citations": [],
+            "invalid_path_ids": []
+          }
+        ],
+        "sufficient_evidence": true,
+        "missing_information": ""
+      },
+      "error": null,
+      "metrics": {
+        "context_chunks": 8,
+        "recall": 1.0,
+        "mention_recall": 1.0,
+        "missing_mentions": [],
+        "n_claims": 5,
+        "n_inference": 0,
+        "n_claims_cited": 5,
+        "n_invalid_ids": 0,
+        "abstained": false,
+        "abstention_correct": true,
+        "retrieval_ms": 12.305899988859892,
+        "generation_ms": 2275.396200013347,
+        "total_ms": 2287.702100002207
+      },
+      "judge": {
+        "correctness": "CORRECT",
+        "correctness_score": 1.0,
+        "correctness_reason": "The system correctly identifies all five backend services and their corresponding path prefixes as stated in the reference answer.",
+        "n_claims_judged": 5,
+        "n_supported": 5,
+        "n_unsupported": 0,
+        "n_contradicted": 0,
+        "n_unjudged": 0,
+        "forbidden_violated": [],
+        "error": null
+      }
+    },
+    {
+      "question_id": "q08",
+      "question": "Which services does the API Gateway route requests to, and under which path prefixes?",
+      "type": "relationship",
+      "dev": false,
+      "answerable": true,
+      "n_forbidden_claims": 0,
+      "method": "graphrag",
+      "retrieved_chunk_ids": [
+        "api_gateway#03",
+        "api_gateway#01",
+        "api_gateway#02",
+        "platform_overview#03",
+        "api_gateway#04",
+        "api_gateway#05",
+        "failure_scenarios_and_data_flows#01",
+        "failure_scenarios_and_data_flows#03"
+      ],
+      "n_graph_paths": 9,
+      "answer": {
+        "answer": "The API Gateway routes requests to the Authentication, User, Checkout, Billing, and Reporting services based on specific path prefixes. Requests under /auth are routed to the Authentication Service, /profile to the User Service, /checkout to the Checkout Service, /invoices to the Billing Service, and /reports to the Reporting Service.",
+        "claims": [
+          {
+            "text": "The API Gateway routes requests to the Authentication Service for the /auth path prefix.",
+            "support": "DIRECT",
+            "citations": [
+              "api_gateway#03"
+            ],
+            "path_ids": [],
+            "invalid_citations": [],
+            "invalid_path_ids": []
+          },
+          {
+            "text": "The API Gateway routes requests to the User Service for the /profile path prefix.",
+            "support": "DIRECT",
+            "citations": [
+              "api_gateway#03"
+            ],
+            "path_ids": [],
+            "invalid_citations": [],
+            "invalid_path_ids": []
+          },
+          {
+            "text": "The API Gateway routes requests to the Checkout Service for the /checkout path prefix.",
+            "support": "DIRECT",
+            "citations": [
+              "api_gateway#03"
+            ],
+            "path_ids": [],
+            "invalid_citations": [],
+            "invalid_path_ids": []
+          },
+          {
+            "text": "The API Gateway routes requests to the Billing Service for the /invoices path prefix.",
+            "support": "DIRECT",
+            "citations": [
+              "api_gateway#03"
+            ],
+            "path_ids": [],
+            "invalid_citations": [],
+            "invalid_path_ids": []
+          },
+          {
+            "text": "The API Gateway routes requests to the Reporting Service for the /reports path prefix.",
+            "support": "DIRECT",
+            "citations": [
+              "api_gateway#03"
+            ],
+            "path_ids": [],
+            "invalid_citations": [],
+            "invalid_path_ids": []
+          }
+        ],
+        "sufficient_evidence": true,
+        "missing_information": ""
+      },
+      "error": null,
+      "metrics": {
+        "context_chunks": 8,
+        "recall": 1.0,
+        "mention_recall": 1.0,
+        "missing_mentions": [],
+        "n_claims": 5,
+        "n_inference": 0,
+        "n_claims_cited": 5,
+        "n_invalid_ids": 0,
+        "abstained": false,
+        "abstention_correct": true,
+        "retrieval_ms": 9.566299966536462,
+        "generation_ms": 2599.8806999996305,
+        "total_ms": 2609.446999966167
+      },
+      "judge": {
+        "correctness": "CORRECT",
+        "correctness_score": 1.0,
+        "correctness_reason": "The system correctly identifies all the services and their corresponding path prefixes as stated in the reference answer and evidence.",
+        "n_claims_judged": 5,
+        "n_supported": 5,
+        "n_unsupported": 0,
+        "n_contradicted": 0,
+        "n_unjudged": 0,
+        "forbidden_violated": [],
+        "error": null
+      }
+    },
+    {
+      "question_id": "q09",
+      "question": "If the authentication service fails, which user-facing features could be affected, and what is the dependency chain?",
+      "type": "multi_hop",
+      "dev": true,
+      "answerable": true,
+      "n_forbidden_claims": 2,
+      "method": "baseline_k5",
+      "retrieved_chunk_ids": [
+        "failure_scenarios_and_data_flows#04",
+        "authentication_service#02",
+        "authentication_service#06",
+        "failure_scenarios_and_data_flows#03",
+        "authentication_service#04"
+      ],
+      "n_graph_paths": 0,
+      "answer": {
+        "answer": "If the authentication service fails, protected routes become unavailable and return HTTP 503 errors because the gateway cannot validate tokens. Additionally, user sign-in and sign-up features will fail. Public routes and background tasks that do not rely on the authentication service remain operational.",
+        "claims": [
+          {
+            "text": "During an authentication service outage, the gateway cannot validate tokens and returns HTTP 503 for protected routes.",
+            "support": "DIRECT",
+            "citations": [
+              "failure_scenarios_and_data_flows#03"
+            ],
+            "path_ids": [],
+            "invalid_citations": [],
+            "invalid_path_ids": []
+          },
+          {
+            "text": "Sign-in and sign-up features fail during an authentication service outage.",
+            "support": "DIRECT",
+            "citations": [
+              "failure_scenarios_and_data_flows#03"
+            ],
+            "path_ids": [],
+            "invalid_citations": [],
+            "invalid_path_ids": []
+          },
+          {
+            "text": "Public routes and background work independent of the authentication service continue to function during an outage.",
+            "support": "DIRECT",
+            "citations": [
+              "failure_scenarios_and_data_flows#03"
+            ],
+            "path_ids": [],
+            "invalid_citations": [],
+            "invalid_path_ids": []
+          }
+        ],
+        "sufficient_evidence": true,
+        "missing_information": ""
+      },
+      "error": null,
+      "metrics": {
+        "context_chunks": 5,
+        "recall": 0.25,
+        "mention_recall": 0.16666666666666663,
+        "missing_mentions": [
+          "Profile Settings",
+          "Subscription Checkout",
+          "Invoice Download",
+          "Usage Reports",
+          "API Gateway"
+        ],
+        "n_claims": 3,
+        "n_inference": 0,
+        "n_claims_cited": 3,
+        "n_invalid_ids": 0,
+        "abstained": false,
+        "abstention_correct": true,
+        "retrieval_ms": 14.22210002783686,
+        "generation_ms": 5045.578099961858,
+        "total_ms": 5059.800199989695
+      },
+      "judge": {
+        "correctness": "PARTIALLY_CORRECT",
+        "correctness_score": 0.5,
+        "correctness_reason": "The system correctly identifies the impact on protected routes, sign-in, and public routes, but omits the dependency chain and specific user-facing features requested by the prompt.",
+        "n_claims_judged": 3,
+        "n_supported": 3,
+        "n_unsupported": 0,
+        "n_contradicted": 0,
+        "n_unjudged": 0,
+        "forbidden_violated": [],
+        "error": null
+      }
+    },
+    {
+      "question_id": "q09",
+      "question": "If the authentication service fails, which user-facing features could be affected, and what is the dependency chain?",
+      "type": "multi_hop",
+      "dev": true,
+      "answerable": true,
+      "n_forbidden_claims": 2,
+      "method": "baseline_k8",
+      "retrieved_chunk_ids": [
+        "failure_scenarios_and_data_flows#04",
+        "authentication_service#02",
+        "authentication_service#06",
+        "failure_scenarios_and_data_flows#03",
+        "authentication_service#04",
+        "authentication_service#01",
+        "failure_scenarios_and_data_flows#02",
+        "user_service#04"
+      ],
+      "n_graph_paths": 0,
+      "answer": {
+        "answer": "If the Authentication Service fails, protected routes become unavailable, resulting in HTTP 503 errors for users. Additionally, sign-in and sign-up features fail. Public routes and background tasks that do not require authentication remain functional.",
+        "claims": [
+          {
+            "text": "During an Authentication Service outage, the gateway cannot validate tokens and returns HTTP 503 for protected routes.",
+            "support": "DIRECT",
+            "citations": [
+              "failure_scenarios_and_data_flows#03"
+            ],
+            "path_ids": [],
+            "invalid_citations": [],
+            "invalid_path_ids": []
+          },
+          {
+            "text": "Sign-in and sign-up features fail during an Authentication Service outage.",
+            "support": "DIRECT",
+            "citations": [
+              "failure_scenarios_and_data_flows#03"
+            ],
+            "path_ids": [],
+            "invalid_citations": [],
+            "invalid_path_ids": []
+          },
+          {
+            "text": "Public routes like the Pricing Page remain functional during an Authentication Service outage.",
+            "support": "DIRECT",
+            "citations": [
+              "failure_scenarios_and_data_flows#03"
+            ],
+            "path_ids": [],
+            "invalid_citations": [],
+            "invalid_path_ids": []
+          },
+          {
+            "text": "Background work that does not depend on the Authentication Service, such as payment reconciliation and invoice rendering, continues during an outage.",
+            "support": "DIRECT",
+            "citations": [
+              "failure_scenarios_and_data_flows#03"
+            ],
+            "path_ids": [],
+            "invalid_citations": [],
+            "invalid_path_ids": []
+          }
+        ],
+        "sufficient_evidence": true,
+        "missing_information": ""
+      },
+      "error": null,
+      "metrics": {
+        "context_chunks": 8,
+        "recall": 0.25,
+        "mention_recall": 0.16666666666666663,
+        "missing_mentions": [
+          "Profile Settings",
+          "Subscription Checkout",
+          "Invoice Download",
+          "Usage Reports",
+          "API Gateway"
+        ],
+        "n_claims": 4,
+        "n_inference": 0,
+        "n_claims_cited": 4,
+        "n_invalid_ids": 0,
+        "abstained": false,
+        "abstention_correct": true,
+        "retrieval_ms": 11.436000000685453,
+        "generation_ms": 2369.802700006403,
+        "total_ms": 2381.2387000070885
+      },
+      "judge": {
+        "correctness": "PARTIALLY_CORRECT",
+        "correctness_score": 0.5,
+        "correctness_reason": "The system correctly identifies the main effects on protected routes, sign-in/sign-up, public routes, and background tasks, but omits details about the dependency chain.",
+        "n_claims_judged": 4,
+        "n_supported": 4,
+        "n_unsupported": 0,
+        "n_contradicted": 0,
+        "n_unjudged": 0,
+        "forbidden_violated": [],
+        "error": null
+      }
+    },
+    {
+      "question_id": "q09",
+      "question": "If the authentication service fails, which user-facing features could be affected, and what is the dependency chain?",
+      "type": "multi_hop",
+      "dev": true,
+      "answerable": true,
+      "n_forbidden_claims": 2,
+      "method": "graphrag",
+      "retrieved_chunk_ids": [
+        "failure_scenarios_and_data_flows#03",
+        "failure_scenarios_and_data_flows#04",
+        "authentication_service#02",
+        "authentication_service#06",
+        "failure_scenarios_and_data_flows#01",
+        "api_gateway#02",
+        "platform_overview#04",
+        "api_gateway#03"
+      ],
+      "n_graph_paths": 11,
+      "answer": {
+        "answer": "If the authentication service fails, sign-in, sign-up, and all protected routes requiring token validation become unavailable, resulting in HTTP 503 errors. Public routes like the Pricing Page remain functional, and background tasks that do not require the authentication service continue to operate. The dependency chain involves the API Gateway, which must call the authentication service to validate tokens for all protected routes before forwarding requests to downstream services.",
+        "claims": [
+          {
+            "text": "During an authentication service outage, the API Gateway cannot validate tokens and returns HTTP 503 for protected routes.",
+            "support": "DIRECT",
+            "citations": [
+              "failure_scenarios_and_data_flows#03"
+            ],
+            "path_ids": [],
+            "invalid_citations": [],
+            "invalid_path_ids": []
+          },
+          {
+            "text": "Sign-in and sign-up features fail during an authentication service outage.",
+            "support": "DIRECT",
+            "citations": [
+              "failure_scenarios_and_data_flows#03"
+            ],
+            "path_ids": [],
+            "invalid_citations": [],
+            "invalid_path_ids": []
+          },
+          {
+            "text": "Public routes such as the Pricing Page remain functional during an authentication service outage because they skip token validation.",
+            "support": "DIRECT",
+            "citations": [
+              "failure_scenarios_and_data_flows#03",
+              "api_gateway#02"
+            ],
+            "path_ids": [],
+            "invalid_citations": [],
+            "invalid_path_ids": []
+          },
+          {
+            "text": "Subscription Checkout, Profile Settings, Invoice Download, and Usage Reports may be affected because they are protected routes that require the API Gateway to validate tokens with the Authentication Service.",
+            "support": "INFERENCE",
+            "citations": [
+              "api_gateway#02",
+              "failure_scenarios_and_data_flows#03",
+              "platform_overview#04",
+              "api_gateway#03"
+            ],
+            "path_ids": [
+              "P8",
+              "P9",
+              "P10",
+              "P11"
+            ],
+            "invalid_citations": [],
+            "invalid_path_ids": []
+          },
+          {
+            "text": "The API Gateway calls the Authentication Service to validate bearer tokens for every protected route before forwarding requests.",
+            "support": "DIRECT",
+            "citations": [
+              "api_gateway#02"
+            ],
+            "path_ids": [],
+            "invalid_citations": [],
+            "invalid_path_ids": []
+          }
+        ],
+        "sufficient_evidence": true,
+        "missing_information": ""
+      },
+      "error": null,
+      "metrics": {
+        "context_chunks": 8,
+        "recall": 1.0,
+        "mention_recall": 1.0,
+        "missing_mentions": [],
+        "n_claims": 5,
+        "n_inference": 1,
+        "n_claims_cited": 5,
+        "n_invalid_ids": 0,
+        "abstained": false,
+        "abstention_correct": true,
+        "retrieval_ms": 15.912999981082976,
+        "generation_ms": 3579.466700030025,
+        "total_ms": 3595.379700011108
+      },
+      "judge": {
+        "correctness": "CORRECT",
+        "correctness_score": 1.0,
+        "correctness_reason": "The system correctly identifies the affected features, the behavior of the API gateway (HTTP 503), public routes remaining functional, and explains the dependency chain.",
+        "n_claims_judged": 5,
+        "n_supported": 5,
+        "n_unsupported": 0,
+        "n_contradicted": 0,
+        "n_unjudged": 0,
+        "forbidden_violated": [],
+        "error": null
+      }
+    },
+    {
+      "question_id": "q10",
+      "question": "If the Billing Database primary goes down, which user-facing features could be affected, and which are documented to keep working?",
+      "type": "multi_hop",
+      "dev": false,
+      "answerable": true,
+      "n_forbidden_claims": 1,
+      "method": "baseline_k5",
+      "retrieved_chunk_ids": [
+        "failure_scenarios_and_data_flows#01",
+        "billing_and_reporting#03",
+        "billing_and_reporting#05",
+        "failure_scenarios_and_data_flows#05",
+        "user_service#04"
+      ],
+      "n_graph_paths": 0,
+      "answer": {
+        "answer": "If the Billing Database primary goes down, Usage Reports remain functional by reading from a replica, though they may contain stale data. The provided evidence does not specify which user-facing features are affected by a primary failure of the Billing Database.",
+        "claims": [
+          {
+            "text": "The Billing Database stores orders, payment attempts, and invoices.",
+            "support": "DIRECT",
+            "citations": [
+              "billing_and_reporting#03"
+            ],
+            "path_ids": [],
+            "invalid_citations": [],
+            "invalid_path_ids": []
+          },
+          {
+            "text": "Usage Reports continue to work from the replica if the Billing Database primary is down, though the data may be stale.",
+            "support": "DIRECT",
+            "citations": [
+              "billing_and_reporting#05"
+            ],
+            "path_ids": [],
+            "invalid_citations": [],
+            "invalid_path_ids": []
+          }
+        ],
+        "sufficient_evidence": false,
+        "missing_information": "The provided evidence does not explicitly state which user-facing features are affected by a failure of the Billing Database primary."
+      },
+      "error": null,
+      "metrics": {
+        "context_chunks": 5,
+        "recall": 0.5,
+        "mention_recall": 0.5,
+        "missing_mentions": [
+          "Subscription Checkout",
+          "Invoice Download"
+        ],
+        "n_claims": 2,
+        "n_inference": 0,
+        "n_claims_cited": 2,
+        "n_invalid_ids": 0,
+        "abstained": true,
+        "abstention_correct": false,
+        "retrieval_ms": 10.241899988614023,
+        "generation_ms": 2311.1385999945924,
+        "total_ms": 2321.3804999832064
+      },
+      "judge": {
+        "correctness": "PARTIALLY_CORRECT",
+        "correctness_score": 0.5,
+        "correctness_reason": "The system correctly identifies that Usage Reports keep working with stale data, but it misses Subscription Checkout and Invoice Download which are mentioned in the evidence and reference answer.",
+        "n_claims_judged": 2,
+        "n_supported": 2,
+        "n_unsupported": 0,
+        "n_contradicted": 0,
+        "n_unjudged": 0,
+        "forbidden_violated": [],
+        "error": null
+      }
+    },
+    {
+      "question_id": "q10",
+      "question": "If the Billing Database primary goes down, which user-facing features could be affected, and which are documented to keep working?",
+      "type": "multi_hop",
+      "dev": false,
+      "answerable": true,
+      "n_forbidden_claims": 1,
+      "method": "baseline_k8",
+      "retrieved_chunk_ids": [
+        "failure_scenarios_and_data_flows#01",
+        "billing_and_reporting#03",
+        "billing_and_reporting#05",
+        "failure_scenarios_and_data_flows#05",
+        "user_service#04",
+        "failure_scenarios_and_data_flows#06",
+        "billing_and_reporting#04",
+        "failure_scenarios_and_data_flows#04"
+      ],
+      "n_graph_paths": 0,
+      "answer": {
+        "answer": "If the Billing Database primary goes down, new subscription purchases will be affected because the Checkout Service cannot create orders. However, Usage Reports remain functional by reading from the Reporting Replica, although the data may be stale.",
+        "claims": [
+          {
+            "text": "The Checkout Service writes to the Billing Database to create orders.",
+            "support": "DIRECT",
+            "citations": [
+              "billing_and_reporting#03"
+            ],
+            "path_ids": [],
+            "invalid_citations": [],
+            "invalid_path_ids": []
+          },
+          {
+            "text": "New subscription purchases require the Checkout Service to create an order in the Billing Database.",
+            "support": "DIRECT",
+            "citations": [
+              "failure_scenarios_and_data_flows#01"
+            ],
+            "path_ids": [],
+            "invalid_citations": [],
+            "invalid_path_ids": []
+          },
+          {
+            "text": "New subscription purchases may be affected because the Checkout Service cannot write to the Billing Database if the primary is down.",
+            "support": "INFERENCE",
+            "citations": [
+              "billing_and_reporting#03",
+              "failure_scenarios_and_data_flows#01"
+            ],
+            "path_ids": [],
+            "invalid_citations": [],
+            "invalid_path_ids": []
+          },
+          {
+            "text": "Usage Reports continue to work from the Reporting Replica if the Billing Database primary is down.",
+            "support": "DIRECT",
+            "citations": [
+              "billing_and_reporting#05"
+            ],
+            "path_ids": [],
+            "invalid_citations": [],
+            "invalid_path_ids": []
+          },
+          {
+            "text": "Usage Reports may contain stale data if the Billing Database primary is down.",
+            "support": "DIRECT",
+            "citations": [
+              "billing_and_reporting#05"
+            ],
+            "path_ids": [],
+            "invalid_citations": [],
+            "invalid_path_ids": []
+          }
+        ],
+        "sufficient_evidence": true,
+        "missing_information": ""
+      },
+      "error": null,
+      "metrics": {
+        "context_chunks": 8,
+        "recall": 0.5,
+        "mention_recall": 0.5,
+        "missing_mentions": [
+          "Subscription Checkout",
+          "Invoice Download"
+        ],
+        "n_claims": 5,
+        "n_inference": 1,
+        "n_claims_cited": 5,
+        "n_invalid_ids": 0,
+        "abstained": false,
+        "abstention_correct": true,
+        "retrieval_ms": 16.357799991965294,
+        "generation_ms": 2105.4615000030026,
+        "total_ms": 2121.819299994968
+      },
+      "judge": {
+        "correctness": "PARTIALLY_CORRECT",
+        "correctness_score": 0.5,
+        "correctness_reason": "The system correctly identifies that Usage Reports keep working with stale data, and reasonably points out that checkout/orders depend on the Billing Database primary, but omits invoice downloading.",
+        "n_claims_judged": 5,
+        "n_supported": 5,
+        "n_unsupported": 0,
+        "n_contradicted": 0,
+        "n_unjudged": 0,
+        "forbidden_violated": [],
+        "error": null
+      }
+    },
+    {
+      "question_id": "q10",
+      "question": "If the Billing Database primary goes down, which user-facing features could be affected, and which are documented to keep working?",
+      "type": "multi_hop",
+      "dev": false,
+      "answerable": true,
+      "n_forbidden_claims": 1,
+      "method": "graphrag",
+      "retrieved_chunk_ids": [
+        "failure_scenarios_and_data_flows#01",
+        "billing_and_reporting#03",
+        "billing_and_reporting#05",
+        "failure_scenarios_and_data_flows#06",
+        "billing_and_reporting#04",
+        "billing_and_reporting#02",
+        "event_queue_and_notifications#05",
+        "checkout_and_payment#01"
+      ],
+      "n_graph_paths": 8,
+      "answer": {
+        "answer": "If the Billing Database primary goes down, Subscription Checkout and Invoice Download features may be affected because they rely on writing to or reading from the primary database. Usage Reports are documented to continue working using the Reporting Replica, although the data may be stale.",
+        "claims": [
+          {
+            "text": "Subscription Checkout may be affected because the Checkout Service writes to the Billing Database.",
+            "support": "INFERENCE",
+            "citations": [
+              "billing_and_reporting#03",
+              "checkout_and_payment#01",
+              "failure_scenarios_and_data_flows#01"
+            ],
+            "path_ids": [
+              "P2",
+              "P6"
+            ],
+            "invalid_citations": [],
+            "invalid_path_ids": []
+          },
+          {
+            "text": "Invoice Download may be affected because the Billing Service reads from the Billing Database.",
+            "support": "INFERENCE",
+            "citations": [
+              "billing_and_reporting#02"
+            ],
+            "path_ids": [
+              "P1",
+              "P5"
+            ],
+            "invalid_citations": [],
+            "invalid_path_ids": []
+          },
+          {
+            "text": "Usage Reports continue to work from the Reporting Replica if the Billing Database primary is down, though the data may be stale.",
+            "support": "DIRECT",
+            "citations": [
+              "billing_and_reporting#05"
+            ],
+            "path_ids": [
+              "P4",
+              "P7",
+              "P8"
+            ],
+            "invalid_citations": [],
+            "invalid_path_ids": []
+          }
+        ],
+        "sufficient_evidence": true,
+        "missing_information": ""
+      },
+      "error": null,
+      "metrics": {
+        "context_chunks": 8,
+        "recall": 1.0,
+        "mention_recall": 1.0,
+        "missing_mentions": [],
+        "n_claims": 3,
+        "n_inference": 2,
+        "n_claims_cited": 3,
+        "n_invalid_ids": 0,
+        "abstained": false,
+        "abstention_correct": true,
+        "retrieval_ms": 13.219600019510835,
+        "generation_ms": 2097.2870999830775,
+        "total_ms": 2110.5067000025883
+      },
+      "judge": {
+        "correctness": "CORRECT",
+        "correctness_score": 1.0,
+        "correctness_reason": "The system answer correctly identifies that Usage Reports continue to work with stale data and appropriately infers that Subscription Checkout and Invoice Download could be affected due to their dependencies on the database, without stating absolute failure as a documented fact.",
+        "n_claims_judged": 3,
+        "n_supported": 3,
+        "n_unsupported": 0,
+        "n_contradicted": 0,
+        "n_unjudged": 0,
+        "forbidden_violated": [],
+        "error": null
+      }
+    },
+    {
+      "question_id": "q11",
+      "question": "If the Event Queue becomes unavailable, which features could be affected and what happens to payment events and sign-up events?",
+      "type": "multi_hop",
+      "dev": false,
+      "answerable": true,
+      "n_forbidden_claims": 1,
+      "method": "baseline_k5",
+      "retrieved_chunk_ids": [
+        "event_queue_and_notifications#05",
+        "failure_scenarios_and_data_flows#06",
+        "event_queue_and_notifications#02",
+        "checkout_and_payment#04",
+        "event_queue_and_notifications#01"
+      ],
+      "n_graph_paths": 0,
+      "answer": {
+        "answer": "If the Event Queue is unavailable, payment events are preserved in an outbox table and processed later, while sign-up events are lost. Consequently, invoices and receipts are delayed, and welcome emails for new users may not be sent.",
+        "claims": [
+          {
+            "text": "If the Event Queue is unavailable, the Payment Service writes events to an outbox table in the Billing Database.",
+            "support": "DIRECT",
+            "citations": [
+              "event_queue_and_notifications#05"
+            ],
+            "path_ids": [],
+            "invalid_citations": [],
+            "invalid_path_ids": []
+          },
+          {
+            "text": "Payment events are published by a relay when the queue returns, meaning invoices and receipts are delayed rather than lost.",
+            "support": "DIRECT",
+            "citations": [
+              "event_queue_and_notifications#05",
+              "failure_scenarios_and_data_flows#06"
+            ],
+            "path_ids": [],
+            "invalid_citations": [],
+            "invalid_path_ids": []
+          },
+          {
+            "text": "The Authentication Service has no outbox, so user.registered events published during an outage are lost.",
+            "support": "DIRECT",
+            "citations": [
+              "event_queue_and_notifications#05"
+            ],
+            "path_ids": [],
+            "invalid_citations": [],
+            "invalid_path_ids": []
+          },
+          {
+            "text": "Welcome emails for new sign-ups during an outage may be lost because the Notification Service consumes user.registered events.",
+            "support": "INFERENCE",
+            "citations": [
+              "event_queue_and_notifications#05",
+              "event_queue_and_notifications#02",
+              "failure_scenarios_and_data_flows#06"
+            ],
+            "path_ids": [],
+            "invalid_citations": [],
+            "invalid_path_ids": []
+          }
+        ],
+        "sufficient_evidence": true,
+        "missing_information": ""
+      },
+      "error": null,
+      "metrics": {
+        "context_chunks": 5,
+        "recall": 0.6666666666666666,
+        "mention_recall": 1.0,
+        "missing_mentions": [],
+        "n_claims": 4,
+        "n_inference": 1,
+        "n_claims_cited": 4,
+        "n_invalid_ids": 0,
+        "abstained": false,
+        "abstention_correct": true,
+        "retrieval_ms": 12.650099990423769,
+        "generation_ms": 2698.9877999876626,
+        "total_ms": 2711.6378999780864
+      },
+      "judge": {
+        "correctness": "CORRECT",
+        "correctness_score": 1.0,
+        "correctness_reason": "The system's answer accurately captures the impact on payment events (saved in an outbox, causing delayed invoices and receipts) and sign-up events (lost, causing potentially missed welcome emails), matching the reference answer.",
+        "n_claims_judged": 4,
+        "n_supported": 4,
+        "n_unsupported": 0,
+        "n_contradicted": 0,
+        "n_unjudged": 0,
+        "forbidden_violated": [],
+        "error": null
+      }
+    },
+    {
+      "question_id": "q11",
+      "question": "If the Event Queue becomes unavailable, which features could be affected and what happens to payment events and sign-up events?",
+      "type": "multi_hop",
+      "dev": false,
+      "answerable": true,
+      "n_forbidden_claims": 1,
+      "method": "baseline_k8",
+      "retrieved_chunk_ids": [
+        "event_queue_and_notifications#05",
+        "failure_scenarios_and_data_flows#06",
+        "event_queue_and_notifications#02",
+        "checkout_and_payment#04",
+        "event_queue_and_notifications#01",
+        "failure_scenarios_and_data_flows#05",
+        "checkout_and_payment#06",
+        "failure_scenarios_and_data_flows#01"
+      ],
+      "n_graph_paths": 0,
+      "answer": {
+        "answer": "If the Event Queue is unavailable, payment events are preserved in an outbox and processed later, meaning invoices and receipts are delayed but not lost. Conversely, sign-up events are lost during an outage, which may result in welcome emails not being sent. The Notification Service and Billing Service are affected as they rely on these events to perform their functions.",
+        "claims": [
+          {
+            "text": "If the Event Queue is unavailable, the Payment Service writes payment events to an outbox table in the Billing Database.",
+            "support": "DIRECT",
+            "citations": [
+              "event_queue_and_notifications#05"
+            ],
+            "path_ids": [],
+            "invalid_citations": [],
+            "invalid_path_ids": []
+          },
+          {
+            "text": "Payment events are published by a relay when the Event Queue returns, meaning invoices and receipts are delayed rather than lost.",
+            "support": "DIRECT",
+            "citations": [
+              "event_queue_and_notifications#05",
+              "failure_scenarios_and_data_flows#06"
+            ],
+            "path_ids": [],
+            "invalid_citations": [],
+            "invalid_path_ids": []
+          },
+          {
+            "text": "The Authentication Service has no outbox, so user.registered events published during an Event Queue outage are lost.",
+            "support": "DIRECT",
+            "citations": [
+              "event_queue_and_notifications#05"
+            ],
+            "path_ids": [],
+            "invalid_citations": [],
+            "invalid_path_ids": []
+          },
+          {
+            "text": "Welcome emails for new sign-ups may not be sent if the Event Queue is unavailable.",
+            "support": "DIRECT",
+            "citations": [
+              "event_queue_and_notifications#05",
+              "failure_scenarios_and_data_flows#06"
+            ],
+            "path_ids": [],
+            "invalid_citations": [],
+            "invalid_path_ids": []
+          },
+          {
+            "text": "The Billing Service and Notification Service may be affected because they consume events from the Event Queue.",
+            "support": "INFERENCE",
+            "citations": [
+              "event_queue_and_notifications#02",
+              "checkout_and_payment#04"
+            ],
+            "path_ids": [],
+            "invalid_citations": [],
+            "invalid_path_ids": []
+          }
+        ],
+        "sufficient_evidence": true,
+        "missing_information": ""
+      },
+      "error": null,
+      "metrics": {
+        "context_chunks": 8,
+        "recall": 0.6666666666666666,
+        "mention_recall": 1.0,
+        "missing_mentions": [],
+        "n_claims": 5,
+        "n_inference": 1,
+        "n_claims_cited": 5,
+        "n_invalid_ids": 0,
+        "abstained": false,
+        "abstention_correct": true,
+        "retrieval_ms": 14.03219997882843,
+        "generation_ms": 2334.8565000342205,
+        "total_ms": 2348.888700013049
+      },
+      "judge": {
+        "correctness": "CORRECT",
+        "correctness_score": 1.0,
+        "correctness_reason": "The system accurately describes what happens to payment events (stored in an outbox and delayed) and sign-up events (lost), and correctly identifies the affected features and services.",
+        "n_claims_judged": 5,
+        "n_supported": 5,
+        "n_unsupported": 0,
+        "n_contradicted": 0,
+        "n_unjudged": 0,
+        "forbidden_violated": [],
+        "error": null
+      }
+    },
+    {
+      "question_id": "q11",
+      "question": "If the Event Queue becomes unavailable, which features could be affected and what happens to payment events and sign-up events?",
+      "type": "multi_hop",
+      "dev": false,
+      "answerable": true,
+      "n_forbidden_claims": 1,
+      "method": "graphrag",
+      "retrieved_chunk_ids": [
+        "checkout_and_payment#04",
+        "event_queue_and_notifications#05",
+        "failure_scenarios_and_data_flows#06",
+        "failure_scenarios_and_data_flows#01",
+        "event_queue_and_notifications#02",
+        "authentication_service#05",
+        "platform_overview#04",
+        "api_gateway#03"
+      ],
+      "n_graph_paths": 16,
+      "answer": {
+        "answer": "If the Event Queue is unavailable, payment events are preserved in an outbox and processed later, meaning invoices and receipts are delayed but not lost. Conversely, sign-up events are lost because the Authentication Service lacks an outbox, which may result in missing welcome emails. Features that rely on the Notification Service, Billing Service, or Authentication Service may be affected by the inability to process these events.",
+        "claims": [
+          {
+            "text": "If the Event Queue is unavailable, the Payment Service writes events to an outbox table in the Billing Database, and a relay publishes them when the queue returns.",
+            "support": "DIRECT",
+            "citations": [
+              "event_queue_and_notifications#05"
+            ],
+            "path_ids": [],
+            "invalid_citations": [],
+            "invalid_path_ids": []
+          },
+          {
+            "text": "Payment events are delayed rather than lost during an Event Queue outage.",
+            "support": "DIRECT",
+            "citations": [
+              "failure_scenarios_and_data_flows#06"
+            ],
+            "path_ids": [],
+            "invalid_citations": [],
+            "invalid_path_ids": []
+          },
+          {
+            "text": "The Authentication Service has no outbox, so user.registered events published during an outage are lost.",
+            "support": "DIRECT",
+            "citations": [
+              "event_queue_and_notifications#05"
+            ],
+            "path_ids": [],
+            "invalid_citations": [],
+            "invalid_path_ids": []
+          },
+          {
+            "text": "Welcome emails for new sign-ups during an Event Queue outage may be lost.",
+            "support": "DIRECT",
+            "citations": [
+              "failure_scenarios_and_data_flows#06"
+            ],
+            "path_ids": [],
+            "invalid_citations": [],
+            "invalid_path_ids": []
+          },
+          {
+            "text": "Billing Service may be affected because it consumes payment.completed events from the Event Queue.",
+            "support": "INFERENCE",
+            "citations": [
+              "checkout_and_payment#04",
+              "failure_scenarios_and_data_flows#01"
+            ],
+            "path_ids": [
+              "P3"
+            ],
+            "invalid_citations": [],
+            "invalid_path_ids": []
+          },
+          {
+            "text": "Notification Service may be affected because it consumes events from the Event Queue.",
+            "support": "INFERENCE",
+            "citations": [
+              "authentication_service#05",
+              "checkout_and_payment#04",
+              "failure_scenarios_and_data_flows#01"
+            ],
+            "path_ids": [
+              "P4"
+            ],
+            "invalid_citations": [],
+            "invalid_path_ids": []
+          },
+          {
+            "text": "Email Notifications may be affected because the Notification Service consumes events from the Event Queue.",
+            "support": "INFERENCE",
+            "citations": [
+              "authentication_service#05",
+              "checkout_and_payment#04",
+              "failure_scenarios_and_data_flows#01",
+              "platform_overview#04"
+            ],
+            "path_ids": [
+              "P9"
+            ],
+            "invalid_citations": [],
+            "invalid_path_ids": []
+          },
+          {
+            "text": "Invoice Download may be affected because the Billing Service consumes events from the Event Queue.",
+            "support": "INFERENCE",
+            "citations": [
+              "checkout_and_payment#04",
+              "failure_scenarios_and_data_flows#01",
+              "platform_overview#04"
+            ],
+            "path_ids": [
+              "P8"
+            ],
+            "invalid_citations": [],
+            "invalid_path_ids": []
+          }
+        ],
+        "sufficient_evidence": true,
+        "missing_information": ""
+      },
+      "error": null,
+      "metrics": {
+        "context_chunks": 8,
+        "recall": 1.0,
+        "mention_recall": 1.0,
+        "missing_mentions": [],
+        "n_claims": 8,
+        "n_inference": 4,
+        "n_claims_cited": 8,
+        "n_invalid_ids": 0,
+        "abstained": false,
+        "abstention_correct": true,
+        "retrieval_ms": 15.013500000350177,
+        "generation_ms": 3779.0819999645464,
+        "total_ms": 3794.0954999648966
+      },
+      "judge": {
+        "correctness": "CORRECT",
+        "correctness_score": 1.0,
+        "correctness_reason": "The system answer accurately covers what happens to payment events and sign-up events during an Event Queue outage, correctly noting the outbox behavior for payments and the loss of events for sign-ups.",
+        "n_claims_judged": 8,
+        "n_supported": 8,
+        "n_unsupported": 0,
+        "n_contradicted": 0,
+        "n_unjudged": 0,
+        "forbidden_violated": [],
+        "error": null
+      }
+    },
+    {
+      "question_id": "q12",
+      "question": "Trace the path from a new account sign-up to the welcome email: which components are involved, in order?",
+      "type": "multi_hop",
+      "dev": false,
+      "answerable": true,
+      "n_forbidden_claims": 0,
+      "method": "baseline_k5",
+      "retrieved_chunk_ids": [
+        "authentication_service#05",
+        "failure_scenarios_and_data_flows#02",
+        "user_service#05",
+        "platform_overview#04",
+        "user_service#01"
+      ],
+      "n_graph_paths": 0,
+      "answer": {
+        "answer": "A new account sign-up begins at the API Gateway, which forwards the request to the Authentication Service. The Authentication Service creates the account and publishes an event to the Event Queue, which is then consumed by the Notification Service. Finally, the Notification Service queries the User Service for preferences before sending the welcome email via MailBridge.",
+        "claims": [
+          {
+            "text": "The browser sends a sign-up request to the API Gateway, which forwards it to the Authentication Service.",
+            "support": "DIRECT",
+            "citations": [
+              "failure_scenarios_and_data_flows#02"
+            ],
+            "path_ids": [],
+            "invalid_citations": [],
+            "invalid_path_ids": []
+          },
+          {
+            "text": "The Authentication Service creates the account in the User Database and publishes a user.registered event to the Event Queue.",
+            "support": "DIRECT",
+            "citations": [
+              "authentication_service#05",
+              "failure_scenarios_and_data_flows#02"
+            ],
+            "path_ids": [],
+            "invalid_citations": [],
+            "invalid_path_ids": []
+          },
+          {
+            "text": "The Notification Service consumes the user.registered event from the Event Queue.",
+            "support": "DIRECT",
+            "citations": [
+              "authentication_service#05",
+              "failure_scenarios_and_data_flows#02"
+            ],
+            "path_ids": [],
+            "invalid_citations": [],
+            "invalid_path_ids": []
+          },
+          {
+            "text": "The Notification Service calls the User Service to look up the user's email address and notification preferences.",
+            "support": "DIRECT",
+            "citations": [
+              "failure_scenarios_and_data_flows#02",
+              "user_service#05"
+            ],
+            "path_ids": [],
+            "invalid_citations": [],
+            "invalid_path_ids": []
+          },
+          {
+            "text": "The Notification Service sends the welcome email through MailBridge.",
+            "support": "DIRECT",
+            "citations": [
+              "failure_scenarios_and_data_flows#02"
+            ],
+            "path_ids": [],
+            "invalid_citations": [],
+            "invalid_path_ids": []
+          }
+        ],
+        "sufficient_evidence": true,
+        "missing_information": ""
+      },
+      "error": null,
+      "metrics": {
+        "context_chunks": 5,
+        "recall": 1.0,
+        "mention_recall": 0.875,
+        "missing_mentions": [
+          "Session Cache"
+        ],
+        "n_claims": 5,
+        "n_inference": 0,
+        "n_claims_cited": 5,
+        "n_invalid_ids": 0,
+        "abstained": false,
+        "abstention_correct": true,
+        "retrieval_ms": 10.181399993598461,
+        "generation_ms": 2114.0359999844804,
+        "total_ms": 2124.217399978079
+      },
+      "judge": {
+        "correctness": "CORRECT",
+        "correctness_score": 1.0,
+        "correctness_reason": "The system correctly traces the path of a sign-up request through all components in order, matching the reference answer.",
+        "n_claims_judged": 5,
+        "n_supported": 5,
+        "n_unsupported": 0,
+        "n_contradicted": 0,
+        "n_unjudged": 0,
+        "forbidden_violated": [],
+        "error": null
+      }
+    },
+    {
+      "question_id": "q12",
+      "question": "Trace the path from a new account sign-up to the welcome email: which components are involved, in order?",
+      "type": "multi_hop",
+      "dev": false,
+      "answerable": true,
+      "n_forbidden_claims": 0,
+      "method": "baseline_k8",
+      "retrieved_chunk_ids": [
+        "authentication_service#05",
+        "failure_scenarios_and_data_flows#02",
+        "user_service#05",
+        "platform_overview#04",
+        "user_service#01",
+        "api_gateway#03",
+        "checkout_and_payment#02",
+        "event_queue_and_notifications#03"
+      ],
+      "n_graph_paths": 0,
+      "answer": {
+        "answer": "The sign-up process begins at the API Gateway, which forwards the request to the Authentication Service. The Authentication Service creates the account and publishes a user.registered event to the Event Queue. Finally, the Notification Service consumes this event, retrieves user details from the User Service, and sends the welcome email via MailBridge.",
+        "claims": [
+          {
+            "text": "The browser sends a sign-up request to the API Gateway, which forwards it to the Authentication Service.",
+            "support": "DIRECT",
+            "citations": [
+              "failure_scenarios_and_data_flows#02"
+            ],
+            "path_ids": [],
+            "invalid_citations": [],
+            "invalid_path_ids": []
+          },
+          {
+            "text": "The Authentication Service creates the account in the User Database and publishes a user.registered event to the Event Queue.",
+            "support": "DIRECT",
+            "citations": [
+              "authentication_service#05",
+              "failure_scenarios_and_data_flows#02"
+            ],
+            "path_ids": [],
+            "invalid_citations": [],
+            "invalid_path_ids": []
+          },
+          {
+            "text": "The Notification Service consumes the user.registered event from the Event Queue.",
+            "support": "DIRECT",
+            "citations": [
+              "authentication_service#05",
+              "failure_scenarios_and_data_flows#02"
+            ],
+            "path_ids": [],
+            "invalid_citations": [],
+            "invalid_path_ids": []
+          },
+          {
+            "text": "The Notification Service calls the User Service to look up the user's email address and notification preferences.",
+            "support": "DIRECT",
+            "citations": [
+              "event_queue_and_notifications#03",
+              "failure_scenarios_and_data_flows#02",
+              "user_service#05"
+            ],
+            "path_ids": [],
+            "invalid_citations": [],
+            "invalid_path_ids": []
+          },
+          {
+            "text": "The Notification Service sends the welcome email through MailBridge.",
+            "support": "DIRECT",
+            "citations": [
+              "event_queue_and_notifications#03",
+              "failure_scenarios_and_data_flows#02"
+            ],
+            "path_ids": [],
+            "invalid_citations": [],
+            "invalid_path_ids": []
+          }
+        ],
+        "sufficient_evidence": true,
+        "missing_information": ""
+      },
+      "error": null,
+      "metrics": {
+        "context_chunks": 8,
+        "recall": 1.0,
+        "mention_recall": 0.875,
+        "missing_mentions": [
+          "Session Cache"
+        ],
+        "n_claims": 5,
+        "n_inference": 0,
+        "n_claims_cited": 5,
+        "n_invalid_ids": 0,
+        "abstained": false,
+        "abstention_correct": true,
+        "retrieval_ms": 11.419699992984533,
+        "generation_ms": 2396.4889000053518,
+        "total_ms": 2407.9085999983363
+      },
+      "judge": {
+        "correctness": "CORRECT",
+        "correctness_score": 1.0,
+        "correctness_reason": "The system's answer accurately captures the components and their chronological order from the sign-up request to the welcome email.",
+        "n_claims_judged": 5,
+        "n_supported": 5,
+        "n_unsupported": 0,
+        "n_contradicted": 0,
+        "n_unjudged": 0,
+        "forbidden_violated": [],
+        "error": null
+      }
+    },
+    {
+      "question_id": "q12",
+      "question": "Trace the path from a new account sign-up to the welcome email: which components are involved, in order?",
+      "type": "multi_hop",
+      "dev": false,
+      "answerable": true,
+      "n_forbidden_claims": 0,
+      "method": "graphrag",
+      "retrieved_chunk_ids": [
+        "authentication_service#05",
+        "failure_scenarios_and_data_flows#02",
+        "platform_overview#04",
+        "user_service#05",
+        "user_service#01"
+      ],
+      "n_graph_paths": 1,
+      "answer": {
+        "answer": "A new account sign-up begins at the API Gateway, which forwards the request to the Authentication Service. The Authentication Service creates the account, stores session data, and publishes a registration event to the Event Queue. Finally, the Notification Service consumes this event, retrieves user preferences from the User Service, and sends the welcome email via MailBridge.",
+        "claims": [
+          {
+            "text": "The browser sends a sign-up request to the API Gateway, which forwards it to the Authentication Service.",
+            "support": "DIRECT",
+            "citations": [
+              "failure_scenarios_and_data_flows#02"
+            ],
+            "path_ids": [],
+            "invalid_citations": [],
+            "invalid_path_ids": []
+          },
+          {
+            "text": "The Authentication Service creates the account in the User Database and stores the session in the Session Cache.",
+            "support": "DIRECT",
+            "citations": [
+              "failure_scenarios_and_data_flows#02"
+            ],
+            "path_ids": [],
+            "invalid_citations": [],
+            "invalid_path_ids": []
+          },
+          {
+            "text": "The Authentication Service publishes a user.registered event to the Event Queue.",
+            "support": "DIRECT",
+            "citations": [
+              "authentication_service#05",
+              "failure_scenarios_and_data_flows#02"
+            ],
+            "path_ids": [],
+            "invalid_citations": [],
+            "invalid_path_ids": []
+          },
+          {
+            "text": "The Notification Service consumes the user.registered event from the Event Queue.",
+            "support": "DIRECT",
+            "citations": [
+              "authentication_service#05",
+              "failure_scenarios_and_data_flows#02"
+            ],
+            "path_ids": [],
+            "invalid_citations": [],
+            "invalid_path_ids": []
+          },
+          {
+            "text": "The Notification Service calls the User Service to look up email and notification preferences.",
+            "support": "DIRECT",
+            "citations": [
+              "failure_scenarios_and_data_flows#02",
+              "user_service#05"
+            ],
+            "path_ids": [],
+            "invalid_citations": [],
+            "invalid_path_ids": []
+          },
+          {
+            "text": "The Notification Service sends the welcome email through MailBridge.",
+            "support": "DIRECT",
+            "citations": [
+              "failure_scenarios_and_data_flows#02"
+            ],
+            "path_ids": [],
+            "invalid_citations": [],
+            "invalid_path_ids": []
+          }
+        ],
+        "sufficient_evidence": true,
+        "missing_information": ""
+      },
+      "error": null,
+      "metrics": {
+        "context_chunks": 5,
+        "recall": 1.0,
+        "mention_recall": 1.0,
+        "missing_mentions": [],
+        "n_claims": 6,
+        "n_inference": 0,
+        "n_claims_cited": 6,
+        "n_invalid_ids": 0,
+        "abstained": false,
+        "abstention_correct": true,
+        "retrieval_ms": 13.582799991127104,
+        "generation_ms": 2265.2411999879405,
+        "total_ms": 2278.8239999790676
+      },
+      "judge": {
+        "correctness": "CORRECT",
+        "correctness_score": 1.0,
+        "correctness_reason": "The system correctly traces the path from the API gateway to the authentication service, database, event queue, notification service, user service, and mailbridge, covering all key components in order.",
+        "n_claims_judged": 6,
+        "n_supported": 6,
+        "n_unsupported": 0,
+        "n_contradicted": 0,
+        "n_unjudged": 0,
+        "forbidden_violated": [],
+        "error": null
+      }
+    },
+    {
+      "question_id": "q13",
+      "question": "Which services read from or write to the User Database, and what does each one store there?",
+      "type": "cross_document",
+      "dev": false,
+      "answerable": true,
+      "n_forbidden_claims": 1,
+      "method": "baseline_k5",
+      "retrieved_chunk_ids": [
+        "user_service#03",
+        "user_service#01",
+        "user_service#02",
+        "authentication_service#02",
+        "platform_overview#05"
+      ],
+      "n_graph_paths": 0,
+      "answer": {
+        "answer": "The Authentication Service and the User Service both interact with the User Database. The Authentication Service manages account records, password hashes, and token revocation records, while the User Service manages profile data such as display names, email addresses, time zones, and notification preferences.",
+        "claims": [
+          {
+            "text": "The Authentication Service writes accounts, password hashes, and revocation records to the User Database.",
+            "support": "DIRECT",
+            "citations": [
+              "user_service#03"
+            ],
+            "path_ids": [],
+            "invalid_citations": [],
+            "invalid_path_ids": []
+          },
+          {
+            "text": "The Authentication Service reads and writes account records and token revocation records in the User Database.",
+            "support": "DIRECT",
+            "citations": [
+              "authentication_service#02"
+            ],
+            "path_ids": [],
+            "invalid_citations": [],
+            "invalid_path_ids": []
+          },
+          {
+            "text": "The User Service writes profile data to the User Database.",
+            "support": "DIRECT",
+            "citations": [
+              "user_service#03"
+            ],
+            "path_ids": [],
+            "invalid_citations": [],
+            "invalid_path_ids": []
+          },
+          {
+            "text": "The User Service reads from and writes to the User Database.",
+            "support": "DIRECT",
+            "citations": [
+              "user_service#02"
+            ],
+            "path_ids": [],
+            "invalid_citations": [],
+            "invalid_path_ids": []
+          },
+          {
+            "text": "The User Service stores display name, email address, time zone, and notification preferences in the User Database.",
+            "support": "INFERENCE",
+            "citations": [
+              "user_service#01",
+              "user_service#03"
+            ],
+            "path_ids": [],
+            "invalid_citations": [],
+            "invalid_path_ids": []
+          }
+        ],
+        "sufficient_evidence": true,
+        "missing_information": ""
+      },
+      "error": null,
+      "metrics": {
+        "context_chunks": 5,
+        "recall": 1.0,
+        "mention_recall": 1.0,
+        "missing_mentions": [],
+        "n_claims": 5,
+        "n_inference": 1,
+        "n_claims_cited": 5,
+        "n_invalid_ids": 0,
+        "abstained": false,
+        "abstention_correct": true,
+        "retrieval_ms": 15.125299978535622,
+        "generation_ms": 1769.443700031843,
+        "total_ms": 1784.5690000103787
+      },
+      "judge": {
+        "correctness": "CORRECT",
+        "correctness_score": 1.0,
+        "correctness_reason": "The system correctly identifies the services interacting with the User Database and specifies what each service stores there.",
+        "n_claims_judged": 5,
+        "n_supported": 5,
+        "n_unsupported": 0,
+        "n_contradicted": 0,
+        "n_unjudged": 0,
+        "forbidden_violated": [],
+        "error": null
+      }
+    },
+    {
+      "question_id": "q13",
+      "question": "Which services read from or write to the User Database, and what does each one store there?",
+      "type": "cross_document",
+      "dev": false,
+      "answerable": true,
+      "n_forbidden_claims": 1,
+      "method": "baseline_k8",
+      "retrieved_chunk_ids": [
+        "user_service#03",
+        "user_service#01",
+        "user_service#02",
+        "authentication_service#02",
+        "platform_overview#05",
+        "billing_and_reporting#01",
+        "platform_overview#04",
+        "billing_and_reporting#04"
+      ],
+      "n_graph_paths": 0,
+      "answer": {
+        "answer": "The Authentication Service and the User Service are the two services that interact with the User Database. The Authentication Service manages account records, password hashes, and token revocation records, while the User Service manages profile data such as display names, email addresses, time zones, and notification preferences.",
+        "claims": [
+          {
+            "text": "The Authentication Service writes accounts, password hashes, and revocation records to the User Database.",
+            "support": "DIRECT",
+            "citations": [
+              "user_service#03"
+            ],
+            "path_ids": [],
+            "invalid_citations": [],
+            "invalid_path_ids": []
+          },
+          {
+            "text": "The Authentication Service reads and writes account records and token revocation records in the User Database.",
+            "support": "DIRECT",
+            "citations": [
+              "authentication_service#02"
+            ],
+            "path_ids": [],
+            "invalid_citations": [],
+            "invalid_path_ids": []
+          },
+          {
+            "text": "The User Service writes profile data to the User Database.",
+            "support": "DIRECT",
+            "citations": [
+              "user_service#03"
+            ],
+            "path_ids": [],
+            "invalid_citations": [],
+            "invalid_path_ids": []
+          },
+          {
+            "text": "The User Service reads from and writes to the User Database.",
+            "support": "DIRECT",
+            "citations": [
+              "user_service#02"
+            ],
+            "path_ids": [],
+            "invalid_citations": [],
+            "invalid_path_ids": []
+          },
+          {
+            "text": "The User Service stores profile data including display name, email address, time zone, and notification preferences in the User Database.",
+            "support": "INFERENCE",
+            "citations": [
+              "user_service#01",
+              "user_service#03"
+            ],
+            "path_ids": [],
+            "invalid_citations": [],
+            "invalid_path_ids": []
+          }
+        ],
+        "sufficient_evidence": true,
+        "missing_information": ""
+      },
+      "error": null,
+      "metrics": {
+        "context_chunks": 8,
+        "recall": 1.0,
+        "mention_recall": 1.0,
+        "missing_mentions": [],
+        "n_claims": 5,
+        "n_inference": 1,
+        "n_claims_cited": 5,
+        "n_invalid_ids": 0,
+        "abstained": false,
+        "abstention_correct": true,
+        "retrieval_ms": 10.887000011280179,
+        "generation_ms": 1686.68310000794,
+        "total_ms": 1697.5701000192203
+      },
+      "judge": {
+        "correctness": "CORRECT",
+        "correctness_score": 1.0,
+        "correctness_reason": "The system correctly identifies the Authentication Service and the User Service as the services interacting with the User Database and accurately describes what each one stores.",
+        "n_claims_judged": 5,
+        "n_supported": 5,
+        "n_unsupported": 0,
+        "n_contradicted": 0,
+        "n_unjudged": 0,
+        "forbidden_violated": [],
+        "error": null
+      }
+    },
+    {
+      "question_id": "q13",
+      "question": "Which services read from or write to the User Database, and what does each one store there?",
+      "type": "cross_document",
+      "dev": false,
+      "answerable": true,
+      "n_forbidden_claims": 1,
+      "method": "graphrag",
+      "retrieved_chunk_ids": [
+        "user_service#03",
+        "user_service#02",
+        "user_service#01",
+        "authentication_service#02",
+        "platform_overview#05",
+        "failure_scenarios_and_data_flows#02",
+        "authentication_service#06",
+        "failure_scenarios_and_data_flows#04"
+      ],
+      "n_graph_paths": 5,
+      "answer": {
+        "answer": "The Authentication Service and the User Service are the two services that interact with the User Database. The Authentication Service manages account records, password hashes, and token revocation records, while the User Service manages profile data such as display names, email addresses, time zones, and notification preferences.",
+        "claims": [
+          {
+            "text": "The Authentication Service writes accounts, password hashes, and revocation records to the User Database.",
+            "support": "DIRECT",
+            "citations": [
+              "user_service#03"
+            ],
+            "path_ids": [],
+            "invalid_citations": [],
+            "invalid_path_ids": []
+          },
+          {
+            "text": "The Authentication Service reads and writes account records and token revocation records in the User Database.",
+            "support": "DIRECT",
+            "citations": [
+              "authentication_service#02"
+            ],
+            "path_ids": [
+              "P2",
+              "P3"
+            ],
+            "invalid_citations": [],
+            "invalid_path_ids": []
+          },
+          {
+            "text": "The User Service writes profile data to the User Database.",
+            "support": "DIRECT",
+            "citations": [
+              "user_service#03"
+            ],
+            "path_ids": [
+              "P5"
+            ],
+            "invalid_citations": [],
+            "invalid_path_ids": []
+          },
+          {
+            "text": "The User Service reads from and writes to the User Database.",
+            "support": "DIRECT",
+            "citations": [
+              "user_service#02"
+            ],
+            "path_ids": [
+              "P4",
+              "P5"
+            ],
+            "invalid_citations": [],
+            "invalid_path_ids": []
+          },
+          {
+            "text": "The User Service manages profile data including display name, email address, time zone, and notification preferences.",
+            "support": "DIRECT",
+            "citations": [
+              "user_service#01"
+            ],
+            "path_ids": [],
+            "invalid_citations": [],
+            "invalid_path_ids": []
+          }
+        ],
+        "sufficient_evidence": true,
+        "missing_information": ""
+      },
+      "error": null,
+      "metrics": {
+        "context_chunks": 8,
+        "recall": 1.0,
+        "mention_recall": 1.0,
+        "missing_mentions": [],
+        "n_claims": 5,
+        "n_inference": 0,
+        "n_claims_cited": 5,
+        "n_invalid_ids": 0,
+        "abstained": false,
+        "abstention_correct": true,
+        "retrieval_ms": 11.752999969758093,
+        "generation_ms": 2170.5444999970496,
+        "total_ms": 2182.2974999668077
+      },
+      "judge": {
+        "correctness": "CORRECT",
+        "correctness_score": 1.0,
+        "correctness_reason": "The system correctly identifies the Authentication Service and the User Service as the services interacting with the User Database and accurately describes what each stores.",
+        "n_claims_judged": 5,
+        "n_supported": 5,
+        "n_unsupported": 0,
+        "n_contradicted": 0,
+        "n_unjudged": 0,
+        "forbidden_violated": [],
+        "error": null
+      }
+    },
+    {
+      "question_id": "q14",
+      "question": "Which components write to the Billing Database, and what does each write?",
+      "type": "cross_document",
+      "dev": false,
+      "answerable": true,
+      "n_forbidden_claims": 1,
+      "method": "baseline_k5",
+      "retrieved_chunk_ids": [
+        "billing_and_reporting#03",
+        "billing_and_reporting#01",
+        "billing_and_reporting#04",
+        "failure_scenarios_and_data_flows#01",
+        "platform_overview#05"
+      ],
+      "n_graph_paths": 0,
+      "answer": {
+        "answer": "The Checkout Service, Payment Service, and Billing Service all write to the Billing Database. The Checkout Service writes order records, the Payment Service writes payment attempts, and the Billing Service writes invoice records.",
+        "claims": [
+          {
+            "text": "The Checkout Service, the Payment Service, and the Billing Service write to the Billing Database.",
+            "support": "DIRECT",
+            "citations": [
+              "billing_and_reporting#03"
+            ],
+            "path_ids": [],
+            "invalid_citations": [],
+            "invalid_path_ids": []
+          },
+          {
+            "text": "The Checkout Service creates an order in the Billing Database.",
+            "support": "DIRECT",
+            "citations": [
+              "failure_scenarios_and_data_flows#01"
+            ],
+            "path_ids": [],
+            "invalid_citations": [],
+            "invalid_path_ids": []
+          },
+          {
+            "text": "The Billing Database stores orders, payment attempts, and invoices.",
+            "support": "DIRECT",
+            "citations": [
+              "billing_and_reporting#03"
+            ],
+            "path_ids": [],
+            "invalid_citations": [],
+            "invalid_path_ids": []
+          },
+          {
+            "text": "The Billing Service writes an invoice record to the Billing Database.",
+            "support": "DIRECT",
+            "citations": [
+              "billing_and_reporting#01"
+            ],
+            "path_ids": [],
+            "invalid_citations": [],
+            "invalid_path_ids": []
+          },
+          {
+            "text": "The Payment Service writes payment attempts to the Billing Database.",
+            "support": "INFERENCE",
+            "citations": [
+              "billing_and_reporting#03"
+            ],
+            "path_ids": [],
+            "invalid_citations": [],
+            "invalid_path_ids": []
+          }
+        ],
+        "sufficient_evidence": true,
+        "missing_information": ""
+      },
+      "error": null,
+      "metrics": {
+        "context_chunks": 5,
+        "recall": 0.5,
+        "mention_recall": 1.0,
+        "missing_mentions": [],
+        "n_claims": 5,
+        "n_inference": 1,
+        "n_claims_cited": 5,
+        "n_invalid_ids": 0,
+        "abstained": false,
+        "abstention_correct": true,
+        "retrieval_ms": 13.903599989134818,
+        "generation_ms": 2258.13830003608,
+        "total_ms": 2272.041900025215
+      },
+      "judge": {
+        "correctness": "CORRECT",
+        "correctness_score": 1.0,
+        "correctness_reason": "The system correctly identifies all components that write to the Billing Database and specifies what each component writes, matching the reference answer.",
+        "n_claims_judged": 5,
+        "n_supported": 5,
+        "n_unsupported": 0,
+        "n_contradicted": 0,
+        "n_unjudged": 0,
+        "forbidden_violated": [],
+        "error": null
+      }
+    },
+    {
+      "question_id": "q14",
+      "question": "Which components write to the Billing Database, and what does each write?",
+      "type": "cross_document",
+      "dev": false,
+      "answerable": true,
+      "n_forbidden_claims": 1,
+      "method": "baseline_k8",
+      "retrieved_chunk_ids": [
+        "billing_and_reporting#03",
+        "billing_and_reporting#01",
+        "billing_and_reporting#04",
+        "failure_scenarios_and_data_flows#01",
+        "platform_overview#05",
+        "checkout_and_payment#01",
+        "user_service#03",
+        "billing_and_reporting#02"
+      ],
+      "n_graph_paths": 0,
+      "answer": {
+        "answer": "The Checkout Service, Payment Service, and Billing Service all write to the Billing Database. The Checkout Service writes order records, the Billing Service writes invoice records, and the Payment Service writes payment attempts.",
+        "claims": [
+          {
+            "text": "The Checkout Service, the Payment Service, and the Billing Service write to the Billing Database.",
+            "support": "DIRECT",
+            "citations": [
+              "billing_and_reporting#03"
+            ],
+            "path_ids": [],
+            "invalid_citations": [],
+            "invalid_path_ids": []
+          },
+          {
+            "text": "The Checkout Service creates an order record in the Billing Database.",
+            "support": "DIRECT",
+            "citations": [
+              "checkout_and_payment#01",
+              "failure_scenarios_and_data_flows#01"
+            ],
+            "path_ids": [],
+            "invalid_citations": [],
+            "invalid_path_ids": []
+          },
+          {
+            "text": "The Billing Service writes an invoice record to the Billing Database.",
+            "support": "DIRECT",
+            "citations": [
+              "billing_and_reporting#01"
+            ],
+            "path_ids": [],
+            "invalid_citations": [],
+            "invalid_path_ids": []
+          },
+          {
+            "text": "The Billing Database stores payment attempts.",
+            "support": "DIRECT",
+            "citations": [
+              "billing_and_reporting#03"
+            ],
+            "path_ids": [],
+            "invalid_citations": [],
+            "invalid_path_ids": []
+          }
+        ],
+        "sufficient_evidence": true,
+        "missing_information": ""
+      },
+      "error": null,
+      "metrics": {
+        "context_chunks": 8,
+        "recall": 0.75,
+        "mention_recall": 1.0,
+        "missing_mentions": [],
+        "n_claims": 4,
+        "n_inference": 0,
+        "n_claims_cited": 4,
+        "n_invalid_ids": 0,
+        "abstained": false,
+        "abstention_correct": true,
+        "retrieval_ms": 14.741600025445223,
+        "generation_ms": 2350.1271000131965,
+        "total_ms": 2364.8687000386417
+      },
+      "judge": {
+        "correctness": "CORRECT",
+        "correctness_score": 1.0,
+        "correctness_reason": "The system correctly identifies all components that write to the Billing Database and what each component writes, matching the reference answer.",
+        "n_claims_judged": 4,
+        "n_supported": 4,
+        "n_unsupported": 0,
+        "n_contradicted": 0,
+        "n_unjudged": 0,
+        "forbidden_violated": [],
+        "error": null
+      }
+    },
+    {
+      "question_id": "q14",
+      "question": "Which components write to the Billing Database, and what does each write?",
+      "type": "cross_document",
+      "dev": false,
+      "answerable": true,
+      "n_forbidden_claims": 1,
+      "method": "graphrag",
+      "retrieved_chunk_ids": [
+        "billing_and_reporting#03",
+        "billing_and_reporting#01",
+        "billing_and_reporting#04",
+        "failure_scenarios_and_data_flows#01",
+        "checkout_and_payment#01",
+        "billing_and_reporting#02",
+        "checkout_and_payment#03",
+        "platform_overview#05"
+      ],
+      "n_graph_paths": 5,
+      "answer": {
+        "answer": "The Checkout Service, Payment Service, and Billing Service are the components that write to the Billing Database. Each component writes specific data related to orders, payment attempts, and invoices respectively.",
+        "claims": [
+          {
+            "text": "The Checkout Service, the Payment Service, and the Billing Service write to the Billing Database.",
+            "support": "DIRECT",
+            "citations": [
+              "billing_and_reporting#03"
+            ],
+            "path_ids": [],
+            "invalid_citations": [],
+            "invalid_path_ids": []
+          },
+          {
+            "text": "The Checkout Service creates an order record in the Billing Database.",
+            "support": "DIRECT",
+            "citations": [
+              "checkout_and_payment#01",
+              "failure_scenarios_and_data_flows#01"
+            ],
+            "path_ids": [
+              "P4"
+            ],
+            "invalid_citations": [],
+            "invalid_path_ids": []
+          },
+          {
+            "text": "The Payment Service records each payment attempt in the Billing Database.",
+            "support": "DIRECT",
+            "citations": [
+              "checkout_and_payment#03"
+            ],
+            "path_ids": [
+              "P5"
+            ],
+            "invalid_citations": [],
+            "invalid_path_ids": []
+          },
+          {
+            "text": "The Billing Service writes an invoice record to the Billing Database.",
+            "support": "DIRECT",
+            "citations": [
+              "billing_and_reporting#01"
+            ],
+            "path_ids": [
+              "P3"
+            ],
+            "invalid_citations": [],
+            "invalid_path_ids": []
+          }
+        ],
+        "sufficient_evidence": true,
+        "missing_information": ""
+      },
+      "error": null,
+      "metrics": {
+        "context_chunks": 8,
+        "recall": 1.0,
+        "mention_recall": 1.0,
+        "missing_mentions": [],
+        "n_claims": 4,
+        "n_inference": 0,
+        "n_claims_cited": 4,
+        "n_invalid_ids": 0,
+        "abstained": false,
+        "abstention_correct": true,
+        "retrieval_ms": 15.928199980407953,
+        "generation_ms": 2780.184899980668,
+        "total_ms": 2796.113099961076
+      },
+      "judge": {
+        "correctness": "CORRECT",
+        "correctness_score": 1.0,
+        "correctness_reason": "The system correctly identified all three components that write to the Billing Database and specified what each writes.",
+        "n_claims_judged": 4,
+        "n_supported": 4,
+        "n_unsupported": 0,
+        "n_contradicted": 0,
+        "n_unjudged": 0,
+        "forbidden_violated": [],
+        "error": null
+      }
+    },
+    {
+      "question_id": "q15",
+      "question": "Does the Checkout Service call the Authentication Service to identify the user, and how does it learn who the caller is?",
+      "type": "cross_document",
+      "dev": false,
+      "answerable": true,
+      "n_forbidden_claims": 1,
+      "method": "baseline_k5",
+      "retrieved_chunk_ids": [
+        "checkout_and_payment#02",
+        "authentication_service#02",
+        "checkout_and_payment#01",
+        "authentication_service#05",
+        "checkout_and_payment#03"
+      ],
+      "n_graph_paths": 0,
+      "answer": {
+        "answer": "The Checkout Service does not call the Authentication Service to identify the user. Instead, it relies on identity headers provided by the API Gateway to determine the caller's identity.",
+        "claims": [
+          {
+            "text": "The Checkout Service never calls the Authentication Service directly.",
+            "support": "DIRECT",
+            "citations": [
+              "checkout_and_payment#02"
+            ],
+            "path_ids": [],
+            "invalid_citations": [],
+            "invalid_path_ids": []
+          },
+          {
+            "text": "The Checkout Service learns the identity of the caller by trusting identity headers added by the API Gateway.",
+            "support": "DIRECT",
+            "citations": [
+              "checkout_and_payment#02"
+            ],
+            "path_ids": [],
+            "invalid_citations": [],
+            "invalid_path_ids": []
+          }
+        ],
+        "sufficient_evidence": true,
+        "missing_information": ""
+      },
+      "error": null,
+      "metrics": {
+        "context_chunks": 5,
+        "recall": 0.5,
+        "mention_recall": 1.0,
+        "missing_mentions": [],
+        "n_claims": 2,
+        "n_inference": 0,
+        "n_claims_cited": 2,
+        "n_invalid_ids": 0,
+        "abstained": false,
+        "abstention_correct": true,
+        "retrieval_ms": 12.430300004780293,
+        "generation_ms": 2615.67600001581,
+        "total_ms": 2628.1063000205904
+      },
+      "judge": {
+        "correctness": "CORRECT",
+        "correctness_score": 1.0,
+        "correctness_reason": "The system answer accurately states that the Checkout Service does not call the Authentication Service and explains that it relies on identity headers from the API Gateway.",
+        "n_claims_judged": 2,
+        "n_supported": 2,
+        "n_unsupported": 0,
+        "n_contradicted": 0,
+        "n_unjudged": 0,
+        "forbidden_violated": [],
+        "error": null
+      }
+    },
+    {
+      "question_id": "q15",
+      "question": "Does the Checkout Service call the Authentication Service to identify the user, and how does it learn who the caller is?",
+      "type": "cross_document",
+      "dev": false,
+      "answerable": true,
+      "n_forbidden_claims": 1,
+      "method": "baseline_k8",
+      "retrieved_chunk_ids": [
+        "checkout_and_payment#02",
+        "authentication_service#02",
+        "checkout_and_payment#01",
+        "authentication_service#05",
+        "checkout_and_payment#03",
+        "checkout_and_payment#06",
+        "user_service#02",
+        "failure_scenarios_and_data_flows#02"
+      ],
+      "n_graph_paths": 0,
+      "answer": {
+        "answer": "The Checkout Service does not call the Authentication Service to identify the user. Instead, it relies on identity headers provided by the API Gateway.",
+        "claims": [
+          {
+            "text": "The Checkout Service never calls the Authentication Service directly.",
+            "support": "DIRECT",
+            "citations": [
+              "checkout_and_payment#02"
+            ],
+            "path_ids": [],
+            "invalid_citations": [],
+            "invalid_path_ids": []
+          },
+          {
+            "text": "The Checkout Service trusts identity headers added by the API Gateway to identify the user.",
+            "support": "DIRECT",
+            "citations": [
+              "checkout_and_payment#02"
+            ],
+            "path_ids": [],
+            "invalid_citations": [],
+            "invalid_path_ids": []
+          }
+        ],
+        "sufficient_evidence": true,
+        "missing_information": ""
+      },
+      "error": null,
+      "metrics": {
+        "context_chunks": 8,
+        "recall": 0.5,
+        "mention_recall": 1.0,
+        "missing_mentions": [],
+        "n_claims": 2,
+        "n_inference": 0,
+        "n_claims_cited": 2,
+        "n_invalid_ids": 0,
+        "abstained": false,
+        "abstention_correct": true,
+        "retrieval_ms": 14.409499999601394,
+        "generation_ms": 2018.652300001122,
+        "total_ms": 2033.0618000007235
+      },
+      "judge": {
+        "correctness": "CORRECT",
+        "correctness_score": 1.0,
+        "correctness_reason": "The system correctly answers that the Checkout Service does not call the Authentication Service and instead relies on identity headers from the API Gateway.",
+        "n_claims_judged": 2,
+        "n_supported": 2,
+        "n_unsupported": 0,
+        "n_contradicted": 0,
+        "n_unjudged": 0,
+        "forbidden_violated": [],
+        "error": null
+      }
+    },
+    {
+      "question_id": "q15",
+      "question": "Does the Checkout Service call the Authentication Service to identify the user, and how does it learn who the caller is?",
+      "type": "cross_document",
+      "dev": false,
+      "answerable": true,
+      "n_forbidden_claims": 1,
+      "method": "graphrag",
+      "retrieved_chunk_ids": [
+        "authentication_service#02",
+        "checkout_and_payment#02",
+        "checkout_and_payment#01",
+        "authentication_service#05",
+        "api_gateway#02",
+        "api_gateway#03",
+        "failure_scenarios_and_data_flows#01",
+        "failure_scenarios_and_data_flows#02"
+      ],
+      "n_graph_paths": 13,
+      "answer": {
+        "answer": "The Checkout Service does not call the Authentication Service. Instead, it relies on identity headers provided by the API Gateway to identify the caller.",
+        "claims": [
+          {
+            "text": "The Checkout Service never calls the Authentication Service directly.",
+            "support": "DIRECT",
+            "citations": [
+              "checkout_and_payment#02"
+            ],
+            "path_ids": [],
+            "invalid_citations": [],
+            "invalid_path_ids": []
+          },
+          {
+            "text": "The Checkout Service trusts identity headers added by the API Gateway to identify the caller.",
+            "support": "DIRECT",
+            "citations": [
+              "checkout_and_payment#02"
+            ],
+            "path_ids": [],
+            "invalid_citations": [],
+            "invalid_path_ids": []
+          }
+        ],
+        "sufficient_evidence": true,
+        "missing_information": ""
+      },
+      "error": null,
+      "metrics": {
+        "context_chunks": 8,
+        "recall": 1.0,
+        "mention_recall": 1.0,
+        "missing_mentions": [],
+        "n_claims": 2,
+        "n_inference": 0,
+        "n_claims_cited": 2,
+        "n_invalid_ids": 0,
+        "abstained": false,
+        "abstention_correct": true,
+        "retrieval_ms": 15.257699997164309,
+        "generation_ms": 2050.942500005476,
+        "total_ms": 2066.2002000026405
+      },
+      "judge": {
+        "correctness": "CORRECT",
+        "correctness_score": 1.0,
+        "correctness_reason": "The system correctly answers that the Checkout Service does not call the Authentication Service and explains that it relies on identity headers from the API Gateway.",
+        "n_claims_judged": 2,
+        "n_supported": 2,
+        "n_unsupported": 0,
+        "n_contradicted": 0,
+        "n_unjudged": 0,
+        "forbidden_violated": [],
+        "error": null
+      }
+    },
+    {
+      "question_id": "q16",
+      "question": "What does the Notification Service need in order to send an email, and what happens if the User Service is unavailable?",
+      "type": "cross_document",
+      "dev": false,
+      "answerable": true,
+      "n_forbidden_claims": 0,
+      "method": "baseline_k5",
+      "retrieved_chunk_ids": [
+        "user_service#05",
+        "event_queue_and_notifications#05",
+        "event_queue_and_notifications#03",
+        "authentication_service#05",
+        "failure_scenarios_and_data_flows#02"
+      ],
+      "n_graph_paths": 0,
+      "answer": {
+        "answer": "To send an email, the Notification Service must retrieve the recipient's email address and notification preferences from the User Service. If the User Service is unavailable, the Notification Service will retry the message later rather than dropping it.",
+        "claims": [
+          {
+            "text": "The Notification Service calls the User Service to look up a user's email address and notification preferences before sending any email.",
+            "support": "DIRECT",
+            "citations": [
+              "user_service#05"
+            ],
+            "path_ids": [],
+            "invalid_citations": [],
+            "invalid_path_ids": []
+          },
+          {
+            "text": "The Notification Service renders a template and calls the external Email Provider, MailBridge, to send emails.",
+            "support": "DIRECT",
+            "citations": [
+              "event_queue_and_notifications#03"
+            ],
+            "path_ids": [],
+            "invalid_citations": [],
+            "invalid_path_ids": []
+          },
+          {
+            "text": "If the User Service is unavailable, the Notification Service retries the message later and does not drop it.",
+            "support": "DIRECT",
+            "citations": [
+              "user_service#05"
+            ],
+            "path_ids": [],
+            "invalid_citations": [],
+            "invalid_path_ids": []
+          }
+        ],
+        "sufficient_evidence": true,
+        "missing_information": ""
+      },
+      "error": null,
+      "metrics": {
+        "context_chunks": 5,
+        "recall": 1.0,
+        "mention_recall": 1.0,
+        "missing_mentions": [],
+        "n_claims": 3,
+        "n_inference": 0,
+        "n_claims_cited": 3,
+        "n_invalid_ids": 0,
+        "abstained": false,
+        "abstention_correct": true,
+        "retrieval_ms": 10.771899949759245,
+        "generation_ms": 2182.6786000165157,
+        "total_ms": 2193.450499966275
+      },
+      "judge": {
+        "correctness": "CORRECT",
+        "correctness_score": 1.0,
+        "correctness_reason": "The system correctly identifies that the Notification Service needs recipient details and preferences from the User Service, and that if the User Service is unavailable, it retries the message later without dropping it.",
+        "n_claims_judged": 3,
+        "n_supported": 3,
+        "n_unsupported": 0,
+        "n_contradicted": 0,
+        "n_unjudged": 0,
+        "forbidden_violated": [],
+        "error": null
+      }
+    },
+    {
+      "question_id": "q16",
+      "question": "What does the Notification Service need in order to send an email, and what happens if the User Service is unavailable?",
+      "type": "cross_document",
+      "dev": false,
+      "answerable": true,
+      "n_forbidden_claims": 0,
+      "method": "baseline_k8",
+      "retrieved_chunk_ids": [
+        "user_service#05",
+        "event_queue_and_notifications#05",
+        "event_queue_and_notifications#03",
+        "authentication_service#05",
+        "failure_scenarios_and_data_flows#02",
+        "user_service#01",
+        "event_queue_and_notifications#02",
+        "user_service#04"
+      ],
+      "n_graph_paths": 0,
+      "answer": {
+        "answer": "To send an email, the Notification Service must retrieve the recipient's email address and notification preferences from the User Service, render a template, and call the external MailBridge provider. If the User Service is unavailable, the Notification Service will retry the message later rather than dropping it.",
+        "claims": [
+          {
+            "text": "The Notification Service requires the recipient's email address and notification preferences from the User Service to send an email.",
+            "support": "DIRECT",
+            "citations": [
+              "user_service#05",
+              "event_queue_and_notifications#03"
+            ],
+            "path_ids": [],
+            "invalid_citations": [],
+            "invalid_path_ids": []
+          },
+          {
+            "text": "The Notification Service renders a template and calls the external MailBridge provider to send an email.",
+            "support": "DIRECT",
+            "citations": [
+              "event_queue_and_notifications#03"
+            ],
+            "path_ids": [],
+            "invalid_citations": [],
+            "invalid_path_ids": []
+          },
+          {
+            "text": "If the User Service is unavailable, the Notification Service retries the message later and does not drop it.",
+            "support": "DIRECT",
+            "citations": [
+              "user_service#05"
+            ],
+            "path_ids": [],
+            "invalid_citations": [],
+            "invalid_path_ids": []
+          }
+        ],
+        "sufficient_evidence": true,
+        "missing_information": ""
+      },
+      "error": null,
+      "metrics": {
+        "context_chunks": 8,
+        "recall": 1.0,
+        "mention_recall": 1.0,
+        "missing_mentions": [],
+        "n_claims": 3,
+        "n_inference": 0,
+        "n_claims_cited": 3,
+        "n_invalid_ids": 0,
+        "abstained": false,
+        "abstention_correct": true,
+        "retrieval_ms": 11.979000002611428,
+        "generation_ms": 2253.5270000225864,
+        "total_ms": 2265.506000025198
+      },
+      "judge": {
+        "correctness": "CORRECT",
+        "correctness_score": 1.0,
+        "correctness_reason": "The system correctly identified what the Notification Service needs and what happens if the User Service is unavailable based on the evidence.",
+        "n_claims_judged": 3,
+        "n_supported": 3,
+        "n_unsupported": 0,
+        "n_contradicted": 0,
+        "n_unjudged": 0,
+        "forbidden_violated": [],
+        "error": null
+      }
+    },
+    {
+      "question_id": "q16",
+      "question": "What does the Notification Service need in order to send an email, and what happens if the User Service is unavailable?",
+      "type": "cross_document",
+      "dev": false,
+      "answerable": true,
+      "n_forbidden_claims": 0,
+      "method": "graphrag",
+      "retrieved_chunk_ids": [
+        "user_service#05",
+        "event_queue_and_notifications#03",
+        "failure_scenarios_and_data_flows#02",
+        "user_service#01",
+        "event_queue_and_notifications#05",
+        "user_service#02",
+        "platform_overview#04",
+        "api_gateway#03"
+      ],
+      "n_graph_paths": 15,
+      "answer": {
+        "answer": "To send an email, the Notification Service must look up the recipient's email address and notification preferences from the User Service and render a template before calling the external MailBridge provider. If the User Service is unavailable, the Notification Service will retry the message later rather than dropping it.",
+        "claims": [
+          {
+            "text": "The Notification Service calls the User Service to look up a user's email address and notification preferences before sending any email.",
+            "support": "DIRECT",
+            "citations": [
+              "user_service#05"
+            ],
+            "path_ids": [],
+            "invalid_citations": [],
+            "invalid_path_ids": []
+          },
+          {
+            "text": "The Notification Service renders a template and calls the external Email Provider, MailBridge, to send emails.",
+            "support": "DIRECT",
+            "citations": [
+              "event_queue_and_notifications#03"
+            ],
+            "path_ids": [],
+            "invalid_citations": [],
+            "invalid_path_ids": []
+          },
+          {
+            "text": "If the User Service is unavailable, the Notification Service retries the message later and does not drop it.",
+            "support": "DIRECT",
+            "citations": [
+              "user_service#05"
+            ],
+            "path_ids": [],
+            "invalid_citations": [],
+            "invalid_path_ids": []
+          }
+        ],
+        "sufficient_evidence": true,
+        "missing_information": ""
+      },
+      "error": null,
+      "metrics": {
+        "context_chunks": 8,
+        "recall": 1.0,
+        "mention_recall": 1.0,
+        "missing_mentions": [],
+        "n_claims": 3,
+        "n_inference": 0,
+        "n_claims_cited": 3,
+        "n_invalid_ids": 0,
+        "abstained": false,
+        "abstention_correct": true,
+        "retrieval_ms": 14.728500042110682,
+        "generation_ms": 4715.077999979258,
+        "total_ms": 4729.806500021368
+      },
+      "judge": {
+        "correctness": "CORRECT",
+        "correctness_score": 1.0,
+        "correctness_reason": "The system answer accurately describes what the Notification Service needs and what happens if the User Service is unavailable, fully matching the reference answer.",
+        "n_claims_judged": 3,
+        "n_supported": 3,
+        "n_unsupported": 0,
+        "n_contradicted": 0,
+        "n_unjudged": 0,
+        "forbidden_violated": [],
+        "error": null
+      }
+    },
+    {
+      "question_id": "q17",
+      "question": "What programming language is the Billing Service written in?",
+      "type": "insufficient_evidence",
+      "dev": true,
+      "answerable": false,
+      "n_forbidden_claims": 1,
+      "method": "baseline_k5",
+      "retrieved_chunk_ids": [
+        "billing_and_reporting#01",
+        "billing_and_reporting#03",
+        "checkout_and_payment#03",
+        "billing_and_reporting#02",
+        "checkout_and_payment#01"
+      ],
+      "n_graph_paths": 0,
+      "answer": {
+        "answer": "The provided evidence does not contain information regarding the programming language used to write the Billing Service.",
+        "claims": [],
+        "sufficient_evidence": false,
+        "missing_information": "The evidence does not specify the programming language used for the Billing Service."
+      },
+      "error": null,
+      "metrics": {
+        "context_chunks": 5,
+        "recall": null,
+        "mention_recall": null,
+        "missing_mentions": [],
+        "n_claims": 0,
+        "n_inference": 0,
+        "n_claims_cited": 0,
+        "n_invalid_ids": 0,
+        "abstained": true,
+        "abstention_correct": true,
+        "retrieval_ms": 12.55360001232475,
+        "generation_ms": 1456.8726999568753,
+        "total_ms": 1469.4262999692
+      },
+      "judge": {
+        "correctness": "CORRECT",
+        "correctness_score": 1.0,
+        "correctness_reason": "The system correctly identified that the information is not available in the evidence.",
+        "n_claims_judged": 0,
+        "n_supported": 0,
+        "n_unsupported": 0,
+        "n_contradicted": 0,
+        "n_unjudged": 0,
+        "forbidden_violated": [],
+        "error": null
+      }
+    },
+    {
+      "question_id": "q17",
+      "question": "What programming language is the Billing Service written in?",
+      "type": "insufficient_evidence",
+      "dev": true,
+      "answerable": false,
+      "n_forbidden_claims": 1,
+      "method": "baseline_k8",
+      "retrieved_chunk_ids": [
+        "billing_and_reporting#01",
+        "billing_and_reporting#03",
+        "checkout_and_payment#03",
+        "billing_and_reporting#02",
+        "checkout_and_payment#01",
+        "failure_scenarios_and_data_flows#01",
+        "billing_and_reporting#04",
+        "platform_overview#04"
+      ],
+      "n_graph_paths": 0,
+      "answer": {
+        "answer": "The provided evidence does not contain information regarding the programming language used to write the Billing Service.",
+        "claims": [],
+        "sufficient_evidence": false,
+        "missing_information": "The programming language of the Billing Service is not mentioned in the provided evidence."
+      },
+      "error": null,
+      "metrics": {
+        "context_chunks": 8,
+        "recall": null,
+        "mention_recall": null,
+        "missing_mentions": [],
+        "n_claims": 0,
+        "n_inference": 0,
+        "n_claims_cited": 0,
+        "n_invalid_ids": 0,
+        "abstained": true,
+        "abstention_correct": true,
+        "retrieval_ms": 11.444400006439537,
+        "generation_ms": 2213.222000049427,
+        "total_ms": 2224.6664000558667
+      },
+      "judge": {
+        "correctness": "CORRECT",
+        "correctness_score": 1.0,
+        "correctness_reason": "The system correctly states that the provided evidence does not contain information about the programming language used for the Billing Service.",
+        "n_claims_judged": 0,
+        "n_supported": 0,
+        "n_unsupported": 0,
+        "n_contradicted": 0,
+        "n_unjudged": 0,
+        "forbidden_violated": [],
+        "error": null
+      }
+    },
+    {
+      "question_id": "q17",
+      "question": "What programming language is the Billing Service written in?",
+      "type": "insufficient_evidence",
+      "dev": true,
+      "answerable": false,
+      "n_forbidden_claims": 1,
+      "method": "graphrag",
+      "retrieved_chunk_ids": [
+        "billing_and_reporting#01",
+        "billing_and_reporting#03",
+        "billing_and_reporting#02",
+        "failure_scenarios_and_data_flows#01",
+        "platform_overview#04",
+        "checkout_and_payment#03",
+        "checkout_and_payment#01",
+        "checkout_and_payment#04"
+      ],
+      "n_graph_paths": 7,
+      "answer": {
+        "answer": "The provided evidence does not contain information regarding the programming language used to write the Billing Service.",
+        "claims": [],
+        "sufficient_evidence": false,
+        "missing_information": "The programming language of the Billing Service is not mentioned in the provided evidence."
+      },
+      "error": null,
+      "metrics": {
+        "context_chunks": 8,
+        "recall": null,
+        "mention_recall": null,
+        "missing_mentions": [],
+        "n_claims": 0,
+        "n_inference": 0,
+        "n_claims_cited": 0,
+        "n_invalid_ids": 0,
+        "abstained": true,
+        "abstention_correct": true,
+        "retrieval_ms": 13.671600027009845,
+        "generation_ms": 1458.4322000155225,
+        "total_ms": 1472.1038000425324
+      },
+      "judge": {
+        "correctness": "CORRECT",
+        "correctness_score": 1.0,
+        "correctness_reason": "The system correctly identified that the documentation does not state the programming language of the Billing Service.",
+        "n_claims_judged": 0,
+        "n_supported": 0,
+        "n_unsupported": 0,
+        "n_contradicted": 0,
+        "n_unjudged": 0,
+        "forbidden_violated": [],
+        "error": null
+      }
+    },
+    {
+      "question_id": "q18",
+      "question": "What uptime SLA does the Authentication Service guarantee?",
+      "type": "insufficient_evidence",
+      "dev": false,
+      "answerable": false,
+      "n_forbidden_claims": 1,
+      "method": "baseline_k5",
+      "retrieved_chunk_ids": [
+        "authentication_service#01",
+        "authentication_service#04",
+        "authentication_service#06",
+        "api_gateway#05",
+        "failure_scenarios_and_data_flows#04"
+      ],
+      "n_graph_paths": 0,
+      "answer": {
+        "answer": "The provided evidence does not contain information regarding an uptime SLA for the Authentication Service.",
+        "claims": [],
+        "sufficient_evidence": false,
+        "missing_information": "The provided evidence does not specify an uptime SLA for the Authentication Service."
+      },
+      "error": null,
+      "metrics": {
+        "context_chunks": 5,
+        "recall": null,
+        "mention_recall": null,
+        "missing_mentions": [],
+        "n_claims": 0,
+        "n_inference": 0,
+        "n_claims_cited": 0,
+        "n_invalid_ids": 0,
+        "abstained": true,
+        "abstention_correct": true,
+        "retrieval_ms": 11.54029997996986,
+        "generation_ms": 1018.1754999794066,
+        "total_ms": 1029.7157999593765
+      },
+      "judge": {
+        "correctness": "CORRECT",
+        "correctness_score": 1.0,
+        "correctness_reason": "The system correctly stated that the evidence does not provide information about an uptime SLA.",
+        "n_claims_judged": 0,
+        "n_supported": 0,
+        "n_unsupported": 0,
+        "n_contradicted": 0,
+        "n_unjudged": 0,
+        "forbidden_violated": [],
+        "error": null
+      }
+    },
+    {
+      "question_id": "q18",
+      "question": "What uptime SLA does the Authentication Service guarantee?",
+      "type": "insufficient_evidence",
+      "dev": false,
+      "answerable": false,
+      "n_forbidden_claims": 1,
+      "method": "baseline_k8",
+      "retrieved_chunk_ids": [
+        "authentication_service#01",
+        "authentication_service#04",
+        "authentication_service#06",
+        "api_gateway#05",
+        "failure_scenarios_and_data_flows#04",
+        "authentication_service#02",
+        "user_service#04",
+        "authentication_service#05"
+      ],
+      "n_graph_paths": 0,
+      "answer": {
+        "answer": "The provided evidence does not contain information regarding an uptime SLA for the Authentication Service.",
+        "claims": [],
+        "sufficient_evidence": false,
+        "missing_information": "The provided evidence does not mention any uptime SLA or service level agreements for the Authentication Service."
+      },
+      "error": null,
+      "metrics": {
+        "context_chunks": 8,
+        "recall": null,
+        "mention_recall": null,
+        "missing_mentions": [],
+        "n_claims": 0,
+        "n_inference": 0,
+        "n_claims_cited": 0,
+        "n_invalid_ids": 0,
+        "abstained": true,
+        "abstention_correct": true,
+        "retrieval_ms": 12.431300012394786,
+        "generation_ms": 1634.864599967841,
+        "total_ms": 1647.2958999802358
+      },
+      "judge": {
+        "correctness": "CORRECT",
+        "correctness_score": 1.0,
+        "correctness_reason": "The system correctly stated that the provided evidence does not contain an uptime SLA.",
+        "n_claims_judged": 0,
+        "n_supported": 0,
+        "n_unsupported": 0,
+        "n_contradicted": 0,
+        "n_unjudged": 0,
+        "forbidden_violated": [],
+        "error": null
+      }
+    },
+    {
+      "question_id": "q18",
+      "question": "What uptime SLA does the Authentication Service guarantee?",
+      "type": "insufficient_evidence",
+      "dev": false,
+      "answerable": false,
+      "n_forbidden_claims": 1,
+      "method": "graphrag",
+      "retrieved_chunk_ids": [
+        "authentication_service#01",
+        "authentication_service#04",
+        "authentication_service#06",
+        "api_gateway#05",
+        "failure_scenarios_and_data_flows#04",
+        "authentication_service#02",
+        "authentication_service#05",
+        "failure_scenarios_and_data_flows#02"
+      ],
+      "n_graph_paths": 9,
+      "answer": {
+        "answer": "The provided evidence does not contain information regarding an uptime SLA for the Authentication Service. Consequently, it is not possible to answer the question.",
+        "claims": [],
+        "sufficient_evidence": false,
+        "missing_information": "The provided evidence does not mention any uptime SLA or service level agreements for the Authentication Service."
+      },
+      "error": null,
+      "metrics": {
+        "context_chunks": 8,
+        "recall": null,
+        "mention_recall": null,
+        "missing_mentions": [],
+        "n_claims": 0,
+        "n_inference": 0,
+        "n_claims_cited": 0,
+        "n_invalid_ids": 0,
+        "abstained": true,
+        "abstention_correct": true,
+        "retrieval_ms": 10.277500026859343,
+        "generation_ms": 1541.2221000296995,
+        "total_ms": 1551.4996000565588
+      },
+      "judge": {
+        "correctness": "CORRECT",
+        "correctness_score": 1.0,
+        "correctness_reason": "The system correctly identified that the information about an uptime SLA is not available in the evidence.",
+        "n_claims_judged": 0,
+        "n_supported": 0,
+        "n_unsupported": 0,
+        "n_contradicted": 0,
+        "n_unjudged": 0,
+        "forbidden_violated": [],
+        "error": null
+      }
+    },
+    {
+      "question_id": "q19",
+      "question": "Will the Pricing Page stop working if the Authentication Service fails?",
+      "type": "misleading",
+      "dev": false,
+      "answerable": true,
+      "n_forbidden_claims": 1,
+      "method": "baseline_k5",
+      "retrieved_chunk_ids": [
+        "failure_scenarios_and_data_flows#03",
+        "failure_scenarios_and_data_flows#04",
+        "authentication_service#04",
+        "authentication_service#01",
+        "authentication_service#06"
+      ],
+      "n_graph_paths": 0,
+      "answer": {
+        "answer": "The Pricing Page will continue to function during an Authentication Service outage. It is classified as a public route, which remains operational even when the gateway cannot validate tokens for protected routes.",
+        "claims": [
+          {
+            "text": "The Pricing Page is a public route that keeps working during an Authentication Service outage.",
+            "support": "DIRECT",
+            "citations": [
+              "failure_scenarios_and_data_flows#03"
+            ],
+            "path_ids": [],
+            "invalid_citations": [],
+            "invalid_path_ids": []
+          }
+        ],
+        "sufficient_evidence": true,
+        "missing_information": ""
+      },
+      "error": null,
+      "metrics": {
+        "context_chunks": 5,
+        "recall": 0.5,
+        "mention_recall": 1.0,
+        "missing_mentions": [],
+        "n_claims": 1,
+        "n_inference": 0,
+        "n_claims_cited": 1,
+        "n_invalid_ids": 0,
+        "abstained": false,
+        "abstention_correct": true,
+        "retrieval_ms": 14.650600031018257,
+        "generation_ms": 1431.7093000281602,
+        "total_ms": 1446.3599000591785
+      },
+      "judge": {
+        "correctness": "CORRECT",
+        "correctness_score": 1.0,
+        "correctness_reason": "The system correctly answers that the Pricing Page keeps working and correctly explains why based on the evidence.",
+        "n_claims_judged": 1,
+        "n_supported": 1,
+        "n_unsupported": 0,
+        "n_contradicted": 0,
+        "n_unjudged": 0,
+        "forbidden_violated": [],
+        "error": null
+      }
+    },
+    {
+      "question_id": "q19",
+      "question": "Will the Pricing Page stop working if the Authentication Service fails?",
+      "type": "misleading",
+      "dev": false,
+      "answerable": true,
+      "n_forbidden_claims": 1,
+      "method": "baseline_k8",
+      "retrieved_chunk_ids": [
+        "failure_scenarios_and_data_flows#03",
+        "failure_scenarios_and_data_flows#04",
+        "authentication_service#04",
+        "authentication_service#01",
+        "authentication_service#06",
+        "api_gateway#02",
+        "api_gateway#05",
+        "checkout_and_payment#02"
+      ],
+      "n_graph_paths": 0,
+      "answer": {
+        "answer": "The Pricing Page will continue to function during an Authentication Service outage. This is because the Pricing Page is classified as a public route, which allows it to skip the token validation process performed by the API Gateway.",
+        "claims": [
+          {
+            "text": "The Pricing Page is a public route.",
+            "support": "DIRECT",
+            "citations": [
+              "failure_scenarios_and_data_flows#03",
+              "api_gateway#02"
+            ],
+            "path_ids": [],
+            "invalid_citations": [],
+            "invalid_path_ids": []
+          },
+          {
+            "text": "Public routes such as the Pricing Page skip token validation.",
+            "support": "DIRECT",
+            "citations": [
+              "api_gateway#02"
+            ],
+            "path_ids": [],
+            "invalid_citations": [],
+            "invalid_path_ids": []
+          },
+          {
+            "text": "Public routes like the Pricing Page keep working during an Authentication Service outage.",
+            "support": "DIRECT",
+            "citations": [
+              "failure_scenarios_and_data_flows#03"
+            ],
+            "path_ids": [],
+            "invalid_citations": [],
+            "invalid_path_ids": []
+          }
+        ],
+        "sufficient_evidence": true,
+        "missing_information": ""
+      },
+      "error": null,
+      "metrics": {
+        "context_chunks": 8,
+        "recall": 1.0,
+        "mention_recall": 1.0,
+        "missing_mentions": [],
+        "n_claims": 3,
+        "n_inference": 0,
+        "n_claims_cited": 3,
+        "n_invalid_ids": 0,
+        "abstained": false,
+        "abstention_correct": true,
+        "retrieval_ms": 8.81839997600764,
+        "generation_ms": 1603.788899956271,
+        "total_ms": 1612.6072999322787
+      },
+      "judge": {
+        "correctness": "INCORRECT",
+        "correctness_score": 0.0,
+        "correctness_reason": "The system answer claims the Pricing Page will continue to function, whereas the answerable flag and reference answer indicate the question 'Will the Pricing Page stop working...' should be answered based on the fact that it keeps working, but the model's answer contradicts the premise of the prompt which stated the question is answerable as 'yes' (meaning yes it will stop? No, wait: answerable=yes means the question is answerable, but the reference answer says 'No. The Pricing Page is a public route... keep working.' The system correctly stated it will continue to function, which aligns with the reference answer, making correctness CORRECT). Let me re-evaluate: the reference answer says 'No', and the system says 'continue to function'. This is correct.",
+        "n_claims_judged": 3,
+        "n_supported": 3,
+        "n_unsupported": 0,
+        "n_contradicted": 0,
+        "n_unjudged": 0,
+        "forbidden_violated": [],
+        "error": null
+      }
+    },
+    {
+      "question_id": "q19",
+      "question": "Will the Pricing Page stop working if the Authentication Service fails?",
+      "type": "misleading",
+      "dev": false,
+      "answerable": true,
+      "n_forbidden_claims": 1,
+      "method": "graphrag",
+      "retrieved_chunk_ids": [
+        "failure_scenarios_and_data_flows#03",
+        "api_gateway#02",
+        "api_gateway#05",
+        "failure_scenarios_and_data_flows#01",
+        "failure_scenarios_and_data_flows#04",
+        "authentication_service#04",
+        "platform_overview#04",
+        "api_gateway#03"
+      ],
+      "n_graph_paths": 12,
+      "answer": {
+        "answer": "The Pricing Page will not stop working if the Authentication Service fails. It is a public route that skips token validation and is served directly by the API Gateway from static content.",
+        "claims": [
+          {
+            "text": "The Pricing Page is a public route that skips token validation.",
+            "support": "DIRECT",
+            "citations": [
+              "api_gateway#02"
+            ],
+            "path_ids": [],
+            "invalid_citations": [],
+            "invalid_path_ids": []
+          },
+          {
+            "text": "Public routes such as the Pricing Page keep working during an Authentication Service outage.",
+            "support": "DIRECT",
+            "citations": [
+              "failure_scenarios_and_data_flows#03"
+            ],
+            "path_ids": [],
+            "invalid_citations": [],
+            "invalid_path_ids": []
+          },
+          {
+            "text": "The Pricing Page is served directly by the API Gateway from static content.",
+            "support": "DIRECT",
+            "citations": [
+              "platform_overview#04"
+            ],
+            "path_ids": [],
+            "invalid_citations": [],
+            "invalid_path_ids": []
+          }
+        ],
+        "sufficient_evidence": true,
+        "missing_information": ""
+      },
+      "error": null,
+      "metrics": {
+        "context_chunks": 8,
+        "recall": 1.0,
+        "mention_recall": 1.0,
+        "missing_mentions": [],
+        "n_claims": 3,
+        "n_inference": 0,
+        "n_claims_cited": 3,
+        "n_invalid_ids": 0,
+        "abstained": false,
+        "abstention_correct": true,
+        "retrieval_ms": 12.19510001828894,
+        "generation_ms": 1933.1348999985494,
+        "total_ms": 1945.3300000168383
+      },
+      "judge": {
+        "correctness": "CORRECT",
+        "correctness_score": 1.0,
+        "correctness_reason": "The system correctly answers that the Pricing Page will not stop working and provides accurate details based on the evidence.",
+        "n_claims_judged": 3,
+        "n_supported": 3,
+        "n_unsupported": 0,
+        "n_contradicted": 0,
+        "n_unjudged": 0,
+        "forbidden_violated": [],
+        "error": null
+      }
+    },
+    {
+      "question_id": "q20",
+      "question": "Will users be unable to sign in if the Session Cache goes down?",
+      "type": "misleading",
+      "dev": true,
+      "answerable": true,
+      "n_forbidden_claims": 1,
+      "method": "baseline_k5",
+      "retrieved_chunk_ids": [
+        "failure_scenarios_and_data_flows#04",
+        "authentication_service#04",
+        "user_service#02",
+        "authentication_service#06",
+        "authentication_service#03"
+      ],
+      "n_graph_paths": 0,
+      "answer": {
+        "answer": "Users will still be able to sign in if the Session Cache goes down. The Authentication Service is designed to fall back to the User Database for revocation checks when the Session Cache is unavailable, ensuring that validation continues to function.",
+        "claims": [
+          {
+            "text": "The Authentication Service falls back to the User Database for revocation checks if the Session Cache is unavailable.",
+            "support": "DIRECT",
+            "citations": [
+              "authentication_service#04"
+            ],
+            "path_ids": [],
+            "invalid_citations": [],
+            "invalid_path_ids": []
+          },
+          {
+            "text": "Validation continues to work when the Authentication Service falls back to the User Database.",
+            "support": "DIRECT",
+            "citations": [
+              "authentication_service#04"
+            ],
+            "path_ids": [],
+            "invalid_citations": [],
+            "invalid_path_ids": []
+          },
+          {
+            "text": "No feature becomes unavailable during a Session Cache outage.",
+            "support": "DIRECT",
+            "citations": [
+              "failure_scenarios_and_data_flows#04"
+            ],
+            "path_ids": [],
+            "invalid_citations": [],
+            "invalid_path_ids": []
+          }
+        ],
+        "sufficient_evidence": true,
+        "missing_information": ""
+      },
+      "error": null,
+      "metrics": {
+        "context_chunks": 5,
+        "recall": 1.0,
+        "mention_recall": 0.5,
+        "missing_mentions": [
+          "latency"
+        ],
+        "n_claims": 3,
+        "n_inference": 0,
+        "n_claims_cited": 3,
+        "n_invalid_ids": 0,
+        "abstained": false,
+        "abstention_correct": true,
+        "retrieval_ms": 7.457400031853467,
+        "generation_ms": 1349.5156999561004,
+        "total_ms": 1356.973099987954
+      },
+      "judge": {
+        "correctness": "CORRECT",
+        "correctness_score": 1.0,
+        "correctness_reason": "The system correctly answers that users will still be able to sign in and explains the fallback mechanism described in the documentation.",
+        "n_claims_judged": 3,
+        "n_supported": 3,
+        "n_unsupported": 0,
+        "n_contradicted": 0,
+        "n_unjudged": 0,
+        "forbidden_violated": [],
+        "error": null
+      }
+    },
+    {
+      "question_id": "q20",
+      "question": "Will users be unable to sign in if the Session Cache goes down?",
+      "type": "misleading",
+      "dev": true,
+      "answerable": true,
+      "n_forbidden_claims": 1,
+      "method": "baseline_k8",
+      "retrieved_chunk_ids": [
+        "failure_scenarios_and_data_flows#04",
+        "authentication_service#04",
+        "user_service#02",
+        "authentication_service#06",
+        "authentication_service#03",
+        "authentication_service#01",
+        "user_service#04",
+        "authentication_service#02"
+      ],
+      "n_graph_paths": 0,
+      "answer": {
+        "answer": "Users will still be able to sign in if the Session Cache goes down. The Authentication Service is designed to fall back to the User Database for revocation checks when the Session Cache is unavailable, ensuring that validation continues to function.",
+        "claims": [
+          {
+            "text": "The Authentication Service falls back to the User Database for revocation checks if the Session Cache is unavailable.",
+            "support": "DIRECT",
+            "citations": [
+              "failure_scenarios_and_data_flows#04",
+              "authentication_service#04"
+            ],
+            "path_ids": [],
+            "invalid_citations": [],
+            "invalid_path_ids": []
+          },
+          {
+            "text": "Validation continues to work when the Session Cache is unavailable.",
+            "support": "DIRECT",
+            "citations": [
+              "authentication_service#04"
+            ],
+            "path_ids": [],
+            "invalid_citations": [],
+            "invalid_path_ids": []
+          },
+          {
+            "text": "No feature becomes unavailable during a Session Cache outage, though latency increases.",
+            "support": "DIRECT",
+            "citations": [
+              "failure_scenarios_and_data_flows#04"
+            ],
+            "path_ids": [],
+            "invalid_citations": [],
+            "invalid_path_ids": []
+          }
+        ],
+        "sufficient_evidence": true,
+        "missing_information": ""
+      },
+      "error": null,
+      "metrics": {
+        "context_chunks": 8,
+        "recall": 1.0,
+        "mention_recall": 1.0,
+        "missing_mentions": [],
+        "n_claims": 3,
+        "n_inference": 0,
+        "n_claims_cited": 3,
+        "n_invalid_ids": 0,
+        "abstained": false,
+        "abstention_correct": true,
+        "retrieval_ms": 10.736100026406348,
+        "generation_ms": 1765.6866000033915,
+        "total_ms": 1776.4227000297979
+      },
+      "judge": {
+        "correctness": "CORRECT",
+        "correctness_score": 1.0,
+        "correctness_reason": "The system correctly answers that users will still be able to sign in and validation continues because the service falls back to the User Database.",
+        "n_claims_judged": 3,
+        "n_supported": 3,
+        "n_unsupported": 0,
+        "n_contradicted": 0,
+        "n_unjudged": 0,
+        "forbidden_violated": [],
+        "error": null
+      }
+    },
+    {
+      "question_id": "q20",
+      "question": "Will users be unable to sign in if the Session Cache goes down?",
+      "type": "misleading",
+      "dev": true,
+      "answerable": true,
+      "n_forbidden_claims": 1,
+      "method": "graphrag",
+      "retrieved_chunk_ids": [
+        "failure_scenarios_and_data_flows#04",
+        "authentication_service#06",
+        "authentication_service#04",
+        "authentication_service#03",
+        "user_service#02",
+        "api_gateway#04",
+        "platform_overview#04",
+        "api_gateway#03"
+      ],
+      "n_graph_paths": 12,
+      "answer": {
+        "answer": "Users will not be unable to sign in if the Session Cache goes down. The Authentication Service is designed to fall back to the User Database for revocation checks during a Session Cache outage, allowing sign-in and validation to continue functioning.",
+        "claims": [
+          {
+            "text": "The Authentication Service falls back to the User Database for revocation checks if the Session Cache is unavailable.",
+            "support": "DIRECT",
+            "citations": [
+              "authentication_service#04",
+              "failure_scenarios_and_data_flows#04"
+            ],
+            "path_ids": [],
+            "invalid_citations": [],
+            "invalid_path_ids": []
+          },
+          {
+            "text": "Token validation and sign-in functionality continue to work when the Authentication Service falls back to the User Database.",
+            "support": "DIRECT",
+            "citations": [
+              "authentication_service#04"
+            ],
+            "path_ids": [],
+            "invalid_citations": [],
+            "invalid_path_ids": []
+          },
+          {
+            "text": "No features become unavailable during a Session Cache outage, although latency increases.",
+            "support": "DIRECT",
+            "citations": [
+              "failure_scenarios_and_data_flows#04"
+            ],
+            "path_ids": [],
+            "invalid_citations": [],
+            "invalid_path_ids": []
+          }
+        ],
+        "sufficient_evidence": true,
+        "missing_information": ""
+      },
+      "error": null,
+      "metrics": {
+        "context_chunks": 8,
+        "recall": 1.0,
+        "mention_recall": 1.0,
+        "missing_mentions": [],
+        "n_claims": 3,
+        "n_inference": 0,
+        "n_claims_cited": 3,
+        "n_invalid_ids": 0,
+        "abstained": false,
+        "abstention_correct": true,
+        "retrieval_ms": 11.620000004768372,
+        "generation_ms": 1586.047199962195,
+        "total_ms": 1597.6671999669634
+      },
+      "judge": {
+        "correctness": "CORRECT",
+        "correctness_score": 1.0,
+        "correctness_reason": "The system correctly answers that users will still be able to sign in because the authentication service falls back to the user database.",
+        "n_claims_judged": 3,
+        "n_supported": 3,
+        "n_unsupported": 0,
+        "n_contradicted": 0,
+        "n_unjudged": 0,
+        "forbidden_violated": [],
+        "error": null
+      }
+    }
+  ],
+  "api_calls": 108,
+  "cache_hits": 12
+}
