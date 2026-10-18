@@ -4,7 +4,7 @@
 
 GraphTrace answers questions about a fictional SaaS platform's architecture docs. It retrieves evidence two ways, ordinary vector search and vector search plus a knowledge graph, then generates a grounded, cited answer from each so the two can be evaluated on the same questions.
 
-> **Status: work in progress.** The ingestion, extraction, graph, retrieval and answering pipelines are built and have been run on real data. The **evaluation study** and the **Streamlit interface** are not done yet, so this README contains **no accuracy or "GraphRAG beats RAG" claims**. Those will appear only after they are measured. See the [roadmap](#roadmap).
+> **Status: work in progress.** The ingestion, extraction, graph, retrieval and answering pipelines, and evaluation stufdy are built and have been run on real data. The **Streamlit interface** are not done yet, so this README contains **no accuracy or "GraphRAG beats RAG" claims**. Those will appear only after they are measured. See the [roadmap](#roadmap).
 
 ## The knowledge graph
 
