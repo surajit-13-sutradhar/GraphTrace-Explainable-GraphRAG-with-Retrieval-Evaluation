@@ -7,4 +7,5 @@ matplotlib
 numpy
 faiss-cpu
 sentence-transformers
+streamlit
 -e .
