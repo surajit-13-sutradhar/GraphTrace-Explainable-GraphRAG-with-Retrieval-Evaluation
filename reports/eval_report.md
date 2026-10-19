@@ -6,14 +6,14 @@ _Generated from `reports/eval_results.json`. Every number below was measured in 
 
 | Item | Value |
 |---|---|
-| Run started (UTC) | 2026-10-18T18:33:39+00:00 |
+| Run started (UTC) | 2026-10-19T05:13:14+00:00 |
 | Answer model | gemini-3.1-flash-lite |
 | Judge model | gemini-3.5-flash-lite |
-| Answer prompt / judge prompt | answer-v2 / judge-v1 |
+| Answer prompt / judge prompt | answer-v2 / judge-v2 |
 | Embedding model | sentence-transformers/all-MiniLM-L6-v2 |
 | Questions | 20 |
 | Methods | Baseline RAG (k=5), Baseline RAG (k=8), GraphRAG (up to 8 chunks) |
-| LLM calls this run (API / cache) | 108 / 12 |
+| LLM calls this run (API / cache) | 60 / 60 |
 
 ## Metric definitions and limitations
 
@@ -42,12 +42,12 @@ _Generated from `reports/eval_results.json`. Every number below was measured in 
 | Claims with a valid citation | 100% | 100% | 100% |
 | Invented chunk/path IDs (count) | 0 | 0 | 0 |
 | Abstention accuracy | 95% | 100% | 100% |
-| Judge: correctness (1 / 0.5 / 0, mean) | 0.95 | 0.90 | 1.00 |
+| Judge: correctness (1 / 0.5 / 0, mean) | 0.95 | 0.97 | 1.00 |
 | Judge: claims unsupported or contradicted | 0% | 0% | 0% |
 | Judge: questions with a forbidden claim | 0% | 0% | 0% |
-| Retrieval latency, median (ms) | 12 | 11 | 13 |
+| Retrieval latency, median (ms) | 10 | 10 | 12 |
 | Generation latency, median (ms) | 2,220 | 2,233 | 2,104 |
-| End-to-end latency, median (ms) | 2,233 | 2,245 | 2,115 |
+| End-to-end latency, median (ms) | 2,230 | 2,243 | 2,116 |
 
 ## Results: held-out questions only (17; questions used during development excluded)
 
@@ -60,12 +60,12 @@ _Generated from `reports/eval_results.json`. Every number below was measured in 
 | Claims with a valid citation | 100% | 100% | 100% |
 | Invented chunk/path IDs (count) | 0 | 0 | 0 |
 | Abstention accuracy | 94% | 100% | 100% |
-| Judge: correctness (1 / 0.5 / 0, mean) | 0.97 | 0.91 | 1.00 |
+| Judge: correctness (1 / 0.5 / 0, mean) | 0.97 | 1.00 | 1.00 |
 | Judge: claims unsupported or contradicted | 0% | 0% | 0% |
 | Judge: questions with a forbidden claim | 0% | 0% | 0% |
-| Retrieval latency, median (ms) | 12 | 12 | 12 |
+| Retrieval latency, median (ms) | 10 | 10 | 12 |
 | Generation latency, median (ms) | 2,258 | 2,254 | 2,111 |
-| End-to-end latency, median (ms) | 2,272 | 2,266 | 2,120 |
+| End-to-end latency, median (ms) | 2,268 | 2,264 | 2,126 |
 
 ## Results by question type (cell = recall / judge correctness)
 
@@ -73,17 +73,17 @@ _Generated from `reports/eval_results.json`. Every number below was measured in 
 |---|---|---|---|---|
 | direct_fact | 4 | 1.00 / 1.00 | 1.00 / 1.00 | 1.00 / 1.00 |
 | relationship | 4 | 1.00 / 1.00 | 1.00 / 1.00 | 1.00 / 1.00 |
-| multi_hop | 4 | 0.60 / 0.75 | 0.60 / 0.75 | 1.00 / 1.00 |
+| multi_hop | 4 | 0.60 / 0.75 | 0.60 / 0.88 | 1.00 / 1.00 |
 | cross_document | 4 | 0.75 / 1.00 | 0.81 / 1.00 | 1.00 / 1.00 |
 | insufficient_evidence | 2 | n/a / 1.00 | n/a / 1.00 | n/a / 1.00 |
-| misleading | 2 | 0.75 / 1.00 | 1.00 / 0.50 | 1.00 / 1.00 |
+| misleading | 2 | 0.75 / 1.00 | 1.00 / 1.00 | 1.00 / 1.00 |
 
 ## Paired comparison (number of questions)
 
 | Comparison | Judge correctness | Recall |
 |---|---|---|
 | GraphRAG vs Baseline RAG (k=5) | 2 better / 18 same / 0 worse | 6 better / 12 same / 0 worse |
-| GraphRAG vs Baseline RAG (k=8) | 3 better / 17 same / 0 worse | 5 better / 13 same / 0 worse |
+| GraphRAG vs Baseline RAG (k=8) | 1 better / 19 same / 0 worse | 5 better / 13 same / 0 worse |
 
 ## Per question (C = correct, P = partially, I = incorrect, R = recall)
 
@@ -98,7 +98,7 @@ _Generated from `reports/eval_results.json`. Every number below was measured in 
 | q07 | relationship |  | C (R 1.00) | C (R 1.00) | C (R 1.00) |
 | q08 | relationship |  | C (R 1.00) | C (R 1.00) | C (R 1.00) |
 | q09 | multi_hop | dev | P (R 0.25) | P (R 0.25) | C (R 1.00) |
-| q10 | multi_hop |  | P (R 0.50) | P (R 0.50) | C (R 1.00) |
+| q10 | multi_hop |  | P (R 0.50) | C (R 0.50) | C (R 1.00) |
 | q11 | multi_hop |  | C (R 0.67) | C (R 0.67) | C (R 1.00) |
 | q12 | multi_hop |  | C (R 1.00) | C (R 1.00) | C (R 1.00) |
 | q13 | cross_document |  | C (R 1.00) | C (R 1.00) | C (R 1.00) |
@@ -107,7 +107,7 @@ _Generated from `reports/eval_results.json`. Every number below was measured in 
 | q16 | cross_document |  | C (R 1.00) | C (R 1.00) | C (R 1.00) |
 | q17 | insufficient_evidence | dev | C | C | C |
 | q18 | insufficient_evidence |  | C | C | C |
-| q19 | misleading |  | C (R 0.50) | I (R 1.00) | C (R 1.00) |
+| q19 | misleading |  | C (R 0.50) | C (R 1.00) | C (R 1.00) |
 | q20 | misleading | dev | C (R 1.00) | C (R 1.00) | C (R 1.00) |
 
 ## Questions where GraphRAG did worse than baseline k=8
@@ -117,8 +117,22 @@ _None on correctness, recall, or forbidden claims._
 ## Questions where GraphRAG did better than baseline k=8
 
 - **q09** (multi_hop, dev): judge correctness 1.0 vs 0.5; recall 1.00 vs 0.25
-- **q10** (multi_hop): judge correctness 1.0 vs 0.5; recall 1.00 vs 0.50
+- **q10** (multi_hop): recall 1.00 vs 0.50
 - **q11** (multi_hop): recall 1.00 vs 0.67
 - **q14** (cross_document): recall 1.00 vs 0.75
 - **q15** (cross_document): recall 1.00 vs 0.50
-- **q19** (misleading): judge correctness 1.0 vs 0.0
+
+## Human-adjudicated correctness (reviewed records only)
+
+_The author graded these records against the reference answers and the documents. They were chosen because methods differed or a judge verdict was doubtful, so they are not a random sample and the numbers should not be generalized._
+
+| Method | Records reviewed | Human mean | Judge mean (same records) | Exact agreement |
+|---|---|---|---|---|
+| Baseline RAG (k=5) | 4 | 0.75 | 0.75 | 4/4 |
+| Baseline RAG (k=8) | 4 | 0.75 | 0.88 | 3/4 |
+| GraphRAG (up to 8 chunks) | 4 | 0.88 | 1.00 | 3/4 |
+
+### Judge / human disagreements
+
+- **q10:baseline_k8**: human P, judge C. Omits Invoice Download; the summary states that purchases 'will be affected' with certainty, although the documents do not establish this.
+- **q09:graphrag**: human P, judge C. Identifies four downstream features as hedged inferences with appropriate citations; however, the summary omits these features, which appear only in the claims list.

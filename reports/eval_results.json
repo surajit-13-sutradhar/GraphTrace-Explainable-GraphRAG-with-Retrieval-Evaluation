@@ -1,9 +1,9 @@
 {
-  "started_at": "2026-10-18T18:33:39+00:00",
+  "started_at": "2026-10-19T05:13:14+00:00",
   "answer_model": "gemini-3.1-flash-lite",
   "judge_model": "gemini-3.5-flash-lite",
   "answer_prompt_version": "answer-v2",
-  "judge_prompt_version": "judge-v1",
+  "judge_prompt_version": "judge-v2",
   "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
   "records": [
     {
@@ -61,14 +61,14 @@
         "n_invalid_ids": 0,
         "abstained": false,
         "abstention_correct": true,
-        "retrieval_ms": 6.475200003478676,
+        "retrieval_ms": 8.158100012224168,
         "generation_ms": 3949.547900003381,
-        "total_ms": 3956.0231000068597
+        "total_ms": 3957.7060000156052
       },
       "judge": {
         "correctness": "CORRECT",
         "correctness_score": 1.0,
-        "correctness_reason": "The system answer accurately states the validity period of the JSON Web Tokens and refresh tokens as found in the evidence.",
+        "correctness_reason": "The system correctly answers that JWTs issued by the Authentication Service are valid for 15 minutes and correctly includes the refresh token duration.",
         "n_claims_judged": 2,
         "n_supported": 2,
         "n_unsupported": 0,
@@ -136,14 +136,14 @@
         "n_invalid_ids": 0,
         "abstained": false,
         "abstention_correct": true,
-        "retrieval_ms": 6.510699982754886,
+        "retrieval_ms": 6.727200001478195,
         "generation_ms": 2444.0945999813266,
-        "total_ms": 2450.6052999640815
+        "total_ms": 2450.821799982805
       },
       "judge": {
         "correctness": "CORRECT",
         "correctness_score": 1.0,
-        "correctness_reason": "The system correctly answers that JSON Web Tokens are valid for 15 minutes, matching the reference answer.",
+        "correctness_reason": "The system correctly answers that JWTs issued by the Authentication Service are valid for 15 minutes and correctly includes the duration for refresh tokens as found in the reference answer.",
         "n_claims_judged": 2,
         "n_supported": 2,
         "n_unsupported": 0,
@@ -211,14 +211,14 @@
         "n_invalid_ids": 0,
         "abstained": false,
         "abstention_correct": true,
-        "retrieval_ms": 7.0389999891631305,
+        "retrieval_ms": 7.551299990154803,
         "generation_ms": 1894.5757999899797,
-        "total_ms": 1901.6147999791428
+        "total_ms": 1902.1270999801345
       },
       "judge": {
         "correctness": "CORRECT",
         "correctness_score": 1.0,
-        "correctness_reason": "The system correctly answers that JWTs issued by the Authentication Service are valid for 15 minutes and mentions refresh token validity matching the reference.",
+        "correctness_reason": "The system correctly answers that JSON Web Tokens issued by the Authentication Service are valid for 15 minutes and correctly includes that refresh tokens are valid for 30 days, matching the reference answer.",
         "n_claims_judged": 2,
         "n_supported": 2,
         "n_unsupported": 0,
@@ -283,14 +283,14 @@
         "n_invalid_ids": 0,
         "abstained": false,
         "abstention_correct": true,
-        "retrieval_ms": 8.106900029815733,
+        "retrieval_ms": 7.340200012549758,
         "generation_ms": 1603.4207999473438,
-        "total_ms": 1611.5276999771595
+        "total_ms": 1610.7609999598935
       },
       "judge": {
         "correctness": "CORRECT",
         "correctness_score": 1.0,
-        "correctness_reason": "The system accurately states that the User Database uses PostgreSQL 15 and has one primary and two replicas, matching the reference answer.",
+        "correctness_reason": "The system answer correctly identifies the database engine as PostgreSQL 15 and specifies that it has one primary and two replicas, matching the reference answer.",
         "n_claims_judged": 2,
         "n_supported": 2,
         "n_unsupported": 0,
@@ -358,14 +358,14 @@
         "n_invalid_ids": 0,
         "abstained": false,
         "abstention_correct": true,
-        "retrieval_ms": 7.141200010664761,
+        "retrieval_ms": 7.988500001374632,
         "generation_ms": 2768.4912999975495,
-        "total_ms": 2775.6325000082143
+        "total_ms": 2776.479799998924
       },
       "judge": {
         "correctness": "CORRECT",
         "correctness_score": 1.0,
-        "correctness_reason": "The system accurately identifies the User Database as a PostgreSQL 15 cluster with one primary and two replicas based on the evidence.",
+        "correctness_reason": "The system's answer correctly identifies that the User Database uses the PostgreSQL 15 database engine and has one primary and two replicas, fully matching the reference answer.",
         "n_claims_judged": 2,
         "n_supported": 2,
         "n_unsupported": 0,
@@ -433,14 +433,14 @@
         "n_invalid_ids": 0,
         "abstained": false,
         "abstention_correct": true,
-        "retrieval_ms": 6.845699972473085,
+        "retrieval_ms": 8.487800019793212,
         "generation_ms": 2650.496899965219,
-        "total_ms": 2657.3425999376923
+        "total_ms": 2658.9846999850124
       },
       "judge": {
         "correctness": "CORRECT",
         "correctness_score": 1.0,
-        "correctness_reason": "The system correctly identifies that the User Database uses the PostgreSQL 15 engine and has one primary and two replicas.",
+        "correctness_reason": "The system's answer accurately identifies that the User Database uses PostgreSQL 15 and has one primary and two replicas, matching the reference answer.",
         "n_claims_judged": 2,
         "n_supported": 2,
         "n_unsupported": 0,
@@ -505,14 +505,14 @@
         "n_invalid_ids": 0,
         "abstained": false,
         "abstention_correct": true,
-        "retrieval_ms": 7.972500054165721,
+        "retrieval_ms": 13.951000000815839,
         "generation_ms": 2610.5832000030205,
-        "total_ms": 2618.555700057186
+        "total_ms": 2624.5342000038363
       },
       "judge": {
         "correctness": "CORRECT",
         "correctness_score": 1.0,
-        "correctness_reason": "The system accurately states that the API Gateway uses a 2-second timeout and retries once, matching the reference answer and evidence.",
+        "correctness_reason": "The system correctly identified both the 2-second timeout and that it retries once, matching the reference answer.",
         "n_claims_judged": 2,
         "n_supported": 2,
         "n_unsupported": 0,
@@ -580,14 +580,14 @@
         "n_invalid_ids": 0,
         "abstained": false,
         "abstention_correct": true,
-        "retrieval_ms": 9.926499973516911,
+        "retrieval_ms": 11.774700018577278,
         "generation_ms": 1866.2877000169829,
-        "total_ms": 1876.2141999904998
+        "total_ms": 1878.0624000355601
       },
       "judge": {
         "correctness": "CORRECT",
         "correctness_score": 1.0,
-        "correctness_reason": "The system's answer accurately captures both the 2-second timeout and the single retry mentioned in the reference answer and evidence.",
+        "correctness_reason": "The system's answer accurately states that the API Gateway uses a 2-second timeout and retries once, perfectly matching the reference answer.",
         "n_claims_judged": 2,
         "n_supported": 2,
         "n_unsupported": 0,
@@ -655,14 +655,14 @@
         "n_invalid_ids": 0,
         "abstained": false,
         "abstention_correct": true,
-        "retrieval_ms": 9.544699976686388,
+        "retrieval_ms": 15.55539999390021,
         "generation_ms": 2110.689799999818,
-        "total_ms": 2120.2344999765046
+        "total_ms": 2126.2451999937184
       },
       "judge": {
         "correctness": "CORRECT",
         "correctness_score": 1.0,
-        "correctness_reason": "The system accurately states the timeout duration and the number of retries based on the evidence.",
+        "correctness_reason": "The system's answer accurately states that the API Gateway uses a 2-second timeout and retries once when calling the Authentication Service, which matches the reference answer.",
         "n_claims_judged": 2,
         "n_supported": 2,
         "n_unsupported": 0,
@@ -717,14 +717,14 @@
         "n_invalid_ids": 0,
         "abstained": false,
         "abstention_correct": true,
-        "retrieval_ms": 6.982300023082644,
+        "retrieval_ms": 11.055000009946525,
         "generation_ms": 2981.221700028982,
-        "total_ms": 2988.2040000520647
+        "total_ms": 2992.2767000389285
       },
       "judge": {
         "correctness": "CORRECT",
         "correctness_score": 1.0,
-        "correctness_reason": "The system's answer accurately captures that the reconciliation job resolves pending payments every five minutes, matching the reference answer.",
+        "correctness_reason": "The system answer accurately and completely conveys the information from the reference answer that the reconciliation job runs every five minutes.",
         "n_claims_judged": 1,
         "n_supported": 1,
         "n_unsupported": 0,
@@ -782,14 +782,14 @@
         "n_invalid_ids": 0,
         "abstained": false,
         "abstention_correct": true,
-        "retrieval_ms": 9.713799983728677,
+        "retrieval_ms": 10.456399992108345,
         "generation_ms": 3260.8099000062793,
-        "total_ms": 3270.523699990008
+        "total_ms": 3271.2662999983877
       },
       "judge": {
         "correctness": "CORRECT",
         "correctness_score": 1.0,
-        "correctness_reason": "The system's answer accurately states that the reconciliation job resolves pending payments every five minutes, matching the reference answer and evidence.",
+        "correctness_reason": "The system answer correctly states that the reconciliation job resolves pending payments every five minutes, matching the reference answer.",
         "n_claims_judged": 1,
         "n_supported": 1,
         "n_unsupported": 0,
@@ -847,14 +847,14 @@
         "n_invalid_ids": 0,
         "abstained": false,
         "abstention_correct": true,
-        "retrieval_ms": 8.90429998980835,
+        "retrieval_ms": 10.836899979040027,
         "generation_ms": 1634.2712999903597,
-        "total_ms": 1643.175599980168
+        "total_ms": 1645.1081999693997
       },
       "judge": {
         "correctness": "CORRECT",
         "correctness_score": 1.0,
-        "correctness_reason": "The system's answer accurately captures that the reconciliation job resolves pending payments every five minutes, matching the reference answer and evidence.",
+        "correctness_reason": "The system's answer correctly matches the reference answer by stating that the reconciliation job resolves pending payments every five minutes.",
         "n_claims_judged": 1,
         "n_supported": 1,
         "n_unsupported": 0,
@@ -922,14 +922,14 @@
         "n_invalid_ids": 0,
         "abstained": false,
         "abstention_correct": true,
-        "retrieval_ms": 13.378300005570054,
+        "retrieval_ms": 10.407400026451796,
         "generation_ms": 1461.8303999886848,
-        "total_ms": 1475.2086999942549
+        "total_ms": 1472.2378000151366
       },
       "judge": {
         "correctness": "CORRECT",
         "correctness_score": 1.0,
-        "correctness_reason": "The system answer accurately identifies both services and the specific event types each consumes according to the evidence.",
+        "correctness_reason": "The system's answer accurately states that the Billing Service consumes payment.completed and the Notification Service consumes user.registered, payment.completed, and payment.failed, matching the reference answer.",
         "n_claims_judged": 2,
         "n_supported": 2,
         "n_unsupported": 0,
@@ -1000,14 +1000,14 @@
         "n_invalid_ids": 0,
         "abstained": false,
         "abstention_correct": true,
-        "retrieval_ms": 10.824900004081428,
+        "retrieval_ms": 12.365699978545308,
         "generation_ms": 1657.2549999691546,
-        "total_ms": 1668.079899973236
+        "total_ms": 1669.6206999477
       },
       "judge": {
         "correctness": "CORRECT",
         "correctness_score": 1.0,
-        "correctness_reason": "The system correctly identifies the services and the exact event types each consumes based on the evidence.",
+        "correctness_reason": "The system correctly identifies that the Billing Service consumes payment.completed and the Notification Service consumes user.registered, payment.completed, and payment.failed, matching the reference answer completely.",
         "n_claims_judged": 2,
         "n_supported": 2,
         "n_unsupported": 0,
@@ -1083,14 +1083,14 @@
         "n_invalid_ids": 0,
         "abstained": false,
         "abstention_correct": true,
-        "retrieval_ms": 14.285199984442443,
+        "retrieval_ms": 11.139800015371293,
         "generation_ms": 1703.723100014031,
-        "total_ms": 1718.0082999984734
+        "total_ms": 1714.8629000294022
       },
       "judge": {
         "correctness": "CORRECT",
         "correctness_score": 1.0,
-        "correctness_reason": "The system answer accurately identifies both services and the specific event types each consumes, matching the reference answer.",
+        "correctness_reason": "The system answer accurately identifies that the Billing Service consumes payment.completed and the Notification Service consumes user.registered, payment.completed, and payment.failed, matching the reference answer.",
         "n_claims_judged": 2,
         "n_supported": 2,
         "n_unsupported": 0,
@@ -1167,14 +1167,14 @@
         "n_invalid_ids": 0,
         "abstained": false,
         "abstention_correct": true,
-        "retrieval_ms": 13.192999991588295,
+        "retrieval_ms": 7.951200008392334,
         "generation_ms": 1568.3045000187121,
-        "total_ms": 1581.4975000103004
+        "total_ms": 1576.2557000271045
       },
       "judge": {
         "correctness": "CORRECT",
         "correctness_score": 1.0,
-        "correctness_reason": "The system correctly identifies the Payment Service as the sole component interacting with the Payment Provider and accurately details the two events it publishes.",
+        "correctness_reason": "The system answer accurately identifies the Payment Service as the sole component interacting with PayFlow and correctly states that it publishes payment.completed or payment.failed depending on whether the charge is confirmed or declined.",
         "n_claims_judged": 3,
         "n_supported": 3,
         "n_unsupported": 0,
@@ -1243,14 +1243,14 @@
         "n_invalid_ids": 0,
         "abstained": false,
         "abstention_correct": true,
-        "retrieval_ms": 13.699900009669363,
+        "retrieval_ms": 8.705599990207702,
         "generation_ms": 1396.7479999992065,
-        "total_ms": 1410.4479000088759
+        "total_ms": 1405.4535999894142
       },
       "judge": {
         "correctness": "CORRECT",
         "correctness_score": 1.0,
-        "correctness_reason": "The system correctly identifies the Payment Service as the sole component interacting with PayFlow and accurately lists the payment.completed and payment.failed events it publishes.",
+        "correctness_reason": "The system correctly identifies the Payment Service as the component that talks to PayFlow and lists both payment.completed and payment.failed as the events it publishes, matching the reference answer.",
         "n_claims_judged": 2,
         "n_supported": 2,
         "n_unsupported": 0,
@@ -1317,14 +1317,14 @@
         "n_invalid_ids": 0,
         "abstained": false,
         "abstention_correct": true,
-        "retrieval_ms": 14.784200000576675,
+        "retrieval_ms": 8.713899995200336,
         "generation_ms": 2162.347699981183,
-        "total_ms": 2177.1318999817595
+        "total_ms": 2171.061599976383
       },
       "judge": {
         "correctness": "CORRECT",
         "correctness_score": 1.0,
-        "correctness_reason": "The system correctly identifies the Payment Service as the only component talking to PayFlow and lists the two events it publishes.",
+        "correctness_reason": "The system correctly identifies the Payment Service as the sole component interacting with PayFlow and accurately lists the events it publishes (payment.completed and payment.failed), fully matching the reference answer.",
         "n_claims_judged": 2,
         "n_supported": 2,
         "n_unsupported": 0,
@@ -1389,14 +1389,14 @@
         "n_invalid_ids": 0,
         "abstained": false,
         "abstention_correct": true,
-        "retrieval_ms": 13.671400025486946,
+        "retrieval_ms": 10.18759998260066,
         "generation_ms": 5012.747499975376,
-        "total_ms": 5026.418900000863
+        "total_ms": 5022.9350999579765
       },
       "judge": {
         "correctness": "CORRECT",
         "correctness_score": 1.0,
-        "correctness_reason": "The system accurately states that the Reporting Service reads from the Reporting Replica and never writes to the Billing Database, matching the reference answer.",
+        "correctness_reason": "The system answer accurately states that the Reporting Service reads from the Reporting Replica (a read-only replica of the Billing Database) and never writes to the Billing Database, perfectly matching the reference answer.",
         "n_claims_judged": 2,
         "n_supported": 2,
         "n_unsupported": 0,
@@ -1464,14 +1464,14 @@
         "n_invalid_ids": 0,
         "abstained": false,
         "abstention_correct": true,
-        "retrieval_ms": 13.67960002971813,
+        "retrieval_ms": 7.4139999924227595,
         "generation_ms": 2901.3961000018753,
-        "total_ms": 2915.0757000315934
+        "total_ms": 2908.810099994298
       },
       "judge": {
         "correctness": "CORRECT",
         "correctness_score": 1.0,
-        "correctness_reason": "The system accurately answers both parts of the question based on the evidence, stating it reads from the read-only Reporting Replica and never writes to the Billing Database.",
+        "correctness_reason": "The system's answer accurately states that the Reporting Service reads from the Reporting Replica (a read-only replica of the Billing Database) and never writes to the Billing Database, perfectly matching the reference answer.",
         "n_claims_judged": 2,
         "n_supported": 2,
         "n_unsupported": 0,
@@ -1549,14 +1549,14 @@
         "n_invalid_ids": 0,
         "abstained": false,
         "abstention_correct": true,
-        "retrieval_ms": 10.341899993363768,
+        "retrieval_ms": 7.981700007803738,
         "generation_ms": 2067.3659999738447,
-        "total_ms": 2077.7078999672085
+        "total_ms": 2075.3476999816485
       },
       "judge": {
         "correctness": "CORRECT",
         "correctness_score": 1.0,
-        "correctness_reason": "The system correctly identified that the Reporting Service reads from the Reporting Replica and never writes to the Billing Database.",
+        "correctness_reason": "The system answer accurately states that the Reporting Service reads from the Reporting Replica (a read-only replica of the Billing Database) and never writes to the Billing Database, perfectly matching the reference answer.",
         "n_claims_judged": 3,
         "n_supported": 3,
         "n_unsupported": 0,
@@ -1651,14 +1651,14 @@
         "n_invalid_ids": 0,
         "abstained": false,
         "abstention_correct": true,
-        "retrieval_ms": 12.73300003958866,
+        "retrieval_ms": 13.51390004856512,
         "generation_ms": 2382.395400025416,
-        "total_ms": 2395.128400065005
+        "total_ms": 2395.9093000739813
       },
       "judge": {
         "correctness": "CORRECT",
         "correctness_score": 1.0,
-        "correctness_reason": "The system correctly identifies all the services and their corresponding path prefixes as stated in the reference answer and evidence.",
+        "correctness_reason": "The system correctly identifies all five backend services and their corresponding path prefixes as stated in the reference answer.",
         "n_claims_judged": 5,
         "n_supported": 5,
         "n_unsupported": 0,
@@ -1756,14 +1756,14 @@
         "n_invalid_ids": 0,
         "abstained": false,
         "abstention_correct": true,
-        "retrieval_ms": 12.305899988859892,
+        "retrieval_ms": 9.275400021579117,
         "generation_ms": 2275.396200013347,
-        "total_ms": 2287.702100002207
+        "total_ms": 2284.671600034926
       },
       "judge": {
         "correctness": "CORRECT",
         "correctness_score": 1.0,
-        "correctness_reason": "The system correctly identifies all five backend services and their corresponding path prefixes as stated in the reference answer.",
+        "correctness_reason": "The system answer correctly identifies all five backend services that the API Gateway routes requests to, matching the key facts of the reference answer.",
         "n_claims_judged": 5,
         "n_supported": 5,
         "n_unsupported": 0,
@@ -1861,14 +1861,14 @@
         "n_invalid_ids": 0,
         "abstained": false,
         "abstention_correct": true,
-        "retrieval_ms": 9.566299966536462,
+        "retrieval_ms": 15.20580000942573,
         "generation_ms": 2599.8806999996305,
-        "total_ms": 2609.446999966167
+        "total_ms": 2615.086500009056
       },
       "judge": {
         "correctness": "CORRECT",
         "correctness_score": 1.0,
-        "correctness_reason": "The system correctly identifies all the services and their corresponding path prefixes as stated in the reference answer and evidence.",
+        "correctness_reason": "The system answer accurately and completely states all the services and their corresponding path prefixes as required by the reference answer.",
         "n_claims_judged": 5,
         "n_supported": 5,
         "n_unsupported": 0,
@@ -1949,14 +1949,14 @@
         "n_invalid_ids": 0,
         "abstained": false,
         "abstention_correct": true,
-        "retrieval_ms": 14.22210002783686,
+        "retrieval_ms": 7.548999972641468,
         "generation_ms": 5045.578099961858,
-        "total_ms": 5059.800199989695
+        "total_ms": 5053.1270999345
       },
       "judge": {
         "correctness": "PARTIALLY_CORRECT",
         "correctness_score": 0.5,
-        "correctness_reason": "The system correctly identifies the impact on protected routes, sign-in, and public routes, but omits the dependency chain and specific user-facing features requested by the prompt.",
+        "correctness_reason": "The system answer covers the main points regarding protected routes returning HTTP 503, sign-in and sign-up failing, and public routes/background tasks working, although it misses the detailed dependency chain and specific features listed in the reference answer. However, it is mostly correct based on the provided evidence.",
         "n_claims_judged": 3,
         "n_supported": 3,
         "n_unsupported": 0,
@@ -2050,14 +2050,14 @@
         "n_invalid_ids": 0,
         "abstained": false,
         "abstention_correct": true,
-        "retrieval_ms": 11.436000000685453,
+        "retrieval_ms": 8.770000014919788,
         "generation_ms": 2369.802700006403,
-        "total_ms": 2381.2387000070885
+        "total_ms": 2378.572700021323
       },
       "judge": {
         "correctness": "PARTIALLY_CORRECT",
         "correctness_score": 0.5,
-        "correctness_reason": "The system correctly identifies the main effects on protected routes, sign-in/sign-up, public routes, and background tasks, but omits details about the dependency chain.",
+        "correctness_reason": "The system answer correctly identifies that protected routes return HTTP 503, sign-in and sign-up fail, and public routes and independent background tasks continue. While it omits some specific service-level examples, it captures the core facts of the reference without contradicting them.",
         "n_claims_judged": 4,
         "n_supported": 4,
         "n_unsupported": 0,
@@ -2164,14 +2164,14 @@
         "n_invalid_ids": 0,
         "abstained": false,
         "abstention_correct": true,
-        "retrieval_ms": 15.912999981082976,
+        "retrieval_ms": 13.735500047914684,
         "generation_ms": 3579.466700030025,
-        "total_ms": 3595.379700011108
+        "total_ms": 3593.20220007794
       },
       "judge": {
         "correctness": "CORRECT",
         "correctness_score": 1.0,
-        "correctness_reason": "The system correctly identifies the affected features, the behavior of the API gateway (HTTP 503), public routes remaining functional, and explains the dependency chain.",
+        "correctness_reason": "The system answer covers the key impacts of the authentication service failure (HTTP 503 on protected routes, sign-in/sign-up failure, public pricing page working, background tasks continuing) and explains the dependency chain via the API Gateway. It accurately captures the essence of the reference answer.",
         "n_claims_judged": 5,
         "n_supported": 5,
         "n_unsupported": 0,
@@ -2239,14 +2239,14 @@
         "n_invalid_ids": 0,
         "abstained": true,
         "abstention_correct": false,
-        "retrieval_ms": 10.241899988614023,
+        "retrieval_ms": 17.17749994713813,
         "generation_ms": 2311.1385999945924,
-        "total_ms": 2321.3804999832064
+        "total_ms": 2328.3160999417305
       },
       "judge": {
         "correctness": "PARTIALLY_CORRECT",
         "correctness_score": 0.5,
-        "correctness_reason": "The system correctly identifies that Usage Reports keep working with stale data, but it misses Subscription Checkout and Invoice Download which are mentioned in the evidence and reference answer.",
+        "correctness_reason": "The system correctly identified that Usage Reports keep working with stale data, but it failed to mention that Subscription Checkout and Invoice Download are the user-facing features related to the billing database, falsely claiming the evidence does not specify affected features.",
         "n_claims_judged": 2,
         "n_supported": 2,
         "n_unsupported": 0,
@@ -2348,14 +2348,14 @@
         "n_invalid_ids": 0,
         "abstained": false,
         "abstention_correct": true,
-        "retrieval_ms": 16.357799991965294,
+        "retrieval_ms": 8.904099988285452,
         "generation_ms": 2105.4615000030026,
-        "total_ms": 2121.819299994968
+        "total_ms": 2114.365599991288
       },
       "judge": {
-        "correctness": "PARTIALLY_CORRECT",
-        "correctness_score": 0.5,
-        "correctness_reason": "The system correctly identifies that Usage Reports keep working with stale data, and reasonably points out that checkout/orders depend on the Billing Database primary, but omits invoice downloading.",
+        "correctness": "CORRECT",
+        "correctness_score": 1.0,
+        "correctness_reason": "The system correctly identifies that Usage Reports continue to work with stale data and that subscription purchases could be affected because the Checkout Service writes to the Billing Database. It does not state failure as a definite unmentioned fact, avoiding forbidden claims.",
         "n_claims_judged": 5,
         "n_supported": 5,
         "n_unsupported": 0,
@@ -2445,14 +2445,14 @@
         "n_invalid_ids": 0,
         "abstained": false,
         "abstention_correct": true,
-        "retrieval_ms": 13.219600019510835,
+        "retrieval_ms": 9.007500018924475,
         "generation_ms": 2097.2870999830775,
-        "total_ms": 2110.5067000025883
+        "total_ms": 2106.294600002002
       },
       "judge": {
         "correctness": "CORRECT",
         "correctness_score": 1.0,
-        "correctness_reason": "The system answer correctly identifies that Usage Reports continue to work with stale data and appropriately infers that Subscription Checkout and Invoice Download could be affected due to their dependencies on the database, without stating absolute failure as a documented fact.",
+        "correctness_reason": "The system correctly identifies Usage Reports as continuing to work with stale data via the replica, and correctly notes that Subscription Checkout and Invoice Download could be affected due to their reliance on the Billing Database, without stating as a forbidden fact that they definitely fail.",
         "n_claims_judged": 3,
         "n_supported": 3,
         "n_unsupported": 0,
@@ -2540,14 +2540,14 @@
         "n_invalid_ids": 0,
         "abstained": false,
         "abstention_correct": true,
-        "retrieval_ms": 12.650099990423769,
+        "retrieval_ms": 11.320099991280586,
         "generation_ms": 2698.9877999876626,
-        "total_ms": 2711.6378999780864
+        "total_ms": 2710.307899978943
       },
       "judge": {
         "correctness": "CORRECT",
         "correctness_score": 1.0,
-        "correctness_reason": "The system's answer accurately captures the impact on payment events (saved in an outbox, causing delayed invoices and receipts) and sign-up events (lost, causing potentially missed welcome emails), matching the reference answer.",
+        "correctness_reason": "The system answer accurately captures that payments and their events are preserved via an outbox (delaying invoices and receipts), and that sign-up events are lost, which may cause welcome emails to not be sent. It matches the reference answer and avoids forbidden claims.",
         "n_claims_judged": 4,
         "n_supported": 4,
         "n_unsupported": 0,
@@ -2648,14 +2648,14 @@
         "n_invalid_ids": 0,
         "abstained": false,
         "abstention_correct": true,
-        "retrieval_ms": 14.03219997882843,
+        "retrieval_ms": 8.710799971595407,
         "generation_ms": 2334.8565000342205,
-        "total_ms": 2348.888700013049
+        "total_ms": 2343.567300005816
       },
       "judge": {
         "correctness": "CORRECT",
         "correctness_score": 1.0,
-        "correctness_reason": "The system accurately describes what happens to payment events (stored in an outbox and delayed) and sign-up events (lost), and correctly identifies the affected features and services.",
+        "correctness_reason": "The system answer correctly identifies that payment events are saved in an outbox and delayed, sign-up events are lost, and mentions the impact on features/services.",
         "n_claims_judged": 5,
         "n_supported": 5,
         "n_unsupported": 0,
@@ -2799,14 +2799,14 @@
         "n_invalid_ids": 0,
         "abstained": false,
         "abstention_correct": true,
-        "retrieval_ms": 15.013500000350177,
+        "retrieval_ms": 12.166800035629421,
         "generation_ms": 3779.0819999645464,
-        "total_ms": 3794.0954999648966
+        "total_ms": 3791.248800000176
       },
       "judge": {
         "correctness": "CORRECT",
         "correctness_score": 1.0,
-        "correctness_reason": "The system answer accurately covers what happens to payment events and sign-up events during an Event Queue outage, correctly noting the outbox behavior for payments and the loss of events for sign-ups.",
+        "correctness_reason": "The system correctly explains what happens to payment events (written to an outbox, delayed invoices/receipts) and sign-up events (lost, welcome emails may not be sent), and identifies affected features.",
         "n_claims_judged": 8,
         "n_supported": 8,
         "n_unsupported": 0,
@@ -2906,14 +2906,14 @@
         "n_invalid_ids": 0,
         "abstained": false,
         "abstention_correct": true,
-        "retrieval_ms": 10.181399993598461,
+        "retrieval_ms": 9.236200014129281,
         "generation_ms": 2114.0359999844804,
-        "total_ms": 2124.217399978079
+        "total_ms": 2123.2721999986097
       },
       "judge": {
         "correctness": "CORRECT",
         "correctness_score": 1.0,
-        "correctness_reason": "The system correctly traces the path of a sign-up request through all components in order, matching the reference answer.",
+        "correctness_reason": "The system's answer accurately captures the sequential path from the browser sign-up request through the API Gateway, Authentication Service, User Database, Event Queue, Notification Service, User Service, and MailBridge, matching the reference answer well.",
         "n_claims_judged": 5,
         "n_supported": 5,
         "n_unsupported": 0,
@@ -3018,14 +3018,14 @@
         "n_invalid_ids": 0,
         "abstained": false,
         "abstention_correct": true,
-        "retrieval_ms": 11.419699992984533,
+        "retrieval_ms": 15.622599981725216,
         "generation_ms": 2396.4889000053518,
-        "total_ms": 2407.9085999983363
+        "total_ms": 2412.111499987077
       },
       "judge": {
         "correctness": "CORRECT",
         "correctness_score": 1.0,
-        "correctness_reason": "The system's answer accurately captures the components and their chronological order from the sign-up request to the welcome email.",
+        "correctness_reason": "The system answer covers the main components and flow in correct order, capturing all essential steps from the reference answer.",
         "n_claims_judged": 5,
         "n_supported": 5,
         "n_unsupported": 0,
@@ -3133,14 +3133,14 @@
         "n_invalid_ids": 0,
         "abstained": false,
         "abstention_correct": true,
-        "retrieval_ms": 13.582799991127104,
+        "retrieval_ms": 12.10170000558719,
         "generation_ms": 2265.2411999879405,
-        "total_ms": 2278.8239999790676
+        "total_ms": 2277.3428999935277
       },
       "judge": {
         "correctness": "CORRECT",
         "correctness_score": 1.0,
-        "correctness_reason": "The system correctly traces the path from the API gateway to the authentication service, database, event queue, notification service, user service, and mailbridge, covering all key components in order.",
+        "correctness_reason": "The system answer accurately captures the full trace from the browser's sign-up request through the API Gateway, Authentication Service, User Database, Session Cache, Event Queue, Notification Service, User Service, and MailBridge, matching the reference answer.",
         "n_claims_judged": 6,
         "n_supported": 6,
         "n_unsupported": 0,
@@ -3236,14 +3236,14 @@
         "n_invalid_ids": 0,
         "abstained": false,
         "abstention_correct": true,
-        "retrieval_ms": 15.125299978535622,
+        "retrieval_ms": 9.361000033095479,
         "generation_ms": 1769.443700031843,
-        "total_ms": 1784.5690000103787
+        "total_ms": 1778.8047000649385
       },
       "judge": {
         "correctness": "CORRECT",
         "correctness_score": 1.0,
-        "correctness_reason": "The system correctly identifies the services interacting with the User Database and specifies what each service stores there.",
+        "correctness_reason": "The system correctly identifies the two services (Authentication Service and User Service) that interact with the User Database and accurately describes what each stores there, matching the reference answer.",
         "n_claims_judged": 5,
         "n_supported": 5,
         "n_unsupported": 0,
@@ -3342,14 +3342,14 @@
         "n_invalid_ids": 0,
         "abstained": false,
         "abstention_correct": true,
-        "retrieval_ms": 10.887000011280179,
+        "retrieval_ms": 11.588499997742474,
         "generation_ms": 1686.68310000794,
-        "total_ms": 1697.5701000192203
+        "total_ms": 1698.2716000056826
       },
       "judge": {
         "correctness": "CORRECT",
         "correctness_score": 1.0,
-        "correctness_reason": "The system correctly identifies the Authentication Service and the User Service as the services interacting with the User Database and accurately describes what each one stores.",
+        "correctness_reason": "The system correctly identifies the Authentication Service and the User Service as the services that interact with the User Database and details what each stores there, matching the reference answer.",
         "n_claims_judged": 5,
         "n_supported": 5,
         "n_unsupported": 0,
@@ -3455,14 +3455,14 @@
         "n_invalid_ids": 0,
         "abstained": false,
         "abstention_correct": true,
-        "retrieval_ms": 11.752999969758093,
+        "retrieval_ms": 11.730499973054975,
         "generation_ms": 2170.5444999970496,
-        "total_ms": 2182.2974999668077
+        "total_ms": 2182.2749999701045
       },
       "judge": {
         "correctness": "CORRECT",
         "correctness_score": 1.0,
-        "correctness_reason": "The system correctly identifies the Authentication Service and the User Service as the services interacting with the User Database and accurately describes what each stores.",
+        "correctness_reason": "The system's answer correctly identifies both the Authentication Service and the User Service as interacting with the User Database, and accurately details what each service stores or manages there, matching the reference answer.",
         "n_claims_judged": 5,
         "n_supported": 5,
         "n_unsupported": 0,
@@ -3557,14 +3557,14 @@
         "n_invalid_ids": 0,
         "abstained": false,
         "abstention_correct": true,
-        "retrieval_ms": 13.903599989134818,
+        "retrieval_ms": 9.4688999815844,
         "generation_ms": 2258.13830003608,
-        "total_ms": 2272.041900025215
+        "total_ms": 2267.6072000176646
       },
       "judge": {
         "correctness": "CORRECT",
         "correctness_score": 1.0,
-        "correctness_reason": "The system correctly identifies all components that write to the Billing Database and specifies what each component writes, matching the reference answer.",
+        "correctness_reason": "The system answer correctly identifies all three components that write to the Billing Database (Checkout Service, Payment Service, and Billing Service) and accurately describes what each one writes, matching the reference answer completely.",
         "n_claims_judged": 5,
         "n_supported": 5,
         "n_unsupported": 0,
@@ -3653,14 +3653,14 @@
         "n_invalid_ids": 0,
         "abstained": false,
         "abstention_correct": true,
-        "retrieval_ms": 14.741600025445223,
+        "retrieval_ms": 14.51080001424998,
         "generation_ms": 2350.1271000131965,
-        "total_ms": 2364.8687000386417
+        "total_ms": 2364.6379000274464
       },
       "judge": {
         "correctness": "CORRECT",
         "correctness_score": 1.0,
-        "correctness_reason": "The system correctly identifies all components that write to the Billing Database and what each component writes, matching the reference answer.",
+        "correctness_reason": "The system answer correctly identifies that the Checkout Service, Payment Service, and Billing Service write to the Billing Database, and accurately specifies what each component writes.",
         "n_claims_judged": 4,
         "n_supported": 4,
         "n_unsupported": 0,
@@ -3755,14 +3755,14 @@
         "n_invalid_ids": 0,
         "abstained": false,
         "abstention_correct": true,
-        "retrieval_ms": 15.928199980407953,
+        "retrieval_ms": 10.554299980867654,
         "generation_ms": 2780.184899980668,
-        "total_ms": 2796.113099961076
+        "total_ms": 2790.7391999615356
       },
       "judge": {
         "correctness": "CORRECT",
         "correctness_score": 1.0,
-        "correctness_reason": "The system correctly identified all three components that write to the Billing Database and specified what each writes.",
+        "correctness_reason": "The system correctly identifies all three components that write to the Billing Database (Checkout Service, Payment Service, and Billing Service) and correctly specifies what each writes (order records, payment attempts, and invoice records).",
         "n_claims_judged": 4,
         "n_supported": 4,
         "n_unsupported": 0,
@@ -3827,14 +3827,14 @@
         "n_invalid_ids": 0,
         "abstained": false,
         "abstention_correct": true,
-        "retrieval_ms": 12.430300004780293,
+        "retrieval_ms": 12.234600028023124,
         "generation_ms": 2615.67600001581,
-        "total_ms": 2628.1063000205904
+        "total_ms": 2627.9106000438333
       },
       "judge": {
         "correctness": "CORRECT",
         "correctness_score": 1.0,
-        "correctness_reason": "The system answer accurately states that the Checkout Service does not call the Authentication Service and explains that it relies on identity headers from the API Gateway.",
+        "correctness_reason": "The system answer correctly states that the Checkout Service does not call the Authentication Service, and explains that it relies on identity headers from the API Gateway, matching the reference answer.",
         "n_claims_judged": 2,
         "n_supported": 2,
         "n_unsupported": 0,
@@ -3902,14 +3902,14 @@
         "n_invalid_ids": 0,
         "abstained": false,
         "abstention_correct": true,
-        "retrieval_ms": 14.409499999601394,
+        "retrieval_ms": 10.508499981369823,
         "generation_ms": 2018.652300001122,
-        "total_ms": 2033.0618000007235
+        "total_ms": 2029.1607999824919
       },
       "judge": {
         "correctness": "CORRECT",
         "correctness_score": 1.0,
-        "correctness_reason": "The system correctly answers that the Checkout Service does not call the Authentication Service and instead relies on identity headers from the API Gateway.",
+        "correctness_reason": "The system answer correctly states that the Checkout Service does not call the Authentication Service and explains that it relies on identity headers from the API Gateway, matching the reference answer.",
         "n_claims_judged": 2,
         "n_supported": 2,
         "n_unsupported": 0,
@@ -3977,14 +3977,14 @@
         "n_invalid_ids": 0,
         "abstained": false,
         "abstention_correct": true,
-        "retrieval_ms": 15.257699997164309,
+        "retrieval_ms": 13.176299980841577,
         "generation_ms": 2050.942500005476,
-        "total_ms": 2066.2002000026405
+        "total_ms": 2064.1187999863178
       },
       "judge": {
         "correctness": "CORRECT",
         "correctness_score": 1.0,
-        "correctness_reason": "The system correctly answers that the Checkout Service does not call the Authentication Service and explains that it relies on identity headers from the API Gateway.",
+        "correctness_reason": "The system correctly answers that the Checkout Service does not call the Authentication Service and explains that it relies on identity headers from the API Gateway, matching the reference answer.",
         "n_claims_judged": 2,
         "n_supported": 2,
         "n_unsupported": 0,
@@ -4059,14 +4059,14 @@
         "n_invalid_ids": 0,
         "abstained": false,
         "abstention_correct": true,
-        "retrieval_ms": 10.771899949759245,
+        "retrieval_ms": 9.867799992207438,
         "generation_ms": 2182.6786000165157,
-        "total_ms": 2193.450499966275
+        "total_ms": 2192.546400008723
       },
       "judge": {
         "correctness": "CORRECT",
         "correctness_score": 1.0,
-        "correctness_reason": "The system correctly identifies that the Notification Service needs recipient details and preferences from the User Service, and that if the User Service is unavailable, it retries the message later without dropping it.",
+        "correctness_reason": "The system answer correctly identifies what the Notification Service needs (email address and preferences from the User Service) and what happens if the User Service is unavailable (retries the message later and does not drop it). It captures the key facts of the reference answer.",
         "n_claims_judged": 3,
         "n_supported": 3,
         "n_unsupported": 0,
@@ -4145,14 +4145,14 @@
         "n_invalid_ids": 0,
         "abstained": false,
         "abstention_correct": true,
-        "retrieval_ms": 11.979000002611428,
+        "retrieval_ms": 10.433199990075082,
         "generation_ms": 2253.5270000225864,
-        "total_ms": 2265.506000025198
+        "total_ms": 2263.9602000126615
       },
       "judge": {
         "correctness": "CORRECT",
         "correctness_score": 1.0,
-        "correctness_reason": "The system correctly identified what the Notification Service needs and what happens if the User Service is unavailable based on the evidence.",
+        "correctness_reason": "The system's answer accurately captures what the Notification Service needs to send an email and what happens if the User Service is unavailable, matching the reference answer completely.",
         "n_claims_judged": 3,
         "n_supported": 3,
         "n_unsupported": 0,
@@ -4230,14 +4230,14 @@
         "n_invalid_ids": 0,
         "abstained": false,
         "abstention_correct": true,
-        "retrieval_ms": 14.728500042110682,
+        "retrieval_ms": 12.276200053747743,
         "generation_ms": 4715.077999979258,
-        "total_ms": 4729.806500021368
+        "total_ms": 4727.354200033005
       },
       "judge": {
         "correctness": "CORRECT",
         "correctness_score": 1.0,
-        "correctness_reason": "The system answer accurately describes what the Notification Service needs and what happens if the User Service is unavailable, fully matching the reference answer.",
+        "correctness_reason": "The system answer correctly identifies what the Notification Service needs (address and preferences from the User Service, rendering a template, and calling MailBridge) and what happens if the User Service is unavailable (it retries later and does not drop the message), matching the reference answer.",
         "n_claims_judged": 3,
         "n_supported": 3,
         "n_unsupported": 0,
@@ -4281,14 +4281,14 @@
         "n_invalid_ids": 0,
         "abstained": true,
         "abstention_correct": true,
-        "retrieval_ms": 12.55360001232475,
+        "retrieval_ms": 10.893300001043826,
         "generation_ms": 1456.8726999568753,
-        "total_ms": 1469.4262999692
+        "total_ms": 1467.7659999579191
       },
       "judge": {
         "correctness": "CORRECT",
         "correctness_score": 1.0,
-        "correctness_reason": "The system correctly identified that the information is not available in the evidence.",
+        "correctness_reason": "The system correctly identified that the documentation does not contain information about the programming language of the Billing Service.",
         "n_claims_judged": 0,
         "n_supported": 0,
         "n_unsupported": 0,
@@ -4335,14 +4335,14 @@
         "n_invalid_ids": 0,
         "abstained": true,
         "abstention_correct": true,
-        "retrieval_ms": 11.444400006439537,
+        "retrieval_ms": 9.812399977818131,
         "generation_ms": 2213.222000049427,
-        "total_ms": 2224.6664000558667
+        "total_ms": 2223.0344000272453
       },
       "judge": {
         "correctness": "CORRECT",
         "correctness_score": 1.0,
-        "correctness_reason": "The system correctly states that the provided evidence does not contain information about the programming language used for the Billing Service.",
+        "correctness_reason": "The system correctly stated that the provided evidence does not contain information regarding the programming language of the Billing Service, matching the reference answer.",
         "n_claims_judged": 0,
         "n_supported": 0,
         "n_unsupported": 0,
@@ -4389,14 +4389,14 @@
         "n_invalid_ids": 0,
         "abstained": true,
         "abstention_correct": true,
-        "retrieval_ms": 13.671600027009845,
+        "retrieval_ms": 13.315699994564056,
         "generation_ms": 1458.4322000155225,
-        "total_ms": 1472.1038000425324
+        "total_ms": 1471.7479000100866
       },
       "judge": {
         "correctness": "CORRECT",
         "correctness_score": 1.0,
-        "correctness_reason": "The system correctly identified that the documentation does not state the programming language of the Billing Service.",
+        "correctness_reason": "The system correctly stated that the provided evidence does not contain information about the programming language of the Billing Service, which matches the reference answer.",
         "n_claims_judged": 0,
         "n_supported": 0,
         "n_unsupported": 0,
@@ -4440,14 +4440,14 @@
         "n_invalid_ids": 0,
         "abstained": true,
         "abstention_correct": true,
-        "retrieval_ms": 11.54029997996986,
+        "retrieval_ms": 10.820400028023869,
         "generation_ms": 1018.1754999794066,
-        "total_ms": 1029.7157999593765
+        "total_ms": 1028.9959000074305
       },
       "judge": {
         "correctness": "CORRECT",
         "correctness_score": 1.0,
-        "correctness_reason": "The system correctly stated that the evidence does not provide information about an uptime SLA.",
+        "correctness_reason": "The system correctly identified that the documentation does not contain any information regarding an uptime SLA for the Authentication Service.",
         "n_claims_judged": 0,
         "n_supported": 0,
         "n_unsupported": 0,
@@ -4494,14 +4494,14 @@
         "n_invalid_ids": 0,
         "abstained": true,
         "abstention_correct": true,
-        "retrieval_ms": 12.431300012394786,
+        "retrieval_ms": 11.163300019688904,
         "generation_ms": 1634.864599967841,
-        "total_ms": 1647.2958999802358
+        "total_ms": 1646.02789998753
       },
       "judge": {
         "correctness": "CORRECT",
         "correctness_score": 1.0,
-        "correctness_reason": "The system correctly stated that the provided evidence does not contain an uptime SLA.",
+        "correctness_reason": "The system correctly stated that the provided evidence does not contain information about an uptime SLA for the Authentication Service.",
         "n_claims_judged": 0,
         "n_supported": 0,
         "n_unsupported": 0,
@@ -4548,14 +4548,14 @@
         "n_invalid_ids": 0,
         "abstained": true,
         "abstention_correct": true,
-        "retrieval_ms": 10.277500026859343,
+        "retrieval_ms": 14.280300005339086,
         "generation_ms": 1541.2221000296995,
-        "total_ms": 1551.4996000565588
+        "total_ms": 1555.5024000350386
       },
       "judge": {
         "correctness": "CORRECT",
         "correctness_score": 1.0,
-        "correctness_reason": "The system correctly identified that the information about an uptime SLA is not available in the evidence.",
+        "correctness_reason": "The system correctly identified that the documentation does not contain any information regarding an uptime SLA for the Authentication Service.",
         "n_claims_judged": 0,
         "n_supported": 0,
         "n_unsupported": 0,
@@ -4610,14 +4610,14 @@
         "n_invalid_ids": 0,
         "abstained": false,
         "abstention_correct": true,
-        "retrieval_ms": 14.650600031018257,
+        "retrieval_ms": 14.656699961051345,
         "generation_ms": 1431.7093000281602,
-        "total_ms": 1446.3599000591785
+        "total_ms": 1446.3659999892116
       },
       "judge": {
         "correctness": "CORRECT",
         "correctness_score": 1.0,
-        "correctness_reason": "The system correctly answers that the Pricing Page keeps working and correctly explains why based on the evidence.",
+        "correctness_reason": "The system correctly answers that the Pricing Page will continue to function and cites the relevant evidence indicating public routes keep working.",
         "n_claims_judged": 1,
         "n_supported": 1,
         "n_unsupported": 0,
@@ -4696,14 +4696,14 @@
         "n_invalid_ids": 0,
         "abstained": false,
         "abstention_correct": true,
-        "retrieval_ms": 8.81839997600764,
+        "retrieval_ms": 11.024000006727874,
         "generation_ms": 1603.788899956271,
-        "total_ms": 1612.6072999322787
+        "total_ms": 1614.812899962999
       },
       "judge": {
-        "correctness": "INCORRECT",
-        "correctness_score": 0.0,
-        "correctness_reason": "The system answer claims the Pricing Page will continue to function, whereas the answerable flag and reference answer indicate the question 'Will the Pricing Page stop working...' should be answered based on the fact that it keeps working, but the model's answer contradicts the premise of the prompt which stated the question is answerable as 'yes' (meaning yes it will stop? No, wait: answerable=yes means the question is answerable, but the reference answer says 'No. The Pricing Page is a public route... keep working.' The system correctly stated it will continue to function, which aligns with the reference answer, making correctness CORRECT). Let me re-evaluate: the reference answer says 'No', and the system says 'continue to function'. This is correct.",
+        "correctness": "CORRECT",
+        "correctness_score": 1.0,
+        "correctness_reason": "The system correctly answers that the Pricing Page will continue to function and explains that it is a public route that skips token validation, matching the reference answer.",
         "n_claims_judged": 3,
         "n_supported": 3,
         "n_unsupported": 0,
@@ -4781,14 +4781,14 @@
         "n_invalid_ids": 0,
         "abstained": false,
         "abstention_correct": true,
-        "retrieval_ms": 12.19510001828894,
+        "retrieval_ms": 12.34909996856004,
         "generation_ms": 1933.1348999985494,
-        "total_ms": 1945.3300000168383
+        "total_ms": 1945.4839999671094
       },
       "judge": {
         "correctness": "CORRECT",
         "correctness_score": 1.0,
-        "correctness_reason": "The system correctly answers that the Pricing Page will not stop working and provides accurate details based on the evidence.",
+        "correctness_reason": "The system correctly answers that the Pricing Page will not stop working and provides the accurate explanation based on the evidence.",
         "n_claims_judged": 3,
         "n_supported": 3,
         "n_unsupported": 0,
@@ -4865,14 +4865,14 @@
         "n_invalid_ids": 0,
         "abstained": false,
         "abstention_correct": true,
-        "retrieval_ms": 7.457400031853467,
+        "retrieval_ms": 9.660299983806908,
         "generation_ms": 1349.5156999561004,
-        "total_ms": 1356.973099987954
+        "total_ms": 1359.1759999399073
       },
       "judge": {
         "correctness": "CORRECT",
         "correctness_score": 1.0,
-        "correctness_reason": "The system correctly answers that users will still be able to sign in and explains the fallback mechanism described in the documentation.",
+        "correctness_reason": "The system correctly answers that users will still be able to sign in (validations keep working via fallback), matching the reference answer.",
         "n_claims_judged": 3,
         "n_supported": 3,
         "n_unsupported": 0,
@@ -4951,14 +4951,14 @@
         "n_invalid_ids": 0,
         "abstained": false,
         "abstention_correct": true,
-        "retrieval_ms": 10.736100026406348,
+        "retrieval_ms": 8.952000003773719,
         "generation_ms": 1765.6866000033915,
-        "total_ms": 1776.4227000297979
+        "total_ms": 1774.6386000071652
       },
       "judge": {
         "correctness": "CORRECT",
         "correctness_score": 1.0,
-        "correctness_reason": "The system correctly answers that users will still be able to sign in and validation continues because the service falls back to the User Database.",
+        "correctness_reason": "The system correctly answers that users will still be able to sign in (or validation will keep working) if the Session Cache goes down, matching the reference answer.",
         "n_claims_judged": 3,
         "n_supported": 3,
         "n_unsupported": 0,
@@ -5037,14 +5037,14 @@
         "n_invalid_ids": 0,
         "abstained": false,
         "abstention_correct": true,
-        "retrieval_ms": 11.620000004768372,
+        "retrieval_ms": 15.323899977374822,
         "generation_ms": 1586.047199962195,
-        "total_ms": 1597.6671999669634
+        "total_ms": 1601.3710999395698
       },
       "judge": {
         "correctness": "CORRECT",
         "correctness_score": 1.0,
-        "correctness_reason": "The system correctly answers that users will still be able to sign in because the authentication service falls back to the user database.",
+        "correctness_reason": "The system correctly answers that users will still be able to sign in (no feature becomes unavailable), explaining the fallback to the User Database for revocation checks, which matches the reference answer.",
         "n_claims_judged": 3,
         "n_supported": 3,
         "n_unsupported": 0,
@@ -5055,6 +5055,6 @@
       }
     }
   ],
-  "api_calls": 108,
-  "cache_hits": 12
+  "api_calls": 60,
+  "cache_hits": 60
 }

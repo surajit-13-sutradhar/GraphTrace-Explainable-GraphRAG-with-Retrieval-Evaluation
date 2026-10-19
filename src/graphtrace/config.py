@@ -20,6 +20,7 @@ VECTOR_DIR = ARTIFACTS_DIR / "vector_index"
 LLM_CACHE_DIR = ARTIFACTS_DIR / "llm_cache"
 EVAL_QUESTIONS_PATH = PROJECT_ROOT / "data" / "eval" / "questions.json"
 REPORTS_DIR = PROJECT_ROOT / "reports"
+HUMAN_GRADES_PATH = PROJECT_ROOT / "data" / "eval" / "human_grades.json"
 
 DEFAULT_MODEL = "gemini-2.5-flash"
 DEFAULT_RPM = 10

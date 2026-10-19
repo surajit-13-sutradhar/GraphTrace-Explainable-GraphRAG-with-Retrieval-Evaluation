@@ -1,0 +1,54 @@
+
+{
+  "description": "Correctness assessments for 12 records (q09, q10, q11, q19 across three methods). The grades were assigned by Claude, the AI assistant involved in building this system, after reviewing the LLM judge's verdicts. The assessments were neither blind nor independent, and the human author did not verify them.",
+  "grades": {
+    "q09:baseline_k5": {
+      "grade": "P",
+      "note": "Leaves out the dependency chain and all four downstream features."
+    },
+    "q09:baseline_k8": {
+      "grade": "P",
+      "note": "Leaves out the dependency chain and all four downstream features."
+    },
+    "q09:graphrag": {
+      "grade": "P",
+      "note": "Identifies four downstream features as hedged inferences with appropriate citations; however, the summary omits these features, which appear only in the claims list."
+    },
+    "q10:baseline_k5": {
+      "grade": "P",
+      "note": "Fails to mention Subscription Checkout and Invoice Download, despite having evidence of the Checkout write."
+    },
+    "q10:baseline_k8": {
+      "grade": "P",
+      "note": "Omits Invoice Download; the summary states that purchases 'will be affected' with certainty, although the documents do not establish this."
+    },
+    "q10:graphrag": {
+      "grade": "C",
+      "note": "Both features are appropriately qualified as 'may be affected'; Usage Reports is also correctly described as showing stale data."
+    },
+    "q11:baseline_k5": {
+      "grade": "C",
+      "note": "Correctly identifies the outbox delay, missing user.registered events, and undelivered welcome emails."
+    },
+    "q11:baseline_k8": {
+      "grade": "C",
+      "note": "Reports the same facts accurately; the summary is more definitive than the qualified claim, but the documented delay supports it."
+    },
+    "q11:graphrag": {
+      "grade": "C",
+      "note": "Factually accurate and appropriately qualified, though the summary's reference to the Authentication Service is somewhat imprecise."
+    },
+    "q19:baseline_k5": {
+      "grade": "C",
+      "note": "Correctly states that the public route continues to work."
+    },
+    "q19:baseline_k8": {
+      "grade": "C",
+      "note": "Correctly identifies that the public route remains functional and explains why."
+    },
+    "q19:graphrag": {
+      "grade": "C",
+      "note": "Correctly identifies that the public route remains functional, including the detail about static content."
+    }
+  }
+}

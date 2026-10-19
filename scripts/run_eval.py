@@ -3,8 +3,15 @@
 from __future__ import annotations
 
 import argparse
+import json
 
-from graphtrace.config import EVAL_QUESTIONS_PATH, LLM_CACHE_DIR, REPORTS_DIR, load_settings
+from graphtrace.config import (
+    EVAL_QUESTIONS_PATH,
+    HUMAN_GRADES_PATH,
+    LLM_CACHE_DIR,
+    REPORTS_DIR,
+    load_settings,
+)
 from graphtrace.evaluation.dataset import load_questions
 from graphtrace.evaluation.judge import Judge
 from graphtrace.evaluation.report import METHOD_LABELS, render_report, summarize
@@ -18,6 +25,12 @@ RESULTS_PATH = REPORTS_DIR / "eval_results.json"
 REPORT_PATH = REPORTS_DIR / "eval_report.md"
 
 
+def load_human_grades() -> dict[str, dict]:
+    if not HUMAN_GRADES_PATH.exists():
+        return {}
+    return json.loads(HUMAN_GRADES_PATH.read_text(encoding="utf-8-sig")).get("grades", {})
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--limit", type=int, help="Only the first N questions (smoke test).")
@@ -29,7 +42,7 @@ def main() -> int:
 
     if args.report_only:
         run = EvalRun.model_validate_json(RESULTS_PATH.read_text(encoding="utf-8"))
-        REPORT_PATH.write_text(render_report(run), encoding="utf-8")
+        REPORT_PATH.write_text(render_report(run, load_human_grades()), encoding="utf-8")
         print(f"Wrote {REPORT_PATH}")
         return 0
 
@@ -77,7 +90,7 @@ def main() -> int:
     run.api_calls = answer_client.api_calls + (judge_client.api_calls if judge_client else 0)
     run.cache_hits = answer_client.cache_hits + (judge_client.cache_hits if judge_client else 0)
     RESULTS_PATH.write_text(run.model_dump_json(indent=2), encoding="utf-8")
-    REPORT_PATH.write_text(render_report(run), encoding="utf-8")
+    REPORT_PATH.write_text(render_report(run, load_human_grades()), encoding="utf-8")
 
     print(f"\nLLM calls: {run.api_calls} API, {run.cache_hits} from cache")
     for spec in DEFAULT_SPECS:

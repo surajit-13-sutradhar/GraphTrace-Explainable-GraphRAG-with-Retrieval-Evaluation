@@ -47,6 +47,8 @@ DEFINITIONS = """\
 **Statistics.** The question set is small (20), so there are no significance tests; a difference of one question is within noise. Questions flagged `dev` were used while developing the system and are reported separately from held-out ones.
 """
 
+HUMAN_SCORES = {"C": 1.0, "P": 0.5, "I": 0.0}
+
 
 def _values(items: Iterable[float | None]) -> list[float]:
     return [v for v in items if v is not None]
@@ -200,8 +202,49 @@ def _compare_lines(by_q, order, target, ref) -> tuple[list[str], list[str]]:
             better_lines.append(f"- **{qid}** ({t.type}{', dev' if t.dev else ''}): {'; '.join(better)}")
     return worse_lines, better_lines
 
+def _human_section(run: EvalRun, grades: dict[str, dict]) -> list[str]:
+    """Human-adjudicated correctness for reviewed records, plus judge agreement."""
+    records = {f"{r.question_id}:{r.method}": r for r in run.records}
+    reviewed = {k: g for k, g in grades.items() if k in records and g.get("grade") in HUMAN_SCORES}
+    if not reviewed:
+        return []
+    methods = list(dict.fromkeys(r.method for r in run.records))
+    rows: list[list[str]] = []
+    disagreements: list[str] = []
+    for method in methods:
+        keys = [k for k in reviewed if records[k].method == method]
+        if not keys:
+            continue
+        human = [HUMAN_SCORES[reviewed[k]["grade"]] for k in keys]
+        judge_scores = [s for s in (_score(records[k]) for k in keys) if s is not None]
+        agree = sum(1 for k in keys if _letter(records[k]) == reviewed[k]["grade"])
+        rows.append([
+            _label(method), str(len(keys)), f"{sum(human) / len(human):.2f}",
+            f"{sum(judge_scores) / len(judge_scores):.2f}" if judge_scores else "n/a",
+            f"{agree}/{len(keys)}",
+        ])
+        for k in keys:
+            if _letter(records[k]) != reviewed[k]["grade"]:
+                disagreements.append(
+                    f"- **{k}**: human {reviewed[k]['grade']}, judge {_letter(records[k])}. "
+                    f"{reviewed[k].get('note', '')}"
+                )
+    out = [
+        "## Human-adjudicated correctness (reviewed records only)",
+        "",
+        "_The author graded these records against the reference answers and the documents. They were "
+        "chosen because methods differed or a judge verdict was doubtful, so they are not a random "
+        "sample and the numbers should not be generalized._",
+        "",
+        _table(["Method", "Records reviewed", "Human mean", "Judge mean (same records)",
+                "Exact agreement"], rows),
+        "",
+    ]
+    if disagreements:
+        out += ["### Judge / human disagreements", ""] + disagreements + [""]
+    return out
 
-def render_report(run: EvalRun) -> str:
+def render_report(run: EvalRun, human_grades: dict[str, dict] | None = None) -> str:
     methods = list(dict.fromkeys(r.method for r in run.records))
     by_method = {m: [r for r in run.records if r.method == m] for m in methods}
     order = list(dict.fromkeys(r.question_id for r in run.records))
@@ -282,4 +325,5 @@ def render_report(run: EvalRun) -> str:
         parts += ["", "## Questions where GraphRAG did better than baseline k=8", ""]
         parts += better or ["_None._"]
         parts.append("")
+    parts += _human_section(run, human_grades or {})
     return "\n".join(parts)
